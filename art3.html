@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Art. 3º — Lei 12.378/2010 | Visual Law</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d1117;
+    --grid: rgba(78,150,220,0.065);
+    --gold: #e8b84b;
+    --blue: #4e96dc;
+    --blue2: #7ab8f5;
+    --teal: #3dd6c8;
+    --red: #e8604b;
+    --violet: #a78bfa;
+    --green: #4ade80;
+    --text: #e8e6e0;
+    --muted: #5a6a7d;
+    --muted2: #8a9ab0;
+    --border: rgba(78,150,220,0.15);
+    --border2: rgba(255,255,255,0.06);
+    --card: rgba(16,24,36,0.92);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+
+  body {
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Syne',sans-serif;
+    min-height:100vh;
+    overflow-x:hidden;
+  }
+
+  body::before {
+    content:'';
+    position:fixed; inset:0;
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size:40px 40px;
+    pointer-events:none; z-index:0;
+  }
+
+  body::after {
+    content:'';
+    position:fixed; inset:0;
+    background:
+      radial-gradient(ellipse 55% 40% at 10% 15%, rgba(78,150,220,0.07) 0%, transparent 70%),
+      radial-gradient(ellipse 45% 40% at 90% 80%, rgba(167,139,250,0.06) 0%, transparent 70%);
+    pointer-events:none; z-index:0;
+  }
+
+  /* ── TOPBAR ── */
+  .topbar {
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 32px;
+    border-bottom:1px solid var(--border2);
+    position:relative; z-index:10;
+  }
+
+  .topbar-back {
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'DM Mono',monospace; font-size:11px;
+    color:var(--muted); text-decoration:none;
+    letter-spacing:0.08em; transition:color 0.18s;
+  }
+  .topbar-back:hover { color:var(--gold); }
+  .topbar-back::before { content:'←'; font-size:14px; }
+
+  .topbar-crumb {
+    display:flex; align-items:center; gap:8px;
+    font-family:'DM Mono',monospace; font-size:10px; color:var(--muted);
+    letter-spacing:0.08em;
+  }
+  .topbar-crumb .sep { opacity:0.4; }
+  .topbar-crumb .active { color:var(--gold); }
+
+  .topbar-badge {
+    background:rgba(232,184,75,0.1);
+    border:1px solid rgba(232,184,75,0.25);
+    border-radius:2px; padding:4px 10px;
+    font-family:'DM Mono',monospace; font-size:10px;
+    color:var(--gold); letter-spacing:0.12em; text-transform:uppercase;
+  }
+
+  /* ── LAYOUT ── */
+  .container {
+    position:relative; z-index:1;
+    max-width:1100px; margin:0 auto;
+    padding:52px 32px 96px;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    border-left:3px solid var(--violet);
+    padding-left:24px;
+    margin-bottom:52px;
+    animation:fadeUp 0.7s ease both;
+  }
+
+  .eyebrow {
+    font-family:'DM Mono',monospace; font-size:10px;
+    color:var(--violet); letter-spacing:0.22em;
+    text-transform:uppercase; margin-bottom:14px;
+  }
+
+  .header h1 {
+    font-family:'Fraunces',serif;
+    font-size:clamp(26px,4vw,44px);
+    font-weight:600; line-height:1.12;
+    margin-bottom:10px;
+  }
+
+  .header h1 em { color:var(--violet); font-style:italic; font-weight:300; }
+
+  .header-sub {
+    font-family:'DM Mono',monospace; font-size:11px;
+    color:var(--muted); letter-spacing:0.06em;
+  }
+
+  /* ── CAPUT BOX ── */
+  .caput-box {
+    background:rgba(167,139,250,0.05);
+    border:1px solid rgba(167,139,250,0.2);
+    border-radius:4px; padding:20px 24px;
+    margin-bottom:52px;
+    font-family:'DM Mono',monospace; font-size:12px;
+    color:var(--muted2); line-height:1.8;
+    border-left:3px solid var(--violet);
+    animation:fadeUp 0.6s 0.1s ease both;
+    position:relative;
+  }
+
+  .caput-box::before {
+    content:'caput · art. 3º';
+    position:absolute; top:12px; right:14px;
+    font-size:9px; letter-spacing:0.15em;
+    color:var(--muted); text-transform:uppercase;
+  }
+
+  .caput-box strong { color:var(--text); font-weight:500; }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    display:flex; align-items:center; gap:14px;
+    margin-bottom:20px;
+  }
+
+  .section-label h2 {
+    font-family:'DM Mono',monospace; font-size:10px;
+    color:var(--muted); letter-spacing:0.2em;
+    text-transform:uppercase; white-space:nowrap;
+  }
+
+  .section-label::after {
+    content:''; flex:1; height:1px; background:var(--border2);
+  }
+
+  /* ── MAIN DIAGRAM: PRIVATE vs SHARED ── */
+  .diagram-wrapper {
+    margin-bottom:52px;
+    animation:fadeUp 0.6s 0.15s ease both;
+  }
+
+  .diagram-grid {
+    display:grid;
+    grid-template-columns:1fr 80px 1fr;
+    gap:0;
+    align-items:stretch;
+    margin-bottom:16px;
+  }
+
+  /* Column */
+  .col-card {
+    border-radius:4px;
+    border:1px solid;
+    overflow:hidden;
+  }
+
+  .col-private {
+    border-color:rgba(232,96,75,0.3);
+    background:rgba(232,96,75,0.04);
+  }
+
+  .col-shared {
+    border-color:rgba(61,214,200,0.3);
+    background:rgba(61,214,200,0.04);
+  }
+
+  .col-header {
+    padding:16px 20px;
+    display:flex; align-items:center; gap:10px;
+    border-bottom:1px solid rgba(255,255,255,0.06);
+  }
+
+  .col-private .col-header { background:rgba(232,96,75,0.08); }
+  .col-shared .col-header  { background:rgba(61,214,200,0.08); }
+
+  .col-icon { font-size:18px; }
+
+  .col-title {
+    font-size:13px; font-weight:700;
+    letter-spacing:0.02em;
+  }
+
+  .col-private .col-title { color:var(--red); }
+  .col-shared .col-title  { color:var(--teal); }
+
+  .col-body { padding:20px; }
+
+  .col-item {
+    display:flex; gap:10px; align-items:flex-start;
+    padding:10px 0;
+    border-bottom:1px solid rgba(255,255,255,0.04);
+    font-family:'DM Mono',monospace; font-size:11px;
+    color:var(--muted2); line-height:1.5;
+  }
+
+  .col-item:last-child { border-bottom:none; padding-bottom:0; }
+
+  .col-item-dot {
+    width:6px; height:6px; border-radius:50%;
+    flex-shrink:0; margin-top:4px;
+  }
+
+  .col-private .col-item-dot { background:var(--red); opacity:0.6; }
+  .col-shared .col-item-dot  { background:var(--teal); opacity:0.6; }
+
+  .col-item strong { color:var(--text); font-weight:500; }
+
+  /* Center divider */
+  .col-divider {
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    gap:8px; padding:0 8px;
+  }
+
+  .divider-line {
+    flex:1; width:1px;
+    background:linear-gradient(to bottom, transparent, var(--border2), var(--border2), transparent);
+  }
+
+  .divider-label {
+    font-family:'DM Mono',monospace; font-size:9px;
+    color:var(--muted); letter-spacing:0.15em;
+    text-transform:uppercase;
+    writing-mode:vertical-rl;
+    transform:rotate(180deg);
+    white-space:nowrap;
+  }
+
+  /* ── PARAGRAPHS GRID ── */
+  .parag-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(280px,1fr));
+    gap:10px;
+    margin-bottom:52px;
+    animation:fadeUp 0.6s 0.2s ease both;
+  }
+
+  .par-card {
+    background:var(--card);
+    border:1px solid var(--border2);
+    border-radius:4px;
+    padding:20px;
+    position:relative; overflow:hidden;
+    transition:all 0.22s;
+  }
+
+  .par-card::before {
+    content:'';
+    position:absolute; top:0; left:0;
+    width:2px; height:100%;
+    background:var(--par-color,var(--blue));
+    opacity:0.5;
+    transition:opacity 0.22s;
+  }
+
+  .par-card:hover { border-color:rgba(255,255,255,0.12); transform:translateY(-2px); }
+  .par-card:hover::before { opacity:1; }
+
+  .par-num {
+    font-family:'DM Mono',monospace; font-size:9px;
+    color:var(--par-color,var(--blue));
+    letter-spacing:0.18em; text-transform:uppercase;
+    margin-bottom:10px; opacity:0.8;
+  }
+
+  .par-icon { font-size:20px; margin-bottom:10px; display:block; }
+
+  .par-title {
+    font-size:13px; font-weight:700;
+    color:var(--text); margin-bottom:8px; line-height:1.3;
+  }
+
+  .par-text {
+    font-family:'DM Mono',monospace; font-size:11px;
+    color:var(--muted2); line-height:1.65;
+  }
+
+  .par-tag {
+    display:inline-block; margin-top:12px;
+    padding:2px 8px; border-radius:2px;
+    font-family:'DM Mono',monospace; font-size:9px;
+    letter-spacing:0.12em; text-transform:uppercase;
+    border:1px solid; opacity:0.7;
+    color:var(--par-color,var(--blue));
+    border-color:var(--par-color,var(--blue));
+  }
+
+  /* ── CONFLICT FLOW ── */
+  .flow-wrapper {
+    margin-bottom:52px;
+    animation:fadeUp 0.6s 0.25s ease both;
+  }
+
+  .flow {
+    display:flex; align-items:stretch; gap:0;
+    overflow-x:auto; padding-bottom:8px;
+  }
+
+  .flow-step {
+    flex:1; min-width:160px;
+    background:var(--card);
+    border:1px solid var(--border2);
+    border-radius:4px;
+    padding:16px;
+    position:relative;
+    transition:all 0.2s;
+  }
+
+  .flow-step:hover {
+    border-color:rgba(255,255,255,0.12);
+    background:rgba(20,34,52,0.98);
+  }
+
+  .flow-arrow {
+    display:flex; align-items:center; justify-content:center;
+    padding:0 6px; flex-shrink:0;
+    color:var(--muted); font-size:16px;
+    align-self:center;
+  }
+
+  .flow-num {
+    font-family:'DM Mono',monospace; font-size:9px;
+    color:var(--gold); letter-spacing:0.18em;
+    text-transform:uppercase; margin-bottom:10px;
+  }
+
+  .flow-icon { font-size:20px; margin-bottom:8px; display:block; }
+
+  .flow-title {
+    font-size:12px; font-weight:700;
+    color:var(--text); margin-bottom:6px; line-height:1.3;
+  }
+
+  .flow-desc {
+    font-family:'DM Mono',monospace; font-size:10px;
+    color:var(--muted2); line-height:1.6;
+  }
+
+  .flow-outcome {
+    margin-top:10px; padding:8px 10px;
+    border-radius:3px;
+    background:rgba(78,150,220,0.08);
+    border:1px solid rgba(78,150,220,0.15);
+    font-family:'DM Mono',monospace; font-size:10px;
+    color:var(--blue2); line-height:1.5;
+  }
+
+  .flow-outcome.gold {
+    background:rgba(232,184,75,0.08);
+    border-color:rgba(232,184,75,0.2);
+    color:var(--gold);
+  }
+
+  /* ── NOTE ── */
+  .footnote {
+    border:1px solid var(--border2);
+    border-radius:4px;
+    background:rgba(78,150,220,0.03);
+    padding:18px 22px;
+    display:flex; gap:14px; align-items:flex-start;
+    animation:fadeUp 0.6s 0.3s ease both;
+  }
+
+  .footnote p {
+    font-family:'DM Mono',monospace; font-size:11px;
+    color:var(--muted); line-height:1.75;
+  }
+
+  .footnote strong { color:var(--gold); font-weight:500; }
+
+  /* ── NAV BOTTOM ── */
+  .art-nav {
+    display:flex; justify-content:space-between; align-items:center;
+    margin-top:56px; padding-top:24px;
+    border-top:1px solid var(--border2);
+    animation:fadeUp 0.5s 0.3s ease both;
+  }
+
+  .nav-btn {
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'DM Mono',monospace; font-size:11px;
+    color:var(--muted); text-decoration:none;
+    border:1px solid var(--border2); border-radius:3px;
+    padding:8px 14px; transition:all 0.2s;
+  }
+
+  .nav-btn:hover { border-color:var(--gold); color:var(--gold); }
+  .nav-btn.prev::before { content:'←'; }
+  .nav-btn.next::after  { content:'→'; }
+
+  .nav-center {
+    font-family:'DM Mono',monospace; font-size:10px;
+    color:var(--muted); letter-spacing:0.1em;
+  }
+
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(16px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+
+  @media(max-width:700px) {
+    .diagram-grid { grid-template-columns:1fr; }
+    .col-divider { flex-direction:row; height:40px; writing-mode:horizontal-tb; }
+    .divider-label { writing-mode:horizontal-tb; transform:none; }
+    .divider-line { width:100%; height:1px; flex:unset; flex:1; }
+    .flow { flex-direction:column; }
+    .flow-arrow { transform:rotate(90deg); }
+    .container { padding:32px 20px 80px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <a class="topbar-back" href="index.html">Lei nº 12.378/2010</a>
+  <div class="topbar-crumb">    
+  </div>
+  <a class="topbar-back" href="art4.html">Art. 4º →</a>
+</div>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="eyebrow">Art. 3º · CAU/BR</div>
+    <h1>Campos de atuação —<br><em>privativo ou compartilhado?</em></h1>    
+  </header>
+
+  <!-- CAPUT -->
+  <div class="caput-box">
+    Os campos de atuação profissional são definidos a partir das
+    <strong>diretrizes curriculares nacionais</strong> que dispõem sobre a formação do arquiteto e urbanista —
+    sendo os núcleos de <strong>conhecimentos de fundamentação</strong> e de
+    <strong>conhecimentos profissionais</strong> a base que caracteriza a unidade de atuação.
+  </div>
+
+  <!-- DIAGRAM: PRIVATIVO vs COMPARTILHADO -->
+  <div class="diagram-wrapper">
+    <div class="section-label"><h2>Dois tipos de área de atuação — §§ 1º e 2º</h2></div>
+
+    <div class="diagram-grid">
+
+      <!-- PRIVATIVA -->
+      <div class="col-card col-private">
+        <div class="col-header">
+          <span class="col-icon">🔒</span>
+          <div>
+            <div class="col-title">Área Privativa</div>
+          </div>
+        </div>
+        <div class="col-body">
+          <div class="col-item">
+            <span class="col-item-dot"></span>
+            <span><strong>Exclusiva</strong> de arquiteto e urbanista com registro no CAU</span>
+          </div>
+          <div class="col-item">
+            <span class="col-item-dot"></span>
+            <span>A ausência de <strong>formação superior</strong> expõe o usuário a risco ou dano à segurança, saúde ou meio ambiente</span>
+          </div>
+          <div class="col-item">
+            <span class="col-item-dot"></span>
+            <span>Definida pelo <strong>CAU/BR</strong> via resolução — § 1º</span>
+          </div>
+          <div class="col-item">
+            <span class="col-item-dot"></span>
+            <span>Exercício por não habilitado configura <strong>exercício ilegal</strong> (Art. 7º)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- DIVIDER -->
+      <div class="col-divider">
+        <div class="divider-line"></div>
+        <div class="divider-label">vs</div>
+        <div class="divider-line"></div>
+      </div>
+
+      <!-- COMPARTILHADA -->
+      <div class="col-card col-shared">
+        <div class="col-header">
+          <span class="col-icon">🤝</span>
+          <div>
+            <div class="col-title">Área Compartilhada</div>
+          </div>
+        </div>
+        <div class="col-body">
+          <div class="col-item">
+            <span class="col-item-dot"></span>
+            <span>Exercida por <strong>mais de uma profissão</strong> regulamentada</span>
+          </div>
+          <div class="col-item">
+            <span class="col-item-dot"></span>
+            <span>O CAU Estadual ou do DF <strong>fiscaliza</strong> o exercício da Arquitetura e Urbanismo — § 3º</span>
+          </div>
+          <div class="col-item">
+            <span class="col-item-dot"></span>
+            <span>Conflitos de norma com outro Conselho resolvidos por <strong>resolução conjunta</strong> — § 4º</span>
+          </div>
+          <div class="col-item">
+            <span class="col-item-dot"></span>
+            <span>Sem resolução conjunta: aplica-se a norma que dê ao profissional a <strong>maior margem de atuação</strong> — § 5º</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PARAGRAPHS DETAIL -->
+  <div class="section-label"><h2>Detalhamento — §§ 1º ao 5º</h2></div>
+
+  <div class="parag-grid">
+
+    <div class="par-card" style="--par-color:#a78bfa">
+      <div class="par-num">§ 1º</div>
+      <span class="par-icon">📋</span>
+      <div class="par-title">CAU/BR define as áreas</div>
+      <div class="par-text">Compete ao CAU/BR especificar as áreas de atuação <strong style="color:var(--text)">privativas</strong> dos arquitetos e urbanistas e as áreas <strong style="color:var(--text)">compartilhadas</strong> com outras profissões regulamentadas.</div>
+      <span class="par-tag">Competência normativa</span>
+    </div>
+
+    <div class="par-card" style="--par-color:#e8604b">
+      <div class="par-num">§ 2º</div>
+      <span class="par-icon">⚠️</span>
+      <div class="par-title">Critério para área privativa</div>
+      <div class="par-text">São privativas as áreas em que a ausência de formação superior expõe o usuário a <strong style="color:var(--text)">risco ou dano material</strong> à segurança, à saúde ou ao meio ambiente.</div>
+      <span class="par-tag">Critério de risco</span>
+    </div>
+
+    <div class="par-card" style="--par-color:#3dd6c8">
+      <div class="par-num">§ 3º</div>
+      <span class="par-icon">🔍</span>
+      <div class="par-title">Fiscalização nas áreas compartilhadas</div>
+      <div class="par-text">Nas áreas compartilhadas, o <strong style="color:var(--text)">CAU Estadual ou do DF</strong> fiscaliza o exercício profissional da Arquitetura e Urbanismo.</div>
+      <span class="par-tag">Fiscalização</span>
+    </div>
+
+    <div class="par-card" style="--par-color:#e8b84b">
+      <div class="par-num">§ 4º</div>
+      <span class="par-icon">🤝</span>
+      <div class="par-title">Conflito de normas entre Conselhos</div>
+      <div class="par-text">Se as normas do CAU/BR contradizerem normas de outro Conselho profissional, a controvérsia será resolvida por <strong style="color:var(--text)">resolução conjunta</strong> de ambos os conselhos.</div>
+      <span class="par-tag">Resolução conjunta</span>
+    </div>
+
+    <div class="par-card" style="--par-color:#4e96dc">
+      <div class="par-num">§ 5º</div>
+      <span class="par-icon">⚖️</span>
+      <div class="par-title">Regra de transição no impasse</div>
+      <div class="par-text">Enquanto não editada a resolução conjunta, ou em caso de impasse (arbitragem/judicial), aplica-se a norma do Conselho que garanta ao profissional a <strong style="color:var(--text)">maior margem de atuação</strong>.</div>
+      <span class="par-tag">Pro profissional</span>
+    </div>
+
+  </div>
+
+  <!-- CONFLICT FLOW -->
+  <div class="flow-wrapper">
+    <div class="section-label"><h2>Fluxo de resolução de conflito entre conselhos — §§ 4º e 5º</h2></div>
+
+    <div class="flow">
+
+      <div class="flow-step">
+        <div class="flow-num">Passo 1</div>
+        <span class="flow-icon">⚡</span>
+        <div class="flow-title">Conflito identificado</div>
+        <div class="flow-desc">Norma do CAU/BR contradiz norma de outro Conselho profissional em área compartilhada</div>
+      </div>
+
+      <div class="flow-arrow">›</div>
+
+      <div class="flow-step">
+        <div class="flow-num">Passo 2</div>
+        <span class="flow-icon">📝</span>
+        <div class="flow-title">Resolução conjunta</div>
+        <div class="flow-desc">Ambos os Conselhos buscam editar resolução conjunta para unificar o entendimento</div>
+        <div class="flow-outcome">§ 4º — solução preferencial</div>
+      </div>
+
+      <div class="flow-arrow">›</div>
+
+      <div class="flow-step">
+        <div class="flow-num">Passo 3 — se impasse</div>
+        <span class="flow-icon">🏛️</span>
+        <div class="flow-title">Arbitragem ou via judicial</div>
+        <div class="flow-desc">Sem acordo entre os Conselhos, a controvérsia vai a árbitro ou ao Judiciário</div>
+      </div>
+
+      <div class="flow-arrow">›</div>
+
+      <div class="flow-step">
+        <div class="flow-num">Enquanto isso…</div>
+        <span class="flow-icon">⚖️</span>
+        <div class="flow-title">Norma pró-profissional</div>
+        <div class="flow-desc">Aplica-se provisoriamente a norma que conceda ao profissional a maior margem de atuação</div>
+        <div class="flow-outcome gold">§ 5º — regra de transição</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTNOTE -->
+  <div class="footnote">
+    <span style="font-size:18px;flex-shrink:0;margin-top:2px">⚖️</span>
+    <p>
+      <strong>Nota legal:</strong> Esta representação é uma simplificação pedagógica do Art. 3º da Lei nº 12.378/2010,
+      produzida com base nos princípios de <strong>Visual Law</strong> e <strong>Legal Design</strong>.
+      Não substitui o texto oficial publicado no DOU de 31.12.2010 nem orientação jurídica especializada.
+      A definição das áreas privativas e compartilhadas depende de resoluções vigentes do CAU/BR.
+    </p>
+  </div>
+
+  <!-- BOTTOM NAV -->
+  <div class="art-nav">
+    <a class="nav-btn prev" href="art2.html">Art. 2º</a>
+    <span class="nav-center">Art. 3º · Lei 12.378/2010</span>
+    <a class="nav-btn next" href="art4.html">Art. 4º</a>
+  </div>
+
+</div>
+</body>
+</html>

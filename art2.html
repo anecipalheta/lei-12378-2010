@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Art. 2º — Lei 12.378/2010 | Visual Law</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&family=Fraunces:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d1117;
+    --bg2: #131920;
+    --grid: rgba(78,150,220,0.07);
+    --gold: #e8b84b;
+    --gold2: #f5d07a;
+    --blue: #4e96dc;
+    --blue2: #7ab8f5;
+    --teal: #3dd6c8;
+    --red: #e8604b;
+    --text: #e8e6e0;
+    --muted: #6b7a8d;
+    --border: rgba(78,150,220,0.18);
+    --card: rgba(20,30,45,0.85);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Blueprint grid background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse at 20% 20%, rgba(78,150,220,0.06) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 80%, rgba(232,184,75,0.05) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 56px;
+    border-left: 3px solid var(--gold);
+    padding-left: 24px;
+    animation: fadeUp 0.7s ease both;
+  }
+
+  .header-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .header h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(28px, 5vw, 52px);
+    font-weight: 600;
+    line-height: 1.1;
+    color: var(--text);
+  }
+
+  .header h1 span {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .header-sub {
+    font-size: 13px;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    margin-top: 4px;
+  }
+
+  /* ── LEGEND ── */
+  .legend {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+    animation: fadeUp 0.7s 0.1s ease both;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  .legend-dot {
+    width: 10px; height: 10px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  /* ── SECTION TITLE ── */
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .section-title h2 {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    font-weight: 400;
+  }
+
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── ACTIVITIES GRID ── */
+  .activities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 12px;
+    margin-bottom: 56px;
+  }
+
+  .activity-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    position: relative;
+    overflow: hidden;
+    animation: fadeUp 0.5s ease both;
+  }
+
+  .activity-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--cat-color, var(--blue));
+    opacity: 0.6;
+    transition: opacity 0.25s;
+  }
+
+  .activity-card:hover,
+  .activity-card.active {
+    border-color: var(--cat-color, var(--blue));
+    background: rgba(20,35,55,0.95);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 0 1px var(--cat-color, var(--blue));
+  }
+
+  .activity-card:hover::before,
+  .activity-card.active::before {
+    opacity: 1;
+  }
+
+  .card-number {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--cat-color, var(--blue));
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+    opacity: 0.8;
+  }
+
+  .card-icon {
+    font-size: 22px;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .card-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+    line-height: 1.3;
+    letter-spacing: 0.02em;
+  }
+
+  .card-desc {
+    font-size: 11px;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    line-height: 1.6;
+  }
+
+  .card-tag {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 2px 8px;
+    border-radius: 2px;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-family: 'DM Mono', monospace;
+    border: 1px solid;
+    opacity: 0.7;
+    color: var(--cat-color, var(--blue));
+    border-color: var(--cat-color, var(--blue));
+  }
+
+  /* ── CAMPOS GRID ── */
+  .campos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    margin-bottom: 56px;
+  }
+
+  .campo-card {
+    background: rgba(13,17,23,0.7);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 4px;
+    padding: 16px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    animation: fadeUp 0.5s ease both;
+  }
+
+  .campo-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--teal), transparent);
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+
+  .campo-card:hover,
+  .campo-card.highlight {
+    border-color: rgba(61,214,200,0.3);
+    background: rgba(61,214,200,0.04);
+    transform: translateY(-1px);
+  }
+
+  .campo-card.highlight::after { opacity: 1; }
+
+  .campo-number {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: var(--teal);
+    letter-spacing: 0.15em;
+    margin-bottom: 8px;
+    opacity: 0.7;
+  }
+
+  .campo-icon {
+    font-size: 18px;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .campo-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+    line-height: 1.3;
+  }
+
+  .campo-desc {
+    font-size: 10px;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    line-height: 1.5;
+  }
+
+  /* ── FILTER BAR ── */
+  .filter-bar {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+    animation: fadeUp 0.5s 0.05s ease both;
+  }
+
+  .filter-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 6px 14px;
+    border-radius: 2px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .filter-btn:hover { border-color: var(--blue); color: var(--blue2); }
+
+  .filter-btn.active {
+    background: var(--filter-color, var(--blue));
+    border-color: var(--filter-color, var(--blue));
+    color: #0d1117;
+    font-weight: 600;
+  }
+
+  /* ── TOOLTIP ── */
+  .tooltip {
+    display: none;
+    position: fixed;
+    background: #1a2535;
+    border: 1px solid var(--blue);
+    border-radius: 4px;
+    padding: 12px 16px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text);
+    max-width: 280px;
+    z-index: 100;
+    pointer-events: none;
+    line-height: 1.6;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  }
+
+  .tooltip.show { display: block; }
+
+  /* ── FOOTER NOTE ── */
+  .footnote {
+    margin-top: 48px;
+    padding: 20px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: rgba(78,150,220,0.04);
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .footnote-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .footnote p {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .footnote strong {
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+    animation: fadeUp 0.5s 0.15s ease both;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .stat-value {
+    font-family: 'Fraunces', serif;
+    font-size: 36px;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .stat-divider {
+    width: 1px;
+    background: var(--border);
+    align-self: stretch;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* stagger */
+  .activity-card:nth-child(1)  { animation-delay: 0.05s }
+  .activity-card:nth-child(2)  { animation-delay: 0.10s }
+  .activity-card:nth-child(3)  { animation-delay: 0.15s }
+  .activity-card:nth-child(4)  { animation-delay: 0.20s }
+  .activity-card:nth-child(5)  { animation-delay: 0.25s }
+  .activity-card:nth-child(6)  { animation-delay: 0.30s }
+  .activity-card:nth-child(7)  { animation-delay: 0.35s }
+  .activity-card:nth-child(8)  { animation-delay: 0.40s }
+  .activity-card:nth-child(9)  { animation-delay: 0.45s }
+  .activity-card:nth-child(10) { animation-delay: 0.50s }
+  .activity-card:nth-child(11) { animation-delay: 0.55s }
+  .activity-card:nth-child(12) { animation-delay: 0.60s }
+
+  .campo-card:nth-child(1)  { animation-delay: 0.10s }
+  .campo-card:nth-child(2)  { animation-delay: 0.14s }
+  .campo-card:nth-child(3)  { animation-delay: 0.18s }
+  .campo-card:nth-child(4)  { animation-delay: 0.22s }
+  .campo-card:nth-child(5)  { animation-delay: 0.26s }
+  .campo-card:nth-child(6)  { animation-delay: 0.30s }
+  .campo-card:nth-child(7)  { animation-delay: 0.34s }
+  .campo-card:nth-child(8)  { animation-delay: 0.38s }
+  .campo-card:nth-child(9)  { animation-delay: 0.42s }
+  .campo-card:nth-child(10) { animation-delay: 0.46s }
+  .campo-card:nth-child(11) { animation-delay: 0.50s }
+
+  .hidden { display: none !important; }
+
+  @media (max-width: 600px) {
+    .activities-grid { grid-template-columns: 1fr; }
+    .campos-grid { grid-template-columns: 1fr 1fr; }
+    .stats-bar { gap: 20px; }
+    .stat-value { font-size: 28px; }
+  }
+
+  /* ── TOPBAR ── */
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    position: relative;
+    z-index: 10;
+    margin-bottom: 0;
+  }
+
+  .topbar-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    transition: color 0.18s;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+  }
+
+  .topbar-back:hover { color: var(--gold); }
+
+  .topbar-back::before {
+    content: '←';
+    font-size: 14px;
+  }
+
+  .topbar-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+  }
+
+  .topbar-breadcrumb span { color: var(--muted); }
+  .topbar-breadcrumb .crumb-active { color: var(--gold); }
+  .topbar-breadcrumb .sep { opacity: 0.4; }
+
+  .topbar-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(232,184,75,0.1);
+    border: 1px solid rgba(232,184,75,0.25);
+    border-radius: 2px;
+    padding: 4px 10px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <a class="topbar-back" href="index.html">Lei nº 12.378/2010</a>
+  <div class="topbar-breadcrumb">    
+  </div>
+  <a class="topbar-back" href="art3.html">Art. 3º →</a>
+</div>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-eyebrow">Art. 2º · CAU/BR</div>
+    <h1>Atividades e atribuições do<br><span>arquiteto e urbanista</span></h1>    
+  </header>
+
+
+  <!-- ACTIVITIES SECTION -->
+  <div class="section-title">
+    <h2>Atividades & atribuições — incisos I ao XII</h2>
+  </div>
+
+  <!-- FILTER -->
+  <div class="filter-bar" id="filterBar">
+    <button class="filter-btn active" data-filter="all" style="--filter-color: #4e96dc">Todas</button>
+    <button class="filter-btn" data-filter="gestao" style="--filter-color: #e8b84b">Gestão</button>
+    <button class="filter-btn" data-filter="projeto" style="--filter-color: #4e96dc">Projeto</button>
+    <button class="filter-btn" data-filter="assessoria" style="--filter-color: #3dd6c8">Assessoria</button>
+    <button class="filter-btn" data-filter="ensino" style="--filter-color: #e8604b">Ensino & P&D</button>
+    <button class="filter-btn" data-filter="execucao" style="--filter-color: #a78bfa">Execução</button>
+  </div>
+
+  <!-- ACTIVITIES GRID -->
+  <div class="activities-grid" id="activitiesGrid">
+
+    <div class="activity-card" data-cat="gestao" style="--cat-color:#e8b84b" data-tooltip="Coordenação de equipes, gestão de processos e diretrizes técnicas em todas as fases de um empreendimento.">
+      <div class="card-number">INCISO I</div>
+      <span class="card-icon">🎯</span>
+      <div class="card-title">Supervisão, coordenação & gestão</div>
+      <div class="card-desc">Orientação técnica em todas as fases do empreendimento</div>
+      <span class="card-tag">Gestão</span>
+    </div>
+
+    <div class="activity-card" data-cat="projeto" style="--cat-color:#4e96dc" data-tooltip="Da coleta inicial de dados ao projeto executivo completo, incluindo especificações técnicas de materiais e sistemas.">
+      <div class="card-number">INCISO II</div>
+      <span class="card-icon">📐</span>
+      <div class="card-title">Coleta, estudo, planejamento & projeto</div>
+      <div class="card-desc">Da pesquisa à especificação técnica</div>
+      <span class="card-tag">Projeto</span>
+    </div>
+
+    <div class="activity-card" data-cat="projeto" style="--cat-color:#4e96dc" data-tooltip="Análise de viabilidade sob as perspectivas técnica e ambiental, incluindo estudos de impacto e licenciamento.">
+      <div class="card-number">INCISO III</div>
+      <span class="card-icon">🌿</span>
+      <div class="card-title">Viabilidade técnica & ambiental</div>
+      <div class="card-desc">Estudos de impacto e compatibilidade</div>
+      <span class="card-tag">Projeto</span>
+    </div>
+
+    <div class="activity-card" data-cat="assessoria" style="--cat-color:#3dd6c8" data-tooltip="Suporte técnico especializado a clientes, órgãos públicos, empresas e demais profissionais.">
+      <div class="card-number">INCISO IV</div>
+      <span class="card-icon">🤝</span>
+      <div class="card-title">Assistência técnica, assessoria & consultoria</div>
+      <div class="card-desc">Suporte especializado a clientes e órgãos</div>
+      <span class="card-tag">Assessoria</span>
+    </div>
+
+    <div class="activity-card" data-cat="gestao" style="--cat-color:#e8b84b" data-tooltip="Direção e supervisão de obras e serviços técnicos, garantindo conformidade com o projeto aprovado.">
+      <div class="card-number">INCISO V</div>
+      <span class="card-icon">🏗️</span>
+      <div class="card-title">Direção de obras & serviço técnico</div>
+      <div class="card-desc">Comando e responsabilidade pela execução</div>
+      <span class="card-tag">Gestão</span>
+    </div>
+
+    <div class="activity-card" data-cat="assessoria" style="--cat-color:#3dd6c8" data-tooltip="Inspeção formal de edificações, avaliações para fins judiciais ou extrajudiciais, laudos periciais e arbitragem técnica.">
+      <div class="card-number">INCISO VI</div>
+      <span class="card-icon">🔍</span>
+      <div class="card-title">Vistoria, perícia & arbitragem</div>
+      <div class="card-desc">Avaliação, laudo, auditoria e parecer técnico</div>
+      <span class="card-tag">Assessoria</span>
+    </div>
+
+    <div class="activity-card" data-cat="gestao" style="--cat-color:#e8b84b" data-tooltip="Ocupação de cargos e funções técnicas em órgãos públicos, empresas privadas e instituições diversas.">
+      <div class="card-number">INCISO VII</div>
+      <span class="card-icon">🏛️</span>
+      <div class="card-title">Cargo & função técnica</div>
+      <div class="card-desc">Desempenho institucional público e privado</div>
+      <span class="card-tag">Gestão</span>
+    </div>
+
+    <div class="activity-card" data-cat="ensino" style="--cat-color:#e8604b" data-tooltip="Atuação em ensino formal, pesquisa acadêmica, extensão universitária e programas de capacitação profissional.">
+      <div class="card-number">INCISO VIII</div>
+      <span class="card-icon">📚</span>
+      <div class="card-title">Treinamento, ensino & pesquisa</div>
+      <div class="card-desc">Extensão universitária e formação profissional</div>
+      <span class="card-tag">Ensino & P&D</span>
+    </div>
+
+    <div class="activity-card" data-cat="ensino" style="--cat-color:#e8604b" data-tooltip="Desenvolvimento de novos materiais, ensaios tecnológicos, padronização técnica e controle de qualidade de produtos e sistemas construtivos.">
+      <div class="card-number">INCISO IX</div>
+      <span class="card-icon">🔬</span>
+      <div class="card-title">P&D, análise & controle de qualidade</div>
+      <div class="card-desc">Experimentação, padronização e mensuração</div>
+      <span class="card-tag">Ensino & P&D</span>
+    </div>
+
+    <div class="activity-card" data-cat="projeto" style="--cat-color:#4e96dc" data-tooltip="Elaboração de orçamentos detalhados para obras, projetos e serviços técnicos, com quantitativos e composição de custos.">
+      <div class="card-number">INCISO X</div>
+      <span class="card-icon">📊</span>
+      <div class="card-title">Elaboração de orçamento</div>
+      <div class="card-desc">Quantitativos, custos e composição financeira</div>
+      <span class="card-tag">Projeto</span>
+    </div>
+
+    <div class="activity-card" data-cat="ensino" style="--cat-color:#e8604b" data-tooltip="Produção de artigos, publicações, manuais técnicos e conteúdo especializado de divulgação para o setor.">
+      <div class="card-number">INCISO XI</div>
+      <span class="card-icon">📝</span>
+      <div class="card-title">Produção & divulgação técnica</div>
+      <div class="card-desc">Publicações e conteúdo especializado</div>
+      <span class="card-tag">Ensino & P&D</span>
+    </div>
+
+    <div class="activity-card" data-cat="execucao" style="--cat-color:#a78bfa" data-tooltip="Execução direta de obras e instalações, fiscalização de serviços terceirizados e condução técnica do canteiro.">
+      <div class="card-number">INCISO XII</div>
+      <span class="card-icon">⚙️</span>
+      <div class="card-title">Execução, fiscalização & condução de obra</div>
+      <div class="card-desc">Instalação, serviço técnico e canteiro</div>
+      <span class="card-tag">Execução</span>
+    </div>
+
+  </div>
+
+  <!-- CAMPOS DE ATUAÇÃO -->
+  <div class="section-title" style="margin-top: 8px;">
+    <h2>Campos de atuação — parágrafo único</h2>
+  </div>
+
+  <div class="campos-grid" id="camposGrid">
+
+    <div class="campo-card">
+      <div class="campo-number">CAMPO I</div>
+      <span class="campo-icon">🏙️</span>
+      <div class="campo-title">Arquitetura & Urbanismo</div>
+      <div class="campo-desc">Concepção e execução de projetos</div>
+    </div>
+
+    <div class="campo-card">
+      <div class="campo-number">CAMPO II</div>
+      <span class="campo-icon">🛋️</span>
+      <div class="campo-title">Arquitetura de Interiores</div>
+      <div class="campo-desc">Projetos de ambientes internos</div>
+    </div>
+
+    <div class="campo-card">
+      <div class="campo-number">CAMPO III</div>
+      <span class="campo-icon">🌳</span>
+      <div class="campo-title">Arquitetura Paisagística</div>
+      <div class="campo-desc">Parques, praças, espaços livres e territoriais</div>
+    </div>
+
+    <div class="campo-card">
+      <div class="campo-number">CAMPO IV</div>
+      <span class="campo-icon">🏰</span>
+      <div class="campo-title">Patrimônio Histórico</div>
+      <div class="campo-desc">Restauro, conservação e valorização</div>
+    </div>
+
+    <div class="campo-card">
+      <div class="campo-number">CAMPO V</div>
+      <span class="campo-icon">🗺️</span>
+      <div class="campo-title">Planejamento Urbano & Regional</div>
+      <div class="campo-desc">Plano diretor, parcelamento, mobilidade</div>
+    </div>
+
+    <div class="campo-card">
+      <div class="campo-number">CAMPO VI</div>
+      <span class="campo-icon">📏</span>
+      <div class="campo-title">Topografia</div>
+      <div class="campo-desc">Levantamentos, foto-interpretação e sensoriamento</div>
+    </div>
+
+    <div class="campo-card">
+      <div class="campo-number">CAMPO VII</div>
+      <span class="campo-icon">🧱</span>
+      <div class="campo-title">Tecnologia de materiais</div>
+      <div class="campo-desc">Resistência, patologias e recuperações</div>
+    </div>
+
+    <div class="campo-card">
+      <div class="campo-number">CAMPO VIII</div>
+      <span class="campo-icon">🏗️</span>
+      <div class="campo-title">Sistemas construtivos & estruturais</div>
+      <div class="campo-desc">Estruturas e aplicação tecnológica</div>
+    </div>
+
+    <div class="campo-card">
+      <div class="campo-number">CAMPO IX</div>
+      <span class="campo-icon">⚡</span>
+      <div class="campo-title">Instalações & equipamentos</div>
+      <div class="campo-desc">Sistemas referentes à arquitetura e urbanismo</div>
+    </div>
+
+    <div class="campo-card">
+      <div class="campo-number">CAMPO X</div>
+      <span class="campo-icon">🌡️</span>
+      <div class="campo-title">Conforto Ambiental</div>
+      <div class="campo-desc">Clima, acústica, luminosidade e ergonomia</div>
+    </div>
+
+    <div class="campo-card">
+      <div class="campo-number">CAMPO XI</div>
+      <span class="campo-icon">♻️</span>
+      <div class="campo-title">Meio Ambiente</div>
+      <div class="campo-desc">Impacto ambiental, licenciamento e sustentabilidade</div>
+    </div>
+
+  </div>
+
+  <!-- FOOTNOTE -->
+  <div class="footnote">
+    <span class="footnote-icon">⚖️</span>
+    <p>
+      <strong>Nota legal:</strong> Esta representação visual é uma simplificação pedagógica do texto normativo,
+      elaborada com base nos princípios de <strong>Visual Law</strong> e <strong>Legal Design</strong>.
+      Não substitui a leitura integral da Lei nº 12.378/2010 nem orientação jurídica especializada.
+      Para fins de registro profissional, RRT e processos disciplinares,
+      consulte o texto oficial publicado no DOU de 31.12.2010 e as resoluções vigentes do CAU/BR.
+    </p>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;margin-top:56px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.06)">
+  <a href="index.html" style="font-family:'DM Mono',monospace;font-size:11px;color:#5a6a7d;text-decoration:none;border:1px solid rgba(255,255,255,0.06);border-radius:3px;padding:8px 14px">← Início</a>
+  <span style="font-family:'DM Mono',monospace;font-size:10px;color:#5a6a7d;letter-spacing:0.1em">Art. 2º · Lei 12.378/2010</span>
+  <a href="art3.html" style="font-family:'DM Mono',monospace;font-size:11px;color:#5a6a7d;text-decoration:none;border:1px solid rgba(255,255,255,0.06);border-radius:3px;padding:8px 14px">Art. 3º →</a>
+</div>
+
+
+<!-- TOOLTIP -->
+<div class="tooltip" id="tooltip"></div>
+
+<script>
+  // Filter logic
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.activity-card');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+
+      cards.forEach(card => {
+        if (filter === 'all' || card.dataset.cat === filter) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    });
+  });
+
+  // Tooltip
+  const tooltip = document.getElementById('tooltip');
+
+  cards.forEach(card => {
+    card.addEventListener('mouseenter', (e) => {
+      const text = card.dataset.tooltip;
+      if (!text) return;
+      tooltip.textContent = text;
+      tooltip.classList.add('show');
+    });
+
+    card.addEventListener('mousemove', (e) => {
+      tooltip.style.left = (e.clientX + 16) + 'px';
+      tooltip.style.top = (e.clientY - 8) + 'px';
+    });
+
+    card.addEventListener('mouseleave', () => {
+      tooltip.classList.remove('show');
+    });
+
+    // Click active toggle
+    card.addEventListener('click', () => {
+      cards.forEach(c => c.classList.remove('active'));
+      card.classList.toggle('active');
+    });
+  });
+
+  // Campo hover highlight on scroll
+  const campoCards = document.querySelectorAll('.campo-card');
+  campoCards.forEach(c => {
+    c.addEventListener('mouseenter', () => c.classList.add('highlight'));
+    c.addEventListener('mouseleave', () => c.classList.remove('highlight'));
+  });
+</script>
+</body>
+</html>
