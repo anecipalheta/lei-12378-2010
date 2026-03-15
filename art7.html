@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Art. 7º — Lei 12.378/2010 | Visual Law</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d1117;
+    --grid: rgba(78,150,220,0.065);
+    --gold: #e8b84b;
+    --blue: #4e96dc;
+    --blue2: #7ab8f5;
+    --teal: #3dd6c8;
+    --red: #e8604b;
+    --violet: #a78bfa;
+    --text: #e8e6e0;
+    --muted: #5a6a7d;
+    --muted2: #8a9ab0;
+    --border: rgba(78,150,220,0.15);
+    --border2: rgba(255,255,255,0.06);
+    --card: rgba(16,24,36,0.92);
+    --accent: #e8604b;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+
+  body {
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Syne',sans-serif;
+    min-height:100vh;
+    overflow-x:hidden;
+    font-size:22px;
+  }
+
+  body::before {
+    content:'';
+    position:fixed; inset:0;
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size:40px 40px;
+    pointer-events:none; z-index:0;
+  }
+
+  body::after {
+    content:'';
+    position:fixed; inset:0;
+    background:
+      radial-gradient(ellipse 55% 40% at 10% 15%, rgba(232,96,75,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 45% 40% at 90% 80%, rgba(78,150,220,0.05) 0%, transparent 70%);
+    pointer-events:none; z-index:0;
+  }
+
+  /* ── TOPBAR ── */
+  .topbar {
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 32px;
+    border-bottom:1px solid var(--border2);
+    position:relative; z-index:10;
+  }
+
+  .topbar-back {
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'DM Mono',monospace; font-size:13px;
+    color:var(--muted); text-decoration:none;
+    letter-spacing:0.08em; transition:color 0.18s;
+  }
+  .topbar-back:hover { color:var(--gold); }
+  .topbar-back::before { content:'←'; font-size:14px; }
+
+  .topbar-crumb { display:flex; }
+
+  .topbar-next {
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'DM Mono',monospace; font-size:13px;
+    color:var(--muted); text-decoration:none;
+    letter-spacing:0.08em; transition:color 0.18s;
+  }
+  .topbar-next:hover { color:var(--gold); }
+  .topbar-next::after { content:'→'; font-size:14px; }
+
+  /* ── LAYOUT ── */
+  .container {
+    position:relative; z-index:1;
+    max-width:1100px; margin:0 auto;
+    padding:52px 32px 96px;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    border-left:3px solid var(--accent);
+    padding-left:24px;
+    margin-bottom:52px;
+    animation:fadeUp 0.7s ease both;
+  }
+
+  .eyebrow {
+    font-family:'DM Mono',monospace; font-size:12px;
+    color:var(--accent); letter-spacing:0.22em;
+    text-transform:uppercase; margin-bottom:14px;
+  }
+
+  .header h1 {
+    font-family:'Fraunces',serif;
+    font-size:clamp(26px,4vw,44px);
+    font-weight:600; line-height:1.12;
+    margin-bottom:10px;
+  }
+
+  .header h1 em { color:var(--accent); font-style:italic; font-weight:300; }
+
+  /* ── CAPUT BOX ── */
+  .caput-box {
+    background:rgba(232,96,75,0.04);
+    border:1px solid rgba(232,96,75,0.2);
+    border-left:3px solid var(--accent);
+    border-radius:4px; padding:20px 160px 20px 24px;
+    margin-bottom:52px;
+    font-family:'DM Mono',monospace; font-size:13px;
+    color:var(--muted2); line-height:1.8;
+    animation:fadeUp 0.6s 0.1s ease both;
+    position:relative;
+  }
+
+  .caput-box::before {
+    content:'caput · art. 7º';
+    position:absolute; top:12px; right:14px;
+    font-size:12px; letter-spacing:0.15em;
+    color:var(--muted); text-transform:uppercase;
+  }
+
+  .caput-box strong { color:var(--text); font-weight:500; }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    display:flex; align-items:center; gap:14px;
+    margin-bottom:20px;
+  }
+
+  .section-label h2 {
+    font-family:'DM Mono',monospace; font-size:12px;
+    color:var(--muted); letter-spacing:0.2em;
+    text-transform:uppercase; white-space:nowrap;
+  }
+
+  .section-label::after {
+    content:''; flex:1; height:1px; background:var(--border2);
+  }
+
+  /* ── DUAS HIPÓTESES ── */
+  .hip-wrapper {
+    margin-bottom:52px;
+    animation:fadeUp 0.6s 0.15s ease both;
+  }
+
+  .hip-grid {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+
+  .hip-card {
+    background:rgba(232,96,75,0.04);
+    border:1px solid rgba(232,96,75,0.25);
+    border-radius:4px; overflow:hidden;
+    transition:all 0.22s;
+  }
+
+  .hip-card:hover {
+    border-color:rgba(232,96,75,0.5);
+    transform:translateY(-2px);
+  }
+
+  .hip-header {
+    background:rgba(232,96,75,0.08);
+    padding:14px 20px;
+    display:flex; align-items:center; gap:10px;
+    border-bottom:1px solid rgba(232,96,75,0.15);
+  }
+
+  .hip-icon { font-size:20px; flex-shrink:0; }
+
+  .hip-num {
+    font-family:'DM Mono',monospace; font-size:11px;
+    color:var(--red); letter-spacing:0.15em;
+    text-transform:uppercase; opacity:0.8;
+  }
+
+  .hip-title {
+    font-size:15px; font-weight:700; color:var(--red);
+    line-height:1.2;
+  }
+
+  .hip-body { padding:20px; }
+
+  .hip-text {
+    font-family:'DM Mono',monospace; font-size:13px;
+    color:var(--muted2); line-height:1.65;
+  }
+
+  .hip-tag {
+    display:inline-block; margin-top:12px;
+    padding:2px 8px; border-radius:2px;
+    font-family:'DM Mono',monospace; font-size:11px;
+    letter-spacing:0.12em; text-transform:uppercase;
+    border:1px solid rgba(232,96,75,0.4); opacity:0.8;
+    color:var(--red);
+  }
+
+  /* ── SUJEITOS ── */
+  .suj-wrapper {
+    margin-bottom:52px;
+    animation:fadeUp 0.6s 0.2s ease both;
+  }
+
+  .suj-grid {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+
+  .suj-card {
+    background:var(--card);
+    border:1px solid var(--border2);
+    border-radius:4px; padding:20px;
+    display:flex; align-items:flex-start; gap:16px;
+    transition:all 0.22s;
+  }
+
+  .suj-card:hover {
+    border-color:rgba(255,255,255,0.12);
+    transform:translateY(-2px);
+  }
+
+  .suj-icon { font-size:28px; flex-shrink:0; }
+
+  .suj-label {
+    font-family:'DM Mono',monospace; font-size:11px;
+    color:var(--muted); letter-spacing:0.15em;
+    text-transform:uppercase; margin-bottom:6px;
+  }
+
+  .suj-title {
+    font-size:15px; font-weight:700;
+    color:var(--text); margin-bottom:6px;
+  }
+
+  .suj-text {
+    font-family:'DM Mono',monospace; font-size:13px;
+    color:var(--muted2); line-height:1.6;
+  }
+
+  /* ── CONEXÃO NORMATIVA ── */
+  .conex-wrapper {
+    margin-bottom:52px;
+    animation:fadeUp 0.6s 0.25s ease both;
+  }
+
+  .conex-box {
+    background:var(--card);
+    border:1px solid var(--border2);
+    border-radius:4px;
+    padding:24px 28px;
+    display:flex; gap:20px; flex-wrap:wrap;
+    align-items:flex-start;
+  }
+
+  .conex-item {
+    flex:1; min-width:160px;
+    display:flex; flex-direction:column; gap:6px;
+  }
+
+  .conex-label {
+    font-family:'DM Mono',monospace; font-size:11px;
+    color:var(--muted); letter-spacing:0.18em; text-transform:uppercase;
+  }
+
+  .conex-value {
+    font-size:15px; font-weight:700;
+    color:var(--text); line-height:1.3;
+  }
+
+  .conex-sub {
+    font-family:'DM Mono',monospace; font-size:12px;
+    color:var(--muted2); line-height:1.5;
+  }
+
+  .conex-divider {
+    width:1px; background:var(--border2); align-self:stretch;
+  }
+
+  .conex-badge {
+    display:inline-block; margin-top:4px;
+    padding:2px 8px; border-radius:2px;
+    font-family:'DM Mono',monospace; font-size:11px;
+    letter-spacing:0.1em; text-transform:uppercase;
+    background:rgba(232,96,75,0.08);
+    border:1px solid rgba(232,96,75,0.2);
+    color:var(--red);
+  }
+
+  /* ── NOTE ── */
+  .footnote {
+    border:1px solid var(--border2);
+    border-radius:4px;
+    background:rgba(78,150,220,0.03);
+    padding:18px 22px;
+    display:flex; gap:14px; align-items:flex-start;
+    animation:fadeUp 0.6s 0.3s ease both;
+  }
+
+  .footnote p {
+    font-family:'DM Mono',monospace; font-size:13px;
+    color:var(--muted); line-height:1.75;
+  }
+
+  .footnote strong { color:var(--gold); font-weight:500; }
+
+  /* ── NAV ── */
+  .art-nav {
+    display:flex; justify-content:space-between; align-items:center;
+    margin-top:56px; padding-top:24px;
+    border-top:1px solid var(--border2);
+    animation:fadeUp 0.5s 0.3s ease both;
+  }
+
+  .nav-btn {
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'DM Mono',monospace; font-size:13px;
+    color:var(--muted); text-decoration:none;
+    border:1px solid var(--border2); border-radius:3px;
+    padding:8px 14px; transition:all 0.2s;
+  }
+
+  .nav-btn:hover { border-color:var(--gold); color:var(--gold); }
+  .nav-btn.prev::before { content:'←'; }
+  .nav-btn.next::after  { content:'→'; }
+
+  .nav-center {
+    font-family:'DM Mono',monospace; font-size:12px;
+    color:var(--muted); letter-spacing:0.1em;
+  }
+
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(16px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+
+  @media(max-width:700px) {
+    .hip-grid { grid-template-columns:1fr; }
+    .suj-grid { grid-template-columns:1fr; }
+    .conex-divider { display:none; }
+    .container { padding:32px 20px 80px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="topbar-back" href="index.html">Lei nº 12.378/2010</a>
+  <div class="topbar-crumb"></div>
+  <a class="topbar-next" href="art8.html">Art. 8º </a>
+</div>
+
+<div class="container">
+
+  <header class="header">
+    <div class="eyebrow">Art. 7º · CAU/BR</div>
+    <h1>Exercício ilegal da<br><em>profissão de arquiteto e urbanista</em></h1>
+  </header>
+
+  <!-- CAPUT -->
+  <div class="caput-box">
+    Exerce ilegalmente a profissão de arquiteto e urbanista a <strong>pessoa física ou jurídica</strong> que realizar atos ou prestar serviços, públicos ou privados, <strong>privativos dos profissionais</strong> de que trata esta Lei ou, ainda, que, mesmo não realizando atos privativos, <strong>se apresenta como arquiteto e urbanista</strong> ou como pessoa jurídica que atue na área de arquitetura e urbanismo <strong>sem registro no CAU</strong>.
+  </div>
+
+  <!-- DUAS HIPÓTESES -->
+  <div class="hip-wrapper">
+    <div class="section-label"><h2>Duas hipóteses de exercício ilegal — caput</h2></div>
+    <div class="hip-grid">
+
+      <div class="hip-card">
+        <div class="hip-header">
+          <span class="hip-icon">⚠️</span>
+          <div>
+            <div class="hip-num">Hipótese I</div>
+            <div class="hip-title">Prática de atos privativos</div>
+          </div>
+        </div>
+        <div class="hip-body">
+          <div class="hip-text">Realizar atos ou prestar serviços, públicos ou privados, que são privativos dos profissionais de arquitetura e urbanismo, sem ter registro no CAU — independentemente de como se apresenta.</div>
+          <span class="hip-tag">Exercício sem habilitação</span>
+        </div>
+      </div>
+
+      <div class="hip-card">
+        <div class="hip-header">
+          <span class="hip-icon">🚫</span>
+          <div>
+            <div class="hip-num">Hipótese II</div>
+            <div class="hip-title">Uso indevido do título</div>
+          </div>
+        </div>
+        <div class="hip-body">
+          <div class="hip-text">Mesmo não realizando atos privativos, apresentar-se como arquiteto e urbanista ou como pessoa jurídica que atue na área de arquitetura e urbanismo sem registro no CAU.</div>
+          <span class="hip-tag">Uso indevido do título</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SUJEITOS DO ART. 7º -->
+  <div class="suj-wrapper">
+    <div class="section-label"><h2>Sujeitos — quem pode incorrer na infração</h2></div>
+    <div class="suj-grid">
+
+      <div class="suj-card">
+        <span class="suj-icon">👤</span>
+        <div>
+          <div class="suj-label">Sujeito I</div>
+          <div class="suj-title">Pessoa física</div>
+          <div class="suj-text">Indivíduo que exerce atividades privativas ou usa o título sem registro válido no CAU.</div>
+        </div>
+      </div>
+
+      <div class="suj-card">
+        <span class="suj-icon">🏢</span>
+        <div>
+          <div class="suj-label">Sujeito II</div>
+          <div class="suj-title">Pessoa jurídica</div>
+          <div class="suj-text">Empresa ou sociedade que presta serviços de arquitetura e urbanismo ou usa essa denominação sem registro no CAU.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CONEXÃO NORMATIVA -->
+  <div class="conex-wrapper">
+    <div class="section-label"><h2>Conexão normativa</h2></div>
+    <div class="conex-box">
+
+      <div class="conex-item">
+        <div class="conex-label">Define o que é privativo</div>
+        <div class="conex-value">Art. 2º e Art. 3º</div>
+        <div class="conex-sub">Atividades e campos de atuação privativa</div>
+        <span class="conex-badge">Base da ilegalidade</span>
+      </div>
+
+      <div class="conex-divider"></div>
+
+      <div class="conex-item">
+        <div class="conex-label">Exige o registro</div>
+        <div class="conex-value">Art. 5º e Art. 6º</div>
+        <div class="conex-sub">Obrigatoriedade e requisitos do registro</div>
+        <span class="conex-badge">Condição violada</span>
+      </div>
+
+      <div class="conex-divider"></div>
+
+      <div class="conex-item">
+        <div class="conex-label">Serviços públicos e privados</div>
+        <div class="conex-value">Abrangência total</div>
+        <div class="conex-sub">A ilegalidade se aplica tanto ao setor público quanto ao privado</div>
+        <span class="conex-badge">Sem exceção de setor</span>
+      </div>
+
+      <div class="conex-divider"></div>
+
+      <div class="conex-item">
+        <div class="conex-label">Consequências disciplinares</div>
+        <div class="conex-value">Arts. 18 e 19</div>
+        <div class="conex-sub">Infrações e sanções aplicáveis</div>
+        <span class="conex-badge">Sanção</span>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footnote">
+    <span style="font-size:18px;flex-shrink:0;margin-top:2px">⚖️</span>
+    <p>
+      <strong>Nota legal:</strong> Esta representação é uma simplificação pedagógica do Art. 7º da Lei nº 12.378/2010,
+      produzida com base nos princípios de <strong>Visual Law</strong> e <strong>Legal Design</strong>.
+      Não substitui o texto oficial publicado no DOU de 31.12.2010 nem orientação jurídica especializada.
+    </p>
+  </div>
+
+  <div class="art-nav">
+    <a class="nav-btn prev" href="art6.html">Art. 6º</a>
+    <span class="nav-center">Art. 7º · Lei 12.378/2010</span>
+    <a class="nav-btn next" href="art8.html">Art. 8º</a>
+  </div>
+
+</div>
+</body>
+</html>
