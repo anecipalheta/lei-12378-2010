@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Art. 13 — Lei 12.378/2010 | Visual Law</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d1117;
+    --grid: rgba(78,150,220,0.065);
+    --gold: #e8b84b;
+    --blue: #4e96dc;
+    --blue2: #7ab8f5;
+    --teal: #3dd6c8;
+    --red: #e8604b;
+    --violet: #a78bfa;
+    --text: #e8e6e0;
+    --muted: #5a6a7d;
+    --muted2: #8a9ab0;
+    --border: rgba(78,150,220,0.15);
+    --border2: rgba(255,255,255,0.06);
+    --card: rgba(16,24,36,0.92);
+    --accent: #7ab8f5;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+
+  body {
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Syne',sans-serif;
+    min-height:100vh;
+    overflow-x:hidden;
+    font-size:22px;
+  }
+
+  body::before {
+    content:'';
+    position:fixed; inset:0;
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size:40px 40px;
+    pointer-events:none; z-index:0;
+  }
+
+  body::after {
+    content:'';
+    position:fixed; inset:0;
+    background:
+      radial-gradient(ellipse 55% 40% at 10% 15%, rgba(122,184,245,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 45% 40% at 90% 80%, rgba(78,150,220,0.05) 0%, transparent 70%);
+    pointer-events:none; z-index:0;
+  }
+
+  /* ── TOPBAR ── */
+  .topbar {
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 32px;
+    border-bottom:1px solid var(--border2);
+    position:relative; z-index:10;
+  }
+
+  .topbar-back {
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'DM Mono',monospace; font-size:13px;
+    color:var(--muted); text-decoration:none;
+    letter-spacing:0.08em; transition:color 0.18s;
+  }
+  .topbar-back:hover { color:var(--gold); }
+  .topbar-back::before { content:'←'; font-size:14px; }
+
+  .topbar-crumb { display:flex; }
+
+  .topbar-next {
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'DM Mono',monospace; font-size:13px;
+    color:var(--muted); text-decoration:none;
+    letter-spacing:0.08em; transition:color 0.18s;
+  }
+  .topbar-next:hover { color:var(--gold); }
+  .topbar-next::after { content:'→'; font-size:14px; }
+
+  /* ── LAYOUT ── */
+  .container {
+    position:relative; z-index:1;
+    max-width:1100px; margin:0 auto;
+    padding:52px 32px 96px;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    border-left:3px solid var(--accent);
+    padding-left:24px;
+    margin-bottom:52px;
+    animation:fadeUp 0.7s ease both;
+  }
+
+  .eyebrow {
+    font-family:'DM Mono',monospace; font-size:12px;
+    color:var(--accent); letter-spacing:0.22em;
+    text-transform:uppercase; margin-bottom:14px;
+  }
+
+  .header h1 {
+    font-family:'Fraunces',serif;
+    font-size:clamp(26px,4vw,44px);
+    font-weight:600; line-height:1.12;
+    margin-bottom:10px;
+  }
+
+  .header h1 em { color:var(--accent); font-style:italic; font-weight:300; }
+
+  /* ── CAPUT BOX ── */
+  .caput-box {
+    background:rgba(122,184,245,0.04);
+    border:1px solid rgba(122,184,245,0.2);
+    border-left:3px solid var(--accent);
+    border-radius:4px; padding:20px 160px 20px 24px;
+    margin-bottom:32px;
+    font-family:'DM Mono',monospace; font-size:13px;
+    color:var(--muted2); line-height:1.8;
+    animation:fadeUp 0.6s 0.1s ease both;
+    position:relative;
+  }
+
+  .caput-box::before {
+    content:'caput · art. 13';
+    position:absolute; top:12px; right:14px;
+    font-size:12px; letter-spacing:0.15em;
+    color:var(--muted); text-transform:uppercase;
+  }
+
+  .caput-box strong { color:var(--text); font-weight:500; }
+
+  /* ── PAR ÚNICO ── */
+  .par-unico-box {
+    background:rgba(78,150,220,0.04);
+    border:1px solid rgba(78,150,220,0.15);
+    border-left:3px solid var(--blue);
+    border-radius:4px; padding:20px 200px 20px 24px;
+    margin-bottom:52px;
+    font-family:'DM Mono',monospace; font-size:13px;
+    color:var(--muted2); line-height:1.8;
+    animation:fadeUp 0.6s 0.12s ease both;
+    position:relative;
+  }
+
+  .par-unico-box::before {
+    content:'parágrafo único · art. 13';
+    position:absolute; top:12px; right:14px;
+    font-size:12px; letter-spacing:0.15em;
+    color:var(--muted); text-transform:uppercase;
+  }
+
+  .par-unico-box strong { color:var(--text); font-weight:500; }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    display:flex; align-items:center; gap:14px;
+    margin-bottom:20px;
+  }
+
+  .section-label h2 {
+    font-family:'DM Mono',monospace; font-size:12px;
+    color:var(--muted); letter-spacing:0.2em;
+    text-transform:uppercase; white-space:nowrap;
+  }
+
+  .section-label::after {
+    content:''; flex:1; height:1px; background:var(--border2);
+  }
+
+  /* ── FINALIDADES DO REGISTRO ── */
+  .fin-wrapper {
+    margin-bottom:52px;
+    animation:fadeUp 0.6s 0.15s ease both;
+  }
+
+  .fin-grid {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+
+  .fin-card {
+    background:var(--card);
+    border:1px solid var(--border2);
+    border-radius:4px; padding:24px;
+    position:relative; overflow:hidden;
+    transition:all 0.22s;
+  }
+
+  .fin-card::before {
+    content:'';
+    position:absolute; top:0; left:0;
+    width:100%; height:3px;
+    background:linear-gradient(90deg, var(--fin-color, var(--accent)), transparent);
+  }
+
+  .fin-card:hover {
+    border-color:rgba(255,255,255,0.12);
+    transform:translateY(-2px);
+  }
+
+  .fin-num {
+    font-family:'DM Mono',monospace; font-size:11px;
+    color:var(--fin-color, var(--accent));
+    letter-spacing:0.18em; text-transform:uppercase;
+    margin-bottom:10px; opacity:0.8;
+  }
+
+  .fin-icon { font-size:24px; margin-bottom:10px; display:block; }
+
+  .fin-title {
+    font-size:15px; font-weight:700;
+    color:var(--text); margin-bottom:8px; line-height:1.3;
+  }
+
+  .fin-text {
+    font-family:'DM Mono',monospace; font-size:13px;
+    color:var(--muted2); line-height:1.65;
+  }
+
+  .fin-tag {
+    display:inline-block; margin-top:12px;
+    padding:2px 8px; border-radius:2px;
+    font-family:'DM Mono',monospace; font-size:11px;
+    letter-spacing:0.12em; text-transform:uppercase;
+    border:1px solid; opacity:0.7;
+    color:var(--fin-color, var(--accent));
+    border-color:var(--fin-color, var(--accent));
+  }
+
+  /* ── ONDE REGISTRAR ── */
+  .onde-wrapper {
+    margin-bottom:52px;
+    animation:fadeUp 0.6s 0.2s ease both;
+  }
+
+  .onde-card {
+    background:rgba(122,184,245,0.05);
+    border:1px solid rgba(122,184,245,0.2);
+    border-radius:4px; padding:24px 28px;
+    display:flex; align-items:center; gap:24px;
+  }
+
+  .onde-icon { font-size:36px; flex-shrink:0; }
+
+  .onde-label {
+    font-family:'DM Mono',monospace; font-size:11px;
+    color:var(--accent); letter-spacing:0.2em;
+    text-transform:uppercase; margin-bottom:8px; opacity:0.8;
+  }
+
+  .onde-title {
+    font-family:'Fraunces',serif; font-size:20px;
+    font-weight:600; color:var(--text); margin-bottom:8px;
+  }
+
+  .onde-text {
+    font-family:'DM Mono',monospace; font-size:13px;
+    color:var(--muted2); line-height:1.6;
+  }
+
+  .onde-tag {
+    display:inline-block; margin-top:10px;
+    padding:3px 10px; border-radius:2px;
+    font-family:'DM Mono',monospace; font-size:11px;
+    letter-spacing:0.12em; text-transform:uppercase;
+    border:1px solid rgba(122,184,245,0.4);
+    color:var(--accent);
+  }
+
+  /* ── QUALIFICAÇÃO DA SOCIEDADE ── */
+  .qual-wrapper {
+    margin-bottom:52px;
+    animation:fadeUp 0.6s 0.25s ease both;
+  }
+
+  .qual-box {
+    background:var(--card);
+    border:1px solid var(--border2);
+    border-left:3px solid var(--teal);
+    border-radius:4px; padding:24px 28px;
+    display:flex; gap:20px; align-items:flex-start;
+  }
+
+  .qual-icon { font-size:28px; flex-shrink:0; }
+
+  .qual-label {
+    font-family:'DM Mono',monospace; font-size:11px;
+    color:var(--teal); letter-spacing:0.18em;
+    text-transform:uppercase; margin-bottom:8px; opacity:0.8;
+  }
+
+  .qual-title {
+    font-size:15px; font-weight:700;
+    color:var(--text); margin-bottom:8px;
+  }
+
+  .qual-text {
+    font-family:'DM Mono',monospace; font-size:13px;
+    color:var(--muted2); line-height:1.65;
+  }
+
+  .qual-tag {
+    display:inline-block; margin-top:10px;
+    padding:2px 8px; border-radius:2px;
+    font-family:'DM Mono',monospace; font-size:11px;
+    letter-spacing:0.12em; text-transform:uppercase;
+    border:1px solid rgba(61,214,200,0.4); opacity:0.8;
+    color:var(--teal);
+  }
+
+  /* ── NOTE ── */
+  .footnote {
+    border:1px solid var(--border2);
+    border-radius:4px;
+    background:rgba(78,150,220,0.03);
+    padding:18px 22px;
+    display:flex; gap:14px; align-items:flex-start;
+    animation:fadeUp 0.6s 0.3s ease both;
+  }
+
+  .footnote p {
+    font-family:'DM Mono',monospace; font-size:13px;
+    color:var(--muted); line-height:1.75;
+  }
+
+  .footnote strong { color:var(--gold); font-weight:500; }
+
+  /* ── NAV ── */
+  .art-nav {
+    display:flex; justify-content:space-between; align-items:center;
+    margin-top:56px; padding-top:24px;
+    border-top:1px solid var(--border2);
+    animation:fadeUp 0.5s 0.3s ease both;
+  }
+
+  .nav-btn {
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'DM Mono',monospace; font-size:13px;
+    color:var(--muted); text-decoration:none;
+    border:1px solid var(--border2); border-radius:3px;
+    padding:8px 14px; transition:all 0.2s;
+  }
+
+  .nav-btn:hover { border-color:var(--gold); color:var(--gold); }
+  .nav-btn.prev::before { content:'←'; }
+  .nav-btn.next::after  { content:'→'; }
+
+  .nav-center {
+    font-family:'DM Mono',monospace; font-size:12px;
+    color:var(--muted); letter-spacing:0.1em;
+  }
+
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(16px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+
+  @media(max-width:700px) {
+    .fin-grid { grid-template-columns:1fr; }
+    .onde-card { flex-direction:column; gap:16px; }
+    .qual-box { flex-direction:column; gap:12px; }
+    .container { padding:32px 20px 80px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="topbar-back" href="index.html">Lei nº 12.378/2010</a>
+  <div class="topbar-crumb"></div>
+  <a class="topbar-next" href="art14.html">Art. 14 </a>
+</div>
+
+<div class="container">
+
+  <header class="header">
+    <div class="eyebrow">Art. 13 · Acervo & Autoria</div>
+    <h1>Registro de projetos e trabalhos —<br><em>autoria e formação de acervo</em></h1>
+  </header>
+
+  <!-- CAPUT -->
+  <div class="caput-box">
+    Para fins de <strong>comprovação de autoria ou de participação</strong> e de <strong>formação de acervo técnico</strong>, o arquiteto e urbanista deverá registrar seus projetos e demais <strong>trabalhos técnicos ou de criação</strong> no <strong>CAU do ente da Federação onde atue</strong>.
+  </div>
+
+  <!-- PARÁGRAFO ÚNICO -->
+  <div class="par-unico-box">
+    A <strong>qualificação técnica</strong> de sociedade com atuação nos campos da arquitetura e do urbanismo será demonstrada por meio dos <strong>acervos técnicos dos arquitetos e urbanistas</strong> comprovadamente a ela vinculados.
+  </div>
+
+  <!-- FINALIDADES DO REGISTRO -->
+  <div class="fin-wrapper">
+    <div class="section-label"><h2>Duas finalidades do registro — caput</h2></div>
+    <div class="fin-grid">
+
+      <div class="fin-card" style="--fin-color:#7ab8f5">
+        <div class="fin-num">Finalidade I</div>
+        <span class="fin-icon">✍️</span>
+        <div class="fin-title">Comprovação de autoria ou participação</div>
+        <div class="fin-text">O registro no CAU serve como instrumento formal para que o profissional comprove que é autor de um trabalho ou que nele participou — com valor probatório em disputas de autoria, licitações e processos judiciais ou administrativos.</div>
+        <span class="fin-tag">Prova de autoria</span>
+      </div>
+
+      <div class="fin-card" style="--fin-color:#4e96dc">
+        <div class="fin-num">Finalidade II</div>
+        <span class="fin-icon">📁</span>
+        <div class="fin-title">Formação de acervo técnico</div>
+        <div class="fin-text">O registro integra os trabalhos ao acervo técnico do profissional (Art. 12), constituindo o histórico oficial de sua produção — essencial para habilitação em licitações, concursos e comprovação de experiência profissional.</div>
+        <span class="fin-tag">Formação de acervo</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ONDE REGISTRAR -->
+  <div class="onde-wrapper">
+    <div class="section-label"><h2>Onde registrar</h2></div>
+    <div class="onde-card">
+      <span class="onde-icon">🏛️</span>
+      <div>
+        <div class="onde-label">Local do registro</div>
+        <div class="onde-title">CAU do ente da Federação onde atue</div>
+        <div class="onde-text">O registro é feito no CAU do Estado ou do Distrito Federal onde o profissional exerce as atividades — não necessariamente onde tem domicílio ou onde está registrado. O critério é o local de atuação efetiva no trabalho a ser registrado.</div>
+        <span class="onde-tag">Local de atuação</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUALIFICAÇÃO DA SOCIEDADE — PAR. ÚNICO -->
+  <div class="qual-wrapper">
+    <div class="section-label"><h2>Qualificação técnica da sociedade — parágrafo único</h2></div>
+    <div class="qual-box">
+      <span class="qual-icon">🏢</span>
+      <div>
+        <div class="qual-label">Parágrafo único</div>
+        <div class="qual-title">Acervos dos profissionais vinculados como prova da sociedade</div>
+        <div class="qual-text">A qualificação técnica de uma sociedade de arquitetura e urbanismo não se prova por documentos próprios da empresa — ela é demonstrada pelos acervos técnicos dos arquitetos e urbanistas <strong style="color:var(--text)">comprovadamente vinculados</strong> a ela. A vinculação deve ser comprovada (vínculo empregatício, societário ou contratual formal).</div>
+        <span class="qual-tag">Acervo do profissional = qualificação da sociedade</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footnote">
+    <span style="font-size:18px;flex-shrink:0;margin-top:2px">⚖️</span>
+    <p>
+      <strong>Nota legal:</strong> Esta representação é uma simplificação pedagógica do Art. 13 da Lei nº 12.378/2010,
+      produzida com base nos princípios de <strong>Visual Law</strong> e <strong>Legal Design</strong>.
+      Não substitui o texto oficial publicado no DOU de 31.12.2010 nem orientação jurídica especializada.
+    </p>
+  </div>
+
+  <div class="art-nav">
+    <a class="nav-btn prev" href="art12.html">Art. 12</a>
+    <span class="nav-center">Art. 13 · Lei 12.378/2010</span>
+    <a class="nav-btn next" href="art14.html">Art. 14</a>
+  </div>
+
+</div>
+</body>
+</html>

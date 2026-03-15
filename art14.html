@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Art. 14 — Lei 12.378/2010 | Visual Law</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d1117;
+    --grid: rgba(78,150,220,0.065);
+    --gold: #e8b84b;
+    --blue: #4e96dc;
+    --blue2: #7ab8f5;
+    --teal: #3dd6c8;
+    --red: #e8604b;
+    --violet: #a78bfa;
+    --text: #e8e6e0;
+    --muted: #5a6a7d;
+    --muted2: #8a9ab0;
+    --border: rgba(78,150,220,0.15);
+    --border2: rgba(255,255,255,0.06);
+    --card: rgba(16,24,36,0.92);
+    --accent: #7ab8f5;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+
+  body {
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Syne',sans-serif;
+    min-height:100vh;
+    overflow-x:hidden;
+    font-size:22px;
+  }
+
+  body::before {
+    content:'';
+    position:fixed; inset:0;
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size:40px 40px;
+    pointer-events:none; z-index:0;
+  }
+
+  body::after {
+    content:'';
+    position:fixed; inset:0;
+    background:
+      radial-gradient(ellipse 55% 40% at 10% 15%, rgba(122,184,245,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 45% 40% at 90% 80%, rgba(78,150,220,0.05) 0%, transparent 70%);
+    pointer-events:none; z-index:0;
+  }
+
+  .topbar {
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 32px;
+    border-bottom:1px solid var(--border2);
+    position:relative; z-index:10;
+  }
+
+  .topbar-back {
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'DM Mono',monospace; font-size:13px;
+    color:var(--muted); text-decoration:none;
+    letter-spacing:0.08em; transition:color 0.18s;
+  }
+  .topbar-back:hover { color:var(--gold); }
+  .topbar-back::before { content:'←'; font-size:14px; }
+
+  .topbar-crumb { display:flex; }
+
+  .topbar-next {
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'DM Mono',monospace; font-size:13px;
+    color:var(--muted); text-decoration:none;
+    letter-spacing:0.08em; transition:color 0.18s;
+  }
+  .topbar-next:hover { color:var(--gold); }
+  .topbar-next::after { content:'→'; font-size:14px; }
+
+  .container {
+    position:relative; z-index:1;
+    max-width:1100px; margin:0 auto;
+    padding:52px 32px 96px;
+  }
+
+  .header {
+    border-left:3px solid var(--accent);
+    padding-left:24px;
+    margin-bottom:52px;
+    animation:fadeUp 0.7s ease both;
+  }
+
+  .eyebrow {
+    font-family:'DM Mono',monospace; font-size:12px;
+    color:var(--accent); letter-spacing:0.22em;
+    text-transform:uppercase; margin-bottom:14px;
+  }
+
+  .header h1 {
+    font-family:'Fraunces',serif;
+    font-size:clamp(26px,4vw,44px);
+    font-weight:600; line-height:1.12;
+    margin-bottom:10px;
+  }
+
+  .header h1 em { color:var(--accent); font-style:italic; font-weight:300; }
+
+  .caput-box {
+    background:rgba(122,184,245,0.04);
+    border:1px solid rgba(122,184,245,0.2);
+    border-left:3px solid var(--accent);
+    border-radius:4px; padding:44px 24px 20px 24px;
+    margin-bottom:32px;
+    font-family:'DM Mono',monospace; font-size:13px;
+    color:var(--muted2); line-height:1.8;
+    animation:fadeUp 0.6s 0.1s ease both;
+    position:relative;
+  }
+
+  .caput-box::before {
+    content:'caput · art. 14';
+    position:absolute; top:12px; right:14px;
+    font-size:12px; letter-spacing:0.15em;
+    color:var(--muted); text-transform:uppercase;
+  }
+
+  .caput-box strong { color:var(--text); font-weight:500; }
+
+  .par-unico-box {
+    background:rgba(78,150,220,0.04);
+    border:1px solid rgba(78,150,220,0.15);
+    border-left:3px solid var(--blue);
+    border-radius:4px; padding:44px 24px 20px 24px;
+    margin-bottom:52px;
+    font-family:'DM Mono',monospace; font-size:13px;
+    color:var(--muted2); line-height:1.8;
+    animation:fadeUp 0.6s 0.12s ease both;
+    position:relative;
+  }
+
+  .par-unico-box::before {
+    content:'parágrafo único · art. 14';
+    position:absolute; top:12px; right:14px;
+    font-size:12px; letter-spacing:0.15em;
+    color:var(--muted); text-transform:uppercase;
+  }
+
+  .par-unico-box strong { color:var(--text); font-weight:500; }
+
+  .section-label {
+    display:flex; align-items:center; gap:14px;
+    margin-bottom:20px;
+  }
+
+  .section-label h2 {
+    font-family:'DM Mono',monospace; font-size:12px;
+    color:var(--muted); letter-spacing:0.2em;
+    text-transform:uppercase; white-space:nowrap;
+  }
+
+  .section-label::after {
+    content:''; flex:1; height:1px; background:var(--border2);
+  }
+
+  /* ── SUJEITOS ── */
+  .suj-wrapper {
+    margin-bottom:52px;
+    animation:fadeUp 0.6s 0.15s ease both;
+  }
+
+  .suj-grid {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-bottom:14px;
+  }
+
+  .suj-card {
+    background:var(--card);
+    border:1px solid var(--border2);
+    border-radius:4px; padding:18px 20px;
+    display:flex; align-items:center; gap:14px;
+    transition:all 0.22s;
+  }
+
+  .suj-card:hover { border-color:rgba(122,184,245,0.3); transform:translateY(-1px); }
+
+  .suj-icon { font-size:24px; flex-shrink:0; }
+
+  .suj-label {
+    font-family:'DM Mono',monospace; font-size:11px;
+    color:var(--muted); letter-spacing:0.15em;
+    text-transform:uppercase; margin-bottom:4px;
+  }
+
+  .suj-title {
+    font-size:14px; font-weight:700; color:var(--text);
+  }
+
+  /* SUPORTES */
+  .sup-note {
+    background:var(--card);
+    border:1px solid var(--border2);
+    border-radius:4px; padding:14px 20px;
+    font-family:'DM Mono',monospace; font-size:13px;
+    color:var(--muted2); line-height:1.6;
+  }
+
+  /* ── INCISOS ── */
+  .inc-wrapper {
+    margin-bottom:52px;
+    animation:fadeUp 0.6s 0.2s ease both;
+  }
+
+  .inc-grid {
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+  }
+
+  .inc-card {
+    background:var(--card);
+    border:1px solid var(--border2);
+    border-radius:4px; padding:22px;
+    position:relative; overflow:hidden;
+    transition:all 0.22s;
+  }
+
+  .inc-card::before {
+    content:'';
+    position:absolute; top:0; left:0;
+    width:100%; height:3px;
+    background:linear-gradient(90deg, var(--inc-color, var(--accent)), transparent);
+  }
+
+  .inc-card:hover { border-color:rgba(255,255,255,0.12); transform:translateY(-2px); }
+
+  .inc-num {
+    font-family:'DM Mono',monospace; font-size:11px;
+    color:var(--inc-color, var(--accent));
+    letter-spacing:0.18em; text-transform:uppercase;
+    margin-bottom:10px; opacity:0.8;
+  }
+
+  .inc-icon { font-size:22px; margin-bottom:10px; display:block; }
+
+  .inc-title {
+    font-size:15px; font-weight:700;
+    color:var(--text); margin-bottom:8px; line-height:1.3;
+  }
+
+  .inc-text {
+    font-family:'DM Mono',monospace; font-size:13px;
+    color:var(--muted2); line-height:1.65;
+  }
+
+  .inc-tag {
+    display:inline-block; margin-top:12px;
+    padding:2px 8px; border-radius:2px;
+    font-family:'DM Mono',monospace; font-size:11px;
+    letter-spacing:0.12em; text-transform:uppercase;
+    border:1px solid; opacity:0.7;
+    color:var(--inc-color, var(--accent));
+    border-color:var(--inc-color, var(--accent));
+  }
+
+  /* ── COAUTORIA ── */
+  .coaut-wrapper {
+    margin-bottom:52px;
+    animation:fadeUp 0.6s 0.25s ease both;
+  }
+
+  .coaut-box {
+    background:rgba(232,184,75,0.05);
+    border:1px solid rgba(232,184,75,0.2);
+    border-left:3px solid var(--gold);
+    border-radius:4px; padding:24px 28px;
+    display:flex; gap:20px; align-items:flex-start;
+  }
+
+  .coaut-icon { font-size:28px; flex-shrink:0; }
+
+  .coaut-label {
+    font-family:'DM Mono',monospace; font-size:11px;
+    color:var(--gold); letter-spacing:0.18em;
+    text-transform:uppercase; margin-bottom:8px; opacity:0.8;
+  }
+
+  .coaut-title {
+    font-size:15px; font-weight:700;
+    color:var(--text); margin-bottom:8px;
+  }
+
+  .coaut-text {
+    font-family:'DM Mono',monospace; font-size:13px;
+    color:var(--muted2); line-height:1.65;
+  }
+
+  .coaut-tag {
+    display:inline-block; margin-top:10px;
+    padding:2px 8px; border-radius:2px;
+    font-family:'DM Mono',monospace; font-size:11px;
+    letter-spacing:0.12em; text-transform:uppercase;
+    border:1px solid rgba(232,184,75,0.4); opacity:0.8;
+    color:var(--gold);
+  }
+
+  .footnote {
+    border:1px solid var(--border2);
+    border-radius:4px;
+    background:rgba(78,150,220,0.03);
+    padding:18px 22px;
+    display:flex; gap:14px; align-items:flex-start;
+    animation:fadeUp 0.6s 0.3s ease both;
+  }
+
+  .footnote p {
+    font-family:'DM Mono',monospace; font-size:13px;
+    color:var(--muted); line-height:1.75;
+  }
+
+  .footnote strong { color:var(--gold); font-weight:500; }
+
+  .art-nav {
+    display:flex; justify-content:space-between; align-items:center;
+    margin-top:56px; padding-top:24px;
+    border-top:1px solid var(--border2);
+    animation:fadeUp 0.5s 0.3s ease both;
+  }
+
+  .nav-btn {
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'DM Mono',monospace; font-size:13px;
+    color:var(--muted); text-decoration:none;
+    border:1px solid var(--border2); border-radius:3px;
+    padding:8px 14px; transition:all 0.2s;
+  }
+
+  .nav-btn:hover { border-color:var(--gold); color:var(--gold); }
+  .nav-btn.prev::before { content:'←'; }
+  .nav-btn.next::after  { content:'→'; }
+
+  .nav-center {
+    font-family:'DM Mono',monospace; font-size:12px;
+    color:var(--muted); letter-spacing:0.1em;
+  }
+
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(16px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+
+  @media(max-width:700px) {
+    .suj-grid { grid-template-columns:1fr; }
+    .inc-grid { grid-template-columns:1fr; }
+    .coaut-box { flex-direction:column; gap:12px; }
+    .container { padding:32px 20px 80px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="topbar-back" href="index.html">Lei nº 12.378/2010</a>
+  <div class="topbar-crumb"></div>
+  <a class="topbar-next" href="art15.html">Art. 15 </a>
+</div>
+
+<div class="container">
+
+  <header class="header">
+    <div class="eyebrow">Art. 14 · Acervo & Autoria</div>
+    <h1>Dever de identificação —<br><em>autor e executante do serviço</em></h1>
+  </header>
+
+  <!-- CAPUT -->
+  <div class="caput-box">
+    É <strong>dever</strong> do arquiteto e urbanista ou da sociedade de prestação de serviços de arquitetura e urbanismo indicar em documentos, peças publicitárias, placas ou outro elemento de comunicação dirigido a cliente, ao público em geral e ao CAU local:<br><br>
+    <strong>I</strong> — o nome civil ou razão social do(s) autor(es) e executante(s) do serviço, completo ou abreviado, ou pseudônimo ou nome fantasia, a critério do profissional ou da sociedade de prestação de serviços de arquitetura e urbanismo, conforme o caso;<br>
+    <strong>II</strong> — o número do registro no CAU local; e<br>
+    <strong>III</strong> — a atividade a ser desenvolvida.
+  </div>
+
+  <!-- PARÁGRAFO ÚNICO -->
+  <div class="par-unico-box">
+    Quando se tratar de atividade desenvolvida por <strong>mais de um arquiteto e urbanista</strong> ou por mais de uma sociedade e <strong>não sendo especificados diferentes níveis de responsabilidade</strong>, todos serão considerados indistintamente <strong>coautores e corresponsáveis</strong>.
+  </div>
+
+  <!-- SUJEITOS OBRIGADOS -->
+  <div class="suj-wrapper">
+    <div class="section-label"><h2>Sujeitos obrigados</h2></div>
+    <div class="suj-grid">
+      <div class="suj-card">
+        <span class="suj-icon">👤</span>
+        <div>
+          <div class="suj-label">Sujeito I</div>
+          <div class="suj-title">Arquiteto e urbanista</div>
+        </div>
+      </div>
+      <div class="suj-card">
+        <span class="suj-icon">🏢</span>
+        <div>
+          <div class="suj-label">Sujeito II</div>
+          <div class="suj-title">Sociedade de prestação de serviços</div>
+        </div>
+      </div>
+    </div>
+    <div class="sup-note">
+      A obrigação se aplica em: <strong style="color:var(--text)">documentos</strong>, <strong style="color:var(--text)">peças publicitárias</strong>, <strong style="color:var(--text)">placas</strong> ou qualquer outro <strong style="color:var(--text)">elemento de comunicação</strong> dirigido ao cliente, ao público em geral ou ao CAU local.
+    </div>
+  </div>
+
+  <!-- TRÊS INFORMAÇÕES OBRIGATÓRIAS -->
+  <div class="inc-wrapper">
+    <div class="section-label"><h2>Três informações obrigatórias — incisos I ao III</h2></div>
+    <div class="inc-grid">
+
+      <div class="inc-card" style="--inc-color:#7ab8f5">
+        <div class="inc-num">Inciso I</div>
+        <span class="inc-icon">🪪</span>
+        <div class="inc-title">Identificação do autor e executante</div>
+        <div class="inc-text">Nome civil ou razão social, completo ou abreviado. Admite-se pseudônimo ou nome fantasia, a critério do profissional ou da sociedade, conforme o caso.</div>
+        <span class="inc-tag">Nome / razão social</span>
+      </div>
+
+      <div class="inc-card" style="--inc-color:#3dd6c8">
+        <div class="inc-num">Inciso II</div>
+        <span class="inc-icon">🔢</span>
+        <div class="inc-title">Número do registro no CAU</div>
+        <div class="inc-text">Número do registro no CAU local — permite ao cliente e ao público verificar a habilitação do profissional ou da sociedade junto ao Conselho.</div>
+        <span class="inc-tag">Registro no CAU</span>
+      </div>
+
+      <div class="inc-card" style="--inc-color:#a78bfa">
+        <div class="inc-num">Inciso III</div>
+        <span class="inc-icon">⚙️</span>
+        <div class="inc-title">Atividade a ser desenvolvida</div>
+        <div class="inc-text">Descrição da atividade que será realizada — projeto, execução, consultoria, vistoria, etc. — conforme as atribuições do Art. 2º.</div>
+        <span class="inc-tag">Descrição da atividade</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- COAUTORIA E CORRESPONSABILIDADE -->
+  <div class="coaut-wrapper">
+    <div class="section-label"><h2>Coautoria e corresponsabilidade — parágrafo único</h2></div>
+    <div class="coaut-box">
+      <span class="coaut-icon">🤝</span>
+      <div>
+        <div class="coaut-label">Regra do parágrafo único</div>
+        <div class="coaut-title">Presunção de coautoria e corresponsabilidade</div>
+        <div class="coaut-text">Quando mais de um profissional ou sociedade participa de uma atividade e <strong style="color:var(--text)">não são especificados diferentes níveis de responsabilidade</strong>, todos são tratados indistintamente como coautores e corresponsáveis. Para afastar essa presunção, os diferentes níveis de responsabilidade devem ser expressamente indicados nos documentos do serviço.</div>
+        <span class="coaut-tag">Presunção iuris tantum</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footnote">
+    <span style="font-size:18px;flex-shrink:0;margin-top:2px">⚖️</span>
+    <p>
+      <strong>Nota legal:</strong> Esta representação é uma simplificação pedagógica do Art. 14 da Lei nº 12.378/2010,
+      produzida com base nos princípios de <strong>Visual Law</strong> e <strong>Legal Design</strong>.
+      Não substitui o texto oficial publicado no DOU de 31.12.2010 nem orientação jurídica especializada.
+    </p>
+  </div>
+
+  <div class="art-nav">
+    <a class="nav-btn prev" href="art13.html">Art. 13</a>
+    <span class="nav-center">Art. 14 · Lei 12.378/2010</span>
+    <a class="nav-btn next" href="art15.html">Art. 15</a>
+  </div>
+
+</div>
+</body>
+</html>
