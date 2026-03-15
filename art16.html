@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Art. 16 — Lei 12.378/2010 | Visual Law</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d1117;
+    --grid: rgba(78,150,220,0.065);
+    --gold: #e8b84b;
+    --blue: #4e96dc;
+    --blue2: #7ab8f5;
+    --teal: #3dd6c8;
+    --red: #e8604b;
+    --violet: #a78bfa;
+    --text: #e8e6e0;
+    --muted: #5a6a7d;
+    --muted2: #8a9ab0;
+    --border: rgba(78,150,220,0.15);
+    --border2: rgba(255,255,255,0.06);
+    --card: rgba(16,24,36,0.92);
+    --accent: #7ab8f5;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+
+  body {
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Syne',sans-serif;
+    min-height:100vh;
+    overflow-x:hidden;
+    font-size:22px;
+  }
+
+  body::before {
+    content:'';
+    position:fixed; inset:0;
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size:40px 40px;
+    pointer-events:none; z-index:0;
+  }
+
+  body::after {
+    content:'';
+    position:fixed; inset:0;
+    background:
+      radial-gradient(ellipse 55% 40% at 10% 15%, rgba(122,184,245,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 45% 40% at 90% 80%, rgba(78,150,220,0.05) 0%, transparent 70%);
+    pointer-events:none; z-index:0;
+  }
+
+  .topbar {
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 32px;
+    border-bottom:1px solid var(--border2);
+    position:relative; z-index:10;
+  }
+
+  .topbar-back {
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'DM Mono',monospace; font-size:13px;
+    color:var(--muted); text-decoration:none;
+    letter-spacing:0.08em; transition:color 0.18s;
+  }
+  .topbar-back:hover { color:var(--gold); }
+  .topbar-back::before { content:'←'; font-size:14px; }
+
+  .topbar-crumb { display:flex; }
+
+  .topbar-next {
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'DM Mono',monospace; font-size:13px;
+    color:var(--muted); text-decoration:none;
+    letter-spacing:0.08em; transition:color 0.18s;
+  }
+  .topbar-next:hover { color:var(--gold); }
+  .topbar-next::after { content:'→'; font-size:14px; }
+
+  .container {
+    position:relative; z-index:1;
+    max-width:1100px; margin:0 auto;
+    padding:52px 32px 96px;
+  }
+
+  .header {
+    border-left:3px solid var(--accent);
+    padding-left:24px;
+    margin-bottom:52px;
+    animation:fadeUp 0.7s ease both;
+  }
+
+  .eyebrow {
+    font-family:'DM Mono',monospace; font-size:12px;
+    color:var(--accent); letter-spacing:0.22em;
+    text-transform:uppercase; margin-bottom:14px;
+  }
+
+  .header h1 {
+    font-family:'Fraunces',serif;
+    font-size:clamp(26px,4vw,44px);
+    font-weight:600; line-height:1.12;
+    margin-bottom:10px;
+  }
+
+  .header h1 em { color:var(--accent); font-style:italic; font-weight:300; }
+
+  .caput-box {
+    background:rgba(122,184,245,0.04);
+    border:1px solid rgba(122,184,245,0.2);
+    border-left:3px solid var(--accent);
+    border-radius:4px; padding:44px 24px 20px 24px;
+    margin-bottom:32px;
+    font-family:'DM Mono',monospace; font-size:13px;
+    color:var(--muted2); line-height:1.8;
+    animation:fadeUp 0.6s 0.1s ease both;
+    position:relative;
+  }
+
+  .caput-box::before {
+    content:'caput · art. 16';
+    position:absolute; top:12px; right:14px;
+    font-size:12px; letter-spacing:0.15em;
+    color:var(--muted); text-transform:uppercase;
+  }
+
+  .caput-box strong { color:var(--text); font-weight:500; }
+
+  .section-label {
+    display:flex; align-items:center; gap:14px;
+    margin-bottom:20px;
+  }
+
+  .section-label h2 {
+    font-family:'DM Mono',monospace; font-size:12px;
+    color:var(--muted); letter-spacing:0.2em;
+    text-transform:uppercase; white-space:nowrap;
+  }
+
+  .section-label::after {
+    content:''; flex:1; height:1px; background:var(--border2);
+  }
+
+  /* REGRA DO CAPUT */
+  .regra-wrapper {
+    margin-bottom:52px;
+    animation:fadeUp 0.6s 0.15s ease both;
+  }
+
+  .regra-card {
+    background:rgba(122,184,245,0.05);
+    border:1px solid rgba(122,184,245,0.2);
+    border-radius:4px; padding:28px 32px;
+    display:flex; align-items:flex-start; gap:24px;
+    margin-bottom:14px;
+  }
+
+  .regra-icon { font-size:36px; flex-shrink:0; }
+
+  .regra-label {
+    font-family:'DM Mono',monospace; font-size:11px;
+    color:var(--accent); letter-spacing:0.2em;
+    text-transform:uppercase; margin-bottom:8px; opacity:0.8;
+  }
+
+  .regra-title {
+    font-family:'Fraunces',serif; font-size:20px;
+    font-weight:600; color:var(--text); margin-bottom:8px;
+  }
+
+  .regra-text {
+    font-family:'DM Mono',monospace; font-size:13px;
+    color:var(--muted2); line-height:1.65;
+  }
+
+  .regra-tag {
+    display:inline-block; margin-top:10px;
+    padding:3px 10px; border-radius:2px;
+    font-family:'DM Mono',monospace; font-size:11px;
+    letter-spacing:0.12em; text-transform:uppercase;
+    border:1px solid rgba(122,184,245,0.4);
+    color:var(--accent);
+  }
+
+  .excecao-note {
+    background:var(--card);
+    border:1px solid var(--border2);
+    border-radius:4px; padding:14px 20px;
+    font-family:'DM Mono',monospace; font-size:13px;
+    color:var(--muted2); line-height:1.65;
+    display:flex; gap:12px; align-items:flex-start;
+  }
+
+  .excecao-note strong { color:var(--text); font-weight:500; }
+
+  /* PARÁGRAFOS */
+  .par-grid {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-bottom:52px;
+    animation:fadeUp 0.6s 0.2s ease both;
+  }
+
+  .par-card {
+    background:var(--card);
+    border:1px solid var(--border2);
+    border-radius:4px; padding:22px;
+    position:relative; overflow:hidden;
+    transition:all 0.22s;
+  }
+
+  .par-card::before {
+    content:'';
+    position:absolute; top:0; left:0;
+    width:100%; height:3px;
+    background:linear-gradient(90deg, var(--par-color, var(--accent)), transparent);
+  }
+
+  .par-card:hover { border-color:rgba(255,255,255,0.12); transform:translateY(-2px); }
+
+  .par-num {
+    font-family:'DM Mono',monospace; font-size:11px;
+    color:var(--par-color, var(--accent));
+    letter-spacing:0.18em; text-transform:uppercase;
+    margin-bottom:10px; opacity:0.8;
+  }
+
+  .par-icon { font-size:24px; margin-bottom:10px; display:block; }
+
+  .par-title {
+    font-size:15px; font-weight:700;
+    color:var(--text); margin-bottom:8px; line-height:1.3;
+  }
+
+  .par-text {
+    font-family:'DM Mono',monospace; font-size:13px;
+    color:var(--muted2); line-height:1.65;
+  }
+
+  .par-tag {
+    display:inline-block; margin-top:12px;
+    padding:2px 8px; border-radius:2px;
+    font-family:'DM Mono',monospace; font-size:11px;
+    letter-spacing:0.12em; text-transform:uppercase;
+    border:1px solid; opacity:0.7;
+    color:var(--par-color, var(--accent));
+    border-color:var(--par-color, var(--accent));
+  }
+
+  /* FLUXO DE AUTORIA PÓS-ALTERAÇÃO */
+  .fluxo-wrapper {
+    margin-bottom:52px;
+    animation:fadeUp 0.6s 0.25s ease both;
+  }
+
+  .fluxo {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+
+  .fluxo-card {
+    background:var(--card);
+    border:1px solid var(--border2);
+    border-radius:4px; padding:20px;
+    position:relative; overflow:hidden;
+    transition:all 0.22s;
+  }
+
+  .fluxo-card::before {
+    content:'';
+    position:absolute; top:0; left:0;
+    width:2px; height:100%;
+    background:var(--fluxo-color, var(--teal));
+    opacity:0.5; transition:opacity 0.22s;
+  }
+
+  .fluxo-card:hover { border-color:rgba(255,255,255,0.12); transform:translateY(-2px); }
+  .fluxo-card:hover::before { opacity:1; }
+
+  .fluxo-label {
+    font-family:'DM Mono',monospace; font-size:11px;
+    color:var(--fluxo-color, var(--teal));
+    letter-spacing:0.18em; text-transform:uppercase;
+    margin-bottom:10px; opacity:0.8;
+  }
+
+  .fluxo-scenario {
+    font-size:14px; font-weight:700;
+    color:var(--text); margin-bottom:6px; line-height:1.3;
+  }
+
+  .fluxo-result {
+    font-family:'DM Mono',monospace; font-size:13px;
+    color:var(--muted2); line-height:1.6;
+    margin-bottom:10px;
+  }
+
+  .fluxo-tag {
+    display:inline-block;
+    padding:2px 8px; border-radius:2px;
+    font-family:'DM Mono',monospace; font-size:11px;
+    letter-spacing:0.12em; text-transform:uppercase;
+    border:1px solid; opacity:0.7;
+    color:var(--fluxo-color, var(--teal));
+    border-color:var(--fluxo-color, var(--teal));
+  }
+
+  .footnote {
+    border:1px solid var(--border2);
+    border-radius:4px;
+    background:rgba(78,150,220,0.03);
+    padding:18px 22px;
+    display:flex; gap:14px; align-items:flex-start;
+    animation:fadeUp 0.6s 0.3s ease both;
+  }
+
+  .footnote p {
+    font-family:'DM Mono',monospace; font-size:13px;
+    color:var(--muted); line-height:1.75;
+  }
+
+  .footnote strong { color:var(--gold); font-weight:500; }
+
+  .art-nav {
+    display:flex; justify-content:space-between; align-items:center;
+    margin-top:56px; padding-top:24px;
+    border-top:1px solid var(--border2);
+    animation:fadeUp 0.5s 0.3s ease both;
+  }
+
+  .nav-btn {
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'DM Mono',monospace; font-size:13px;
+    color:var(--muted); text-decoration:none;
+    border:1px solid var(--border2); border-radius:3px;
+    padding:8px 14px; transition:all 0.2s;
+  }
+
+  .nav-btn:hover { border-color:var(--gold); color:var(--gold); }
+  .nav-btn.prev::before { content:'←'; }
+  .nav-btn.next::after  { content:'→'; }
+
+  .nav-center {
+    font-family:'DM Mono',monospace; font-size:12px;
+    color:var(--muted); letter-spacing:0.1em;
+  }
+
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(16px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+
+  @media(max-width:700px) {
+    .regra-card { flex-direction:column; gap:16px; }
+    .par-grid { grid-template-columns:1fr; }
+    .fluxo { grid-template-columns:1fr; }
+    .container { padding:32px 20px 80px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="topbar-back" href="index.html">Lei nº 12.378/2010</a>
+  <div class="topbar-crumb"></div>
+  <a class="topbar-next" href="art17.html">Art. 17 </a>
+</div>
+
+<div class="container">
+
+  <header class="header">
+    <div class="eyebrow">Art. 16 · Acervo & Autoria</div>
+    <h1>Alterações em projeto e obra —<br><em>consentimento e coautoria</em></h1>
+  </header>
+
+  <!-- CAPUT -->
+  <div class="caput-box">
+    Alterações em trabalho de autoria de arquiteto e urbanista, tanto em <strong>projeto</strong> como em <strong>obra dele resultante</strong>, somente poderão ser feitas mediante <strong>consentimento por escrito</strong> da pessoa natural titular dos direitos autorais, salvo <strong>pactuação em contrário</strong>.
+  </div>
+
+  <!-- REGRA DO CAPUT -->
+  <div class="regra-wrapper">
+    <div class="section-label"><h2>Regra geral — caput</h2></div>
+    <div class="regra-card">
+      <span class="regra-icon">✍️</span>
+      <div>
+        <div class="regra-label">Condição para alteração</div>
+        <div class="regra-title">Consentimento por escrito do autor</div>
+        <div class="regra-text">Qualquer alteração — tanto no projeto quanto na obra construída — exige o consentimento <strong style="color:var(--text)">por escrito</strong> da pessoa natural titular dos direitos autorais. A regra protege a integridade intelectual e técnica da obra. Aplica-se a projeto e a obra construída igualmente.</div>
+        <span class="regra-tag">Forma escrita obrigatória</span>
+      </div>
+    </div>
+    <div class="excecao-note">
+      <span style="font-size:16px;flex-shrink:0;margin-top:2px">⚠️</span>
+      <p><strong>Exceção expressa:</strong> A exigência de consentimento por escrito cede diante de <strong>pactuação em contrário</strong> — condição negociada no contrato original que autorize determinadas modificações sem necessidade de aprovação caso a caso.</p>
+    </div>
+  </div>
+
+  <!-- QUATRO PARÁGRAFOS -->
+  <div class="section-label"><h2>Casos especiais — §§ 1º ao 4º</h2></div>
+  <div class="par-grid">
+
+    <div class="par-card" style="--par-color:#7ab8f5">
+      <div class="par-num">§ 1º</div>
+      <span class="par-icon">🤝</span>
+      <div class="par-title">Coautoria — concordância de todos</div>
+      <div class="par-text">No caso de existência de coautoria, salvo pactuação em contrário, será necessária a <strong style="color:var(--text)">concordância de todos os coautores</strong> para que a alteração seja autorizada. Nenhum coautor sozinho pode consentir em nome dos demais.</div>
+      <span class="par-tag">Unanimidade dos coautores</span>
+    </div>
+
+    <div class="par-card" style="--par-color:#3dd6c8">
+      <div class="par-num">§ 2º</div>
+      <span class="par-icon">⚖️</span>
+      <div class="par-title">Falecimento ou incapacidade civil do autor</div>
+      <div class="par-text">Em caso de <strong style="color:var(--text)">falecimento ou incapacidade civil</strong> do autor do projeto original, as alterações poderão ser feitas pelo coautor ou, não havendo coautor, por outro profissional habilitado, <strong style="color:var(--text)">independentemente de autorização</strong>, assumindo a responsabilidade pelo projeto modificado.</div>
+      <span class="par-tag">Continuidade da obra</span>
+    </div>
+
+    <div class="par-card" style="--par-color:#e8b84b">
+      <div class="par-num">§ 3º</div>
+      <span class="par-icon">📋</span>
+      <div class="par-title">Laudo de não participação</div>
+      <div class="par-text">Ao arquiteto e urbanista que <strong style="color:var(--text)">não participar de alteração</strong> em obra ou trabalho de sua autoria é permitido o registro de <strong style="color:var(--text)">laudo no CAU de seu domicílio</strong>, com o objetivo de garantir a autoria e determinar os limites de sua responsabilidade.</div>
+      <span class="par-tag">Proteção da autoria</span>
+    </div>
+
+    <div class="par-card" style="--par-color:#a78bfa">
+      <div class="par-num">§ 4º</div>
+      <span class="par-icon">👥</span>
+      <div class="par-title">Coautoria do resultado alterado</div>
+      <div class="par-text">Se a alteração não foi concebida pelo autor do projeto original, o resultado final terá como <strong style="color:var(--text)">coautores</strong> o autor original e o autor da alteração — salvo decisão expressa em contrário do primeiro, caso em que a autoria passa a ser <strong style="color:var(--text)">apenas do autor das alterações</strong>.</div>
+      <span class="par-tag">Coautoria ou transferência</span>
+    </div>
+
+  </div>
+
+  <!-- FLUXO DE AUTORIA PÓS-ALTERAÇÃO -->
+  <div class="fluxo-wrapper">
+    <div class="section-label"><h2>Resultado de autoria após alteração — § 4º</h2></div>
+    <div class="fluxo">
+
+      <div class="fluxo-card" style="--fluxo-color:#7ab8f5">
+        <div class="fluxo-label">Cenário A</div>
+        <div class="fluxo-scenario">Autor original não se manifesta contrariamente</div>
+        <div class="fluxo-result">O resultado final da obra alterada tem como <strong style="color:var(--text)">coautores</strong> o arquiteto autor do projeto original e o arquiteto autor do projeto de alteração.</div>
+        <span class="fluxo-tag">Coautoria presumida</span>
+      </div>
+
+      <div class="fluxo-card" style="--fluxo-color:#a78bfa">
+        <div class="fluxo-label">Cenário B</div>
+        <div class="fluxo-scenario">Autor original decide expressamente não ser coautor</div>
+        <div class="fluxo-result">A autoria da obra <strong style="color:var(--text)">passa a ser apenas</strong> do profissional que efetuou as alterações. O autor original se desvincula da responsabilidade e da autoria do resultado final.</div>
+        <span class="fluxo-tag">Transferência de autoria</span>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footnote">
+    <span style="font-size:18px;flex-shrink:0;margin-top:2px">⚖️</span>
+    <p>
+      <strong>Nota legal:</strong> Esta representação é uma simplificação pedagógica do Art. 16 da Lei nº 12.378/2010,
+      produzida com base nos princípios de <strong>Visual Law</strong> e <strong>Legal Design</strong>.
+      Não substitui o texto oficial publicado no DOU de 31.12.2010 nem orientação jurídica especializada.
+    </p>
+  </div>
+
+  <div class="art-nav">
+    <a class="nav-btn prev" href="art15.html">Art. 15</a>
+    <span class="nav-center">Art. 16 · Lei 12.378/2010</span>
+    <a class="nav-btn next" href="art17.html">Art. 17</a>
+  </div>
+
+</div>
+</body>
+</html>
