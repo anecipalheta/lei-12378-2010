@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Art. 22 — Lei 12.378/2010 | Visual Law</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0d1117;--grid:rgba(78,150,220,0.065);--gold:#e8b84b;--blue:#4e96dc;--blue2:#7ab8f5;--teal:#3dd6c8;--red:#e8604b;--violet:#a78bfa;--text:#e8e6e0;--muted:#5a6a7d;--muted2:#8a9ab0;--border:rgba(78,150,220,0.15);--border2:rgba(255,255,255,0.06);--card:rgba(16,24,36,0.92);--accent:#e8604b;}
+  *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--text);font-family:'Syne',sans-serif;min-height:100vh;overflow-x:hidden;font-size:22px;}
+  body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0;}
+  body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 55% 40% at 10% 15%,rgba(232,96,75,0.06) 0%,transparent 70%),radial-gradient(ellipse 45% 40% at 90% 80%,rgba(78,150,220,0.04) 0%,transparent 70%);pointer-events:none;z-index:0;}
+  .topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 32px;border-bottom:1px solid var(--border2);position:relative;z-index:10;}
+  .topbar-back{display:inline-flex;align-items:center;gap:8px;font-family:'DM Mono',monospace;font-size:13px;color:var(--muted);text-decoration:none;letter-spacing:0.08em;transition:color 0.18s;}
+  .topbar-back:hover{color:var(--gold);}.topbar-back::before{content:'←';font-size:14px;}
+  .topbar-crumb{display:flex;}
+  .topbar-next{display:inline-flex;align-items:center;gap:8px;font-family:'DM Mono',monospace;font-size:13px;color:var(--muted);text-decoration:none;letter-spacing:0.08em;transition:color 0.18s;}
+  .topbar-next:hover{color:var(--gold);}.topbar-next::after{content:'→';font-size:14px;}
+  .container{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:52px 32px 96px;}
+  .header{border-left:3px solid var(--accent);padding-left:24px;margin-bottom:52px;animation:fadeUp 0.7s ease both;}
+  .eyebrow{font-family:'DM Mono',monospace;font-size:12px;color:var(--accent);letter-spacing:0.22em;text-transform:uppercase;margin-bottom:14px;}
+  .header h1{font-family:'Fraunces',serif;font-size:clamp(26px,4vw,44px);font-weight:600;line-height:1.12;margin-bottom:10px;}
+  .header h1 em{color:var(--accent);font-style:italic;font-weight:300;}
+  .caput-box{background:rgba(232,96,75,0.04);border:1px solid rgba(232,96,75,0.2);border-left:3px solid var(--accent);border-radius:4px;padding:44px 24px 20px 24px;margin-bottom:32px;font-family:'DM Mono',monospace;font-size:13px;color:var(--muted2);line-height:1.8;animation:fadeUp 0.6s 0.1s ease both;position:relative;}
+  .caput-box::before{content:'caput · art. 22';position:absolute;top:12px;right:14px;font-size:12px;letter-spacing:0.15em;color:var(--muted);text-transform:uppercase;}
+  .caput-box strong{color:var(--text);font-weight:500;}
+  .par-box{background:rgba(78,150,220,0.04);border:1px solid rgba(78,150,220,0.15);border-left:3px solid var(--blue);border-radius:4px;padding:44px 24px 20px 24px;margin-bottom:32px;font-family:'DM Mono',monospace;font-size:13px;color:var(--muted2);line-height:1.8;position:relative;}
+  .par-box strong{color:var(--text);font-weight:500;}
+  .section-label{display:flex;align-items:center;gap:14px;margin-bottom:20px;}
+  .section-label h2{font-family:'DM Mono',monospace;font-size:12px;color:var(--muted);letter-spacing:0.2em;text-transform:uppercase;white-space:nowrap;}
+  .section-label::after{content:'';flex:1;height:1px;background:var(--border2);}
+  .elem-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px;margin-bottom:52px;animation:fadeUp 0.6s 0.15s ease both;}
+  .elem-card{background:var(--card);border:1px solid var(--border2);border-radius:4px;padding:22px;position:relative;overflow:hidden;transition:all 0.22s;}
+  .elem-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--ec,var(--red)),transparent);}
+  .elem-card:hover{border-color:rgba(255,255,255,0.12);transform:translateY(-2px);}
+  .elem-label{font-family:'DM Mono',monospace;font-size:11px;color:var(--ec,var(--red));letter-spacing:0.18em;text-transform:uppercase;margin-bottom:10px;opacity:0.8;}
+  .elem-icon{font-size:26px;margin-bottom:10px;display:block;}
+  .elem-title{font-size:15px;font-weight:700;color:var(--text);margin-bottom:8px;line-height:1.3;}
+  .elem-text{font-family:'DM Mono',monospace;font-size:13px;color:var(--muted2);line-height:1.65;}
+  .elem-tag{display:inline-block;margin-top:12px;padding:2px 8px;border-radius:2px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;border:1px solid;opacity:0.7;color:var(--ec,var(--red));border-color:var(--ec,var(--red));}
+  .footnote{border:1px solid var(--border2);border-radius:4px;background:rgba(78,150,220,0.03);padding:18px 22px;display:flex;gap:14px;align-items:flex-start;animation:fadeUp 0.6s 0.3s ease both;}
+  .footnote p{font-family:'DM Mono',monospace;font-size:13px;color:var(--muted);line-height:1.75;}
+  .footnote strong{color:var(--gold);font-weight:500;}
+  .art-nav{display:flex;justify-content:space-between;align-items:center;margin-top:56px;padding-top:24px;border-top:1px solid var(--border2);animation:fadeUp 0.5s 0.3s ease both;}
+  .nav-btn{display:inline-flex;align-items:center;gap:8px;font-family:'DM Mono',monospace;font-size:13px;color:var(--muted);text-decoration:none;border:1px solid var(--border2);border-radius:3px;padding:8px 14px;transition:all 0.2s;}
+  .nav-btn:hover{border-color:var(--gold);color:var(--gold);}.nav-btn.prev::before{content:'←';}.nav-btn.next::after{content:'→';}
+  .nav-center{font-family:'DM Mono',monospace;font-size:12px;color:var(--muted);letter-spacing:0.1em;}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+  @media(max-width:700px){.elem-grid{grid-template-columns:1fr;}.container{padding:32px 20px 80px;}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="topbar-back" href="index.html">Lei nº 12.378/2010</a>
+  <div class="topbar-crumb"></div>
+  <a class="topbar-next" href="art23.html">Art. 23 </a>
+</div>
+<div class="container">
+  <header class="header">
+    <div class="eyebrow">Art. 22 · Ética & Sanções</div>
+    <h1>Recurso ao CAU/BR —<br><em>última instância administrativa</em></h1>
+  </header>
+  <div class="caput-box">
+    Caberá <strong>recurso ao CAU/BR</strong> de todas as <strong>decisões definitivas</strong> proferidas pelos CAUs, que decidirá em <strong>última instância administrativa</strong>.
+  </div>
+  <div class="par-box" style="margin-bottom:52px;">
+    <div style="position:absolute;top:12px;right:14px;font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#5a6a7d;text-transform:uppercase;">parágrafo único · art. 22</div>
+    Além do acusado e do acusador, o <strong>Presidente e os Conselheiros do CAU</strong> são legitimados para interpor o recurso previsto neste artigo.
+  </div>
+  <div class="section-label"><h2>Elementos do sistema recursal</h2></div>
+  <div class="elem-grid">
+    <div class="elem-card" style="--ec:#e8604b">
+      <div class="elem-label">Instância de recurso</div>
+      <span class="elem-icon">🏛️</span>
+      <div class="elem-title">CAU/BR — última instância administrativa</div>
+      <div class="elem-text">O CAU/BR é o órgão revisor das decisões disciplinares dos CAUs Estaduais/DF. Sua decisão é definitiva na esfera administrativa — após ela, a via disponível é o Poder Judiciário.</div>
+      <span class="elem-tag">Decisão final administrativa</span>
+    </div>
+    <div class="elem-card" style="--ec:#e8b84b">
+      <div class="elem-label">Objeto do recurso</div>
+      <span class="elem-icon">📋</span>
+      <div class="elem-title">Todas as decisões definitivas dos CAUs</div>
+      <div class="elem-text">O recurso abrange <strong style="color:var(--text)">todas</strong> as decisões definitivas proferidas pelos CAUs em processos disciplinares — não é restrito a determinadas sanções ou hipóteses específicas.</div>
+      <span class="elem-tag">Ampla recorribilidade</span>
+    </div>
+    <div class="elem-card" style="--ec:#7ab8f5">
+      <div class="elem-label">Legitimados — parágrafo único</div>
+      <span class="elem-icon">👥</span>
+      <div class="elem-title">Acusado, acusador, Presidente e Conselheiros do CAU</div>
+      <div class="elem-text">Podem recorrer: o <strong style="color:var(--text)">acusado</strong>, o <strong style="color:var(--text)">acusador</strong>, o <strong style="color:var(--text)">Presidente do CAU</strong> e os <strong style="color:var(--text)">Conselheiros do CAU</strong>. A legitimidade dos conselheiros amplia o controle institucional sobre as decisões disciplinares.</div>
+      <span class="elem-tag">Legitimidade ampliada</span>
+    </div>
+  </div>
+  <div class="footnote">
+    <span style="font-size:18px;flex-shrink:0;margin-top:2px">⚖️</span>
+    <p><strong>Nota legal:</strong> Esta representação é uma simplificação visual da Lei nº 12.378/2010,
+      produzida com base nos princípios de <strong>Visual Law</strong> e <strong>Legal Design</strong>.
+      Não substitui o texto oficial publicado no DOU de 31.12.2010 nem orientação jurídica especializada.
+  </div>
+  <div class="art-nav">
+    <a class="nav-btn prev" href="art21.html">Art. 21</a>
+    <span class="nav-center">Art. 22 · Lei 12.378/2010</span>
+    <a class="nav-btn next" href="art23.html">Art. 23</a>
+  </div>
+</div>
+</body>
+</html>

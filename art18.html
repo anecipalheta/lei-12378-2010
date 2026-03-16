@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Art. 18 — Lei 12.378/2010 | Visual Law</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0d1117;--grid:rgba(78,150,220,0.065);--gold:#e8b84b;--blue:#4e96dc;--blue2:#7ab8f5;--teal:#3dd6c8;--red:#e8604b;--violet:#a78bfa;--text:#e8e6e0;--muted:#5a6a7d;--muted2:#8a9ab0;--border:rgba(78,150,220,0.15);--border2:rgba(255,255,255,0.06);--card:rgba(16,24,36,0.92);--accent:#e8604b;}
+  *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--text);font-family:'Syne',sans-serif;min-height:100vh;overflow-x:hidden;font-size:22px;}
+  body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0;}
+  body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 55% 40% at 10% 15%,rgba(232,96,75,0.07) 0%,transparent 70%),radial-gradient(ellipse 45% 40% at 90% 80%,rgba(78,150,220,0.04) 0%,transparent 70%);pointer-events:none;z-index:0;}
+  .topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 32px;border-bottom:1px solid var(--border2);position:relative;z-index:10;}
+  .topbar-back{display:inline-flex;align-items:center;gap:8px;font-family:'DM Mono',monospace;font-size:13px;color:var(--muted);text-decoration:none;letter-spacing:0.08em;transition:color 0.18s;}
+  .topbar-back:hover{color:var(--gold);}.topbar-back::before{content:'←';font-size:14px;}
+  .topbar-crumb{display:flex;}
+  .topbar-next{display:inline-flex;align-items:center;gap:8px;font-family:'DM Mono',monospace;font-size:13px;color:var(--muted);text-decoration:none;letter-spacing:0.08em;transition:color 0.18s;}
+  .topbar-next:hover{color:var(--gold);}.topbar-next::after{content:'→';font-size:14px;}
+  .container{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:52px 32px 96px;}
+  .header{border-left:3px solid var(--accent);padding-left:24px;margin-bottom:52px;animation:fadeUp 0.7s ease both;}
+  .eyebrow{font-family:'DM Mono',monospace;font-size:12px;color:var(--accent);letter-spacing:0.22em;text-transform:uppercase;margin-bottom:14px;}
+  .header h1{font-family:'Fraunces',serif;font-size:clamp(26px,4vw,44px);font-weight:600;line-height:1.12;margin-bottom:10px;}
+  .header h1 em{color:var(--accent);font-style:italic;font-weight:300;}
+  .caput-box{background:rgba(232,96,75,0.04);border:1px solid rgba(232,96,75,0.2);border-left:3px solid var(--accent);border-radius:4px;padding:44px 24px 20px 24px;margin-bottom:52px;font-family:'DM Mono',monospace;font-size:13px;color:var(--muted2);line-height:1.8;animation:fadeUp 0.6s 0.1s ease both;position:relative;}
+  .caput-box::before{content:'caput · art. 18';position:absolute;top:12px;right:14px;font-size:12px;letter-spacing:0.15em;color:var(--muted);text-transform:uppercase;}
+  .caput-box strong{color:var(--text);font-weight:500;}
+  .section-label{display:flex;align-items:center;gap:14px;margin-bottom:20px;}
+  .section-label h2{font-family:'DM Mono',monospace;font-size:12px;color:var(--muted);letter-spacing:0.2em;text-transform:uppercase;white-space:nowrap;}
+  .section-label::after{content:'';flex:1;height:1px;background:var(--border2);}
+  /* CATEGORIAS */
+  .cat-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;animation:fadeUp 0.5s 0.1s ease both;}
+  .cat-btn{background:transparent;border:1px solid var(--border2);color:var(--muted);padding:5px 12px;border-radius:2px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;}
+  .cat-btn:hover{border-color:var(--red);color:var(--red);}
+  .cat-btn.active{background:var(--red);border-color:var(--red);color:#0d1117;font-weight:600;}
+  /* GRID DE INCISOS */
+  .inc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px;margin-bottom:52px;animation:fadeUp 0.6s 0.15s ease both;}
+  .inc-card{background:var(--card);border:1px solid var(--border2);border-left:3px solid var(--ic,var(--red));border-radius:4px;padding:18px 20px;transition:all 0.22s;}
+  .inc-card:hover{border-color:rgba(232,96,75,0.4);transform:translateY(-1px);}
+  .inc-num{font-family:'DM Mono',monospace;font-size:11px;color:var(--ic,var(--red));letter-spacing:0.15em;text-transform:uppercase;margin-bottom:8px;opacity:0.8;}
+  .inc-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:6px;line-height:1.3;}
+  .inc-text{font-family:'DM Mono',monospace;font-size:13px;color:var(--muted2);line-height:1.6;}
+  .inc-tag{display:inline-block;margin-top:10px;padding:2px 8px;border-radius:2px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;border:1px solid rgba(232,96,75,0.3);color:var(--red);opacity:0.8;}
+  .footnote{border:1px solid var(--border2);border-radius:4px;background:rgba(78,150,220,0.03);padding:18px 22px;display:flex;gap:14px;align-items:flex-start;animation:fadeUp 0.6s 0.3s ease both;}
+  .footnote p{font-family:'DM Mono',monospace;font-size:13px;color:var(--muted);line-height:1.75;}
+  .footnote strong{color:var(--gold);font-weight:500;}
+  .art-nav{display:flex;justify-content:space-between;align-items:center;margin-top:56px;padding-top:24px;border-top:1px solid var(--border2);animation:fadeUp 0.5s 0.3s ease both;}
+  .nav-btn{display:inline-flex;align-items:center;gap:8px;font-family:'DM Mono',monospace;font-size:13px;color:var(--muted);text-decoration:none;border:1px solid var(--border2);border-radius:3px;padding:8px 14px;transition:all 0.2s;}
+  .nav-btn:hover{border-color:var(--gold);color:var(--gold);}.nav-btn.prev::before{content:'←';}.nav-btn.next::after{content:'→';}
+  .nav-center{font-family:'DM Mono',monospace;font-size:12px;color:var(--muted);letter-spacing:0.1em;}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+  @media(max-width:700px){.inc-grid{grid-template-columns:1fr;}.container{padding:32px 20px 80px;}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="topbar-back" href="index.html">Lei nº 12.378/2010</a>
+  <div class="topbar-crumb"></div>
+  <a class="topbar-next" href="art19.html">Art. 19 </a>
+</div>
+<div class="container">
+  <header class="header">
+    <div class="eyebrow">Art. 18 · Ética & Sanções</div>
+    <h1>Infrações disciplinares —<br><em>rol de condutas vedadas</em></h1>
+  </header>
+  <div class="caput-box">
+    Constituem <strong>infrações disciplinares</strong>, além de outras definidas pelo Código de Ética e Disciplina, as condutas descritas nos incisos I ao XII abaixo.
+  </div>
+  <div class="section-label"><h2>Doze infrações disciplinares — incisos I ao XII</h2></div>
+  <div class="inc-grid">
+    <div class="inc-card" style="--ic:#e8604b">
+      <div class="inc-num">Inciso I</div>
+      <div class="inc-title">Registro fraudulento de obra ou trabalho</div>
+      <div class="inc-text">Registrar projeto ou trabalho técnico ou de criação no CAU, para fins de comprovação de direitos autorais e formação de acervo técnico, que não haja sido efetivamente concebido, desenvolvido ou elaborado por quem requerer o registro.</div>
+      <span class="inc-tag">Fraude de acervo</span>
+    </div>
+    <div class="inc-card" style="--ic:#e8604b">
+      <div class="inc-num">Inciso II</div>
+      <div class="inc-title">Reprodução sem autorização</div>
+      <div class="inc-text">Reproduzir projeto ou trabalho técnico ou de criação, de autoria de terceiros, sem a devida autorização do detentor dos direitos autorais.</div>
+      <span class="inc-tag">Violação de autoria</span>
+    </div>
+    <div class="inc-card" style="--ic:#e8b84b">
+      <div class="inc-num">Inciso III</div>
+      <div class="inc-title">Falsa prova para registro no CAU</div>
+      <div class="inc-text">Fazer falsa prova de quaisquer documentos exigidos para o registro no CAU.</div>
+      <span class="inc-tag">Falsidade documental</span>
+    </div>
+    <div class="inc-card" style="--ic:#e8604b">
+      <div class="inc-num">Inciso IV</div>
+      <div class="inc-title">Delegação de atividade privativa a não habilitado</div>
+      <div class="inc-text">Delegar a quem não seja arquiteto e urbanista a execução de atividade privativa de arquiteto e urbanista.</div>
+      <span class="inc-tag">Delegação indevida</span>
+    </div>
+    <div class="inc-card" style="--ic:#a78bfa">
+      <div class="inc-num">Inciso V</div>
+      <div class="inc-title">Sócio fantasma em sociedade de arquitetura</div>
+      <div class="inc-text">Integrar sociedade de prestação de serviços de arquitetura e urbanismo sem nela atuar efetivamente, com objetivo de viabilizar o registro da empresa no CAU, de utilizar os nomes "arquitetura" ou "urbanismo" na razão jurídica ou nome fantasia, ou de simular a existência de profissional do ramo atuando.</div>
+      <span class="inc-tag">Sócio fictício</span>
+    </div>
+    <div class="inc-card" style="--ic:#e8604b">
+      <div class="inc-num">Inciso VI</div>
+      <div class="inc-title">Locupletamento ilícito às custas do cliente</div>
+      <div class="inc-text">Locupletar-se ilicitamente, por qualquer meio, às custas de cliente, diretamente ou por intermédio de terceiros.</div>
+      <span class="inc-tag">Enriquecimento ilícito</span>
+    </div>
+    <div class="inc-card" style="--ic:#e8604b">
+      <div class="inc-num">Inciso VII</div>
+      <div class="inc-title">Recusa injustificada de prestar contas</div>
+      <div class="inc-text">Recusar-se, injustificadamente, a prestar contas a cliente de quantias que houver recebido dele, diretamente ou por intermédio de terceiros.</div>
+      <span class="inc-tag">Falta de transparência</span>
+    </div>
+    <div class="inc-card" style="--ic:#e8b84b">
+      <div class="inc-num">Inciso VIII</div>
+      <div class="inc-title">Omissão de dados obrigatórios</div>
+      <div class="inc-text">Deixar de informar, em documento ou peça de comunicação dirigida a cliente, ao público em geral, ao CAU/BR ou aos CAUs, os dados exigidos nos termos desta Lei.</div>
+      <span class="inc-tag">Omissão de identificação</span>
+    </div>
+    <div class="inc-card" style="--ic:#e8604b">
+      <div class="inc-num">Inciso IX</div>
+      <div class="inc-title">Descumprimento de normas legais e técnicas</div>
+      <div class="inc-text">Deixar de observar as normas legais e técnicas pertinentes na execução de atividades de arquitetura e urbanismo.</div>
+      <span class="inc-tag">Inobservância técnica</span>
+    </div>
+    <div class="inc-card" style="--ic:#e8b84b">
+      <div class="inc-num">Inciso X</div>
+      <div class="inc-title">Desídia na execução do trabalho</div>
+      <div class="inc-text">Ser desidioso na execução do trabalho contratado.</div>
+      <span class="inc-tag">Negligência profissional</span>
+    </div>
+    <div class="inc-card" style="--ic:#3dd6c8">
+      <div class="inc-num">Inciso XI</div>
+      <div class="inc-title">Não pagamento de obrigações ao CAU</div>
+      <div class="inc-text">Deixar de pagar a anuidade, taxas, preços de serviços e multas devidos ao CAU/BR ou aos CAUs, quando devidamente notificado.</div>
+      <span class="inc-tag">Inadimplência com o CAU</span>
+    </div>
+    <div class="inc-card" style="--ic:#3dd6c8">
+      <div class="inc-num">Inciso XII</div>
+      <div class="inc-title">Omissão do RRT obrigatório</div>
+      <div class="inc-text">Não efetuar Registro de Responsabilidade Técnica quando for obrigatório.</div>
+      <span class="inc-tag">RRT não efetuado</span>
+    </div>
+  </div>
+  <div class="footnote">
+    <span style="font-size:18px;flex-shrink:0;margin-top:2px">⚖️</span>
+    <p><strong>Nota legal:</strong> Esta representação é uma simplificação visual da Lei nº 12.378/2010,
+      produzida com base nos princípios de <strong>Visual Law</strong> e <strong>Legal Design</strong>.
+      Não substitui o texto oficial publicado no DOU de 31.12.2010 nem orientação jurídica especializada.
+  </div>
+  <div class="art-nav">
+    <a class="nav-btn prev" href="art17.html">Art. 17</a>
+    <span class="nav-center">Art. 18 · Lei 12.378/2010</span>
+    <a class="nav-btn next" href="art19.html">Art. 19</a>
+  </div>
+</div>
+</body>
+</html>
