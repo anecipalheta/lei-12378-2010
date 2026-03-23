@@ -27,18 +27,6 @@
   .caput-box strong{color:var(--text);font-weight:500;}
   .par-box{background:rgba(78,150,220,0.04);border:1px solid rgba(78,150,220,0.15);border-left:3px solid var(--blue);border-radius:4px;padding:44px 24px 20px 24px;margin-bottom:32px;font-family:'DM Mono',monospace;font-size:13px;color:var(--muted2);line-height:1.8;position:relative;}
   .par-box strong{color:var(--text);font-weight:500;}
-  .section-label{display:flex;align-items:center;gap:14px;margin-bottom:20px;}
-  .section-label h2{font-family:'DM Mono',monospace;font-size:12px;color:var(--muted);letter-spacing:0.2em;text-transform:uppercase;white-space:nowrap;}
-  .section-label::after{content:'';flex:1;height:1px;background:var(--border2);}
-  .elem-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px;margin-bottom:52px;animation:fadeUp 0.6s 0.15s ease both;}
-  .elem-card{background:var(--card);border:1px solid var(--border2);border-radius:4px;padding:22px;position:relative;overflow:hidden;transition:all 0.22s;}
-  .elem-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--ec,var(--red)),transparent);}
-  .elem-card:hover{border-color:rgba(255,255,255,0.12);transform:translateY(-2px);}
-  .elem-label{font-family:'DM Mono',monospace;font-size:11px;color:var(--ec,var(--red));letter-spacing:0.18em;text-transform:uppercase;margin-bottom:10px;opacity:0.8;}
-  .elem-icon{font-size:26px;margin-bottom:10px;display:block;}
-  .elem-title{font-size:15px;font-weight:700;color:var(--text);margin-bottom:8px;line-height:1.3;}
-  .elem-text{font-family:'DM Mono',monospace;font-size:13px;color:var(--muted2);line-height:1.65;}
-  .elem-tag{display:inline-block;margin-top:12px;padding:2px 8px;border-radius:2px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;border:1px solid;opacity:0.7;color:var(--ec,var(--red));border-color:var(--ec,var(--red));}
   .footnote{border:1px solid var(--border2);border-radius:4px;background:rgba(78,150,220,0.03);padding:18px 22px;display:flex;gap:14px;align-items:flex-start;animation:fadeUp 0.6s 0.3s ease both;}
   .footnote p{font-family:'DM Mono',monospace;font-size:13px;color:var(--muted);line-height:1.75;}
   .footnote strong{color:var(--gold);font-weight:500;}
@@ -58,7 +46,7 @@
 </div>
 <div class="container">
   <header class="header">
-    <div class="eyebrow">Art. 23 · Ética & Sanções</div>
+    <div class="eyebrow">Art. 23 · Ética</div>
     <h1>Prescrição disciplinar —<br><em>5 anos a contar do fato</em></h1>
   </header>
   <div class="caput-box">
@@ -68,37 +56,7 @@
     <div style="position:absolute;top:12px;right:14px;font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#5a6a7d;text-transform:uppercase;">parágrafo único · art. 23</div>
     A prescrição <strong>interrompe-se</strong> pela <strong>intimação do acusado</strong> para apresentar defesa.
   </div>
-  <div class="section-label"><h2>Elementos da prescrição disciplinar</h2></div>
-  <div class="elem-grid">
-    <div class="elem-card" style="--ec:#e8604b">
-      <div class="elem-label">Prazo</div>
-      <span class="elem-icon">⏱️</span>
-      <div class="elem-title">5 anos</div>
-      <div class="elem-text">O prazo prescricional para punição de infrações disciplinares é de cinco anos. Após esse prazo sem instauração do processo ou sem interrupção válida, extingue-se a pretensão punitiva do CAU.</div>
-      <span class="elem-tag">5 anos</span>
-    </div>
-    <div class="elem-card" style="--ec:#e8b84b">
-      <div class="elem-label">Termo inicial</div>
-      <span class="elem-icon">📅</span>
-      <div class="elem-title">Data do fato</div>
-      <div class="elem-text">O prazo começa a correr na <strong style="color:var(--text)">data do fato</strong> — momento da conduta que configura a infração disciplinar, independentemente de quando o CAU tomou conhecimento.</div>
-      <span class="elem-tag">A contar do fato</span>
-    </div>
-    <div class="elem-card" style="--ec:#3dd6c8">
-      <div class="elem-label">Causa de interrupção — par. único</div>
-      <span class="elem-icon">⏸️</span>
-      <div class="elem-title">Intimação do acusado para apresentar defesa</div>
-      <div class="elem-text">A prescrição se <strong style="color:var(--text)">interrompe</strong> — e não apenas suspende — pela intimação do acusado para apresentar defesa. A interrupção recomeça o prazo do zero a partir do ato interruptivo.</div>
-      <span class="elem-tag">Interrupção · não suspensão</span>
-    </div>
-    <div class="elem-card" style="--ec:#7ab8f5">
-      <div class="elem-label">Paralelo normativo</div>
-      <span class="elem-icon">🔗</span>
-      <div class="elem-title">Mesma regra para cobranças — Art. 54</div>
-      <div class="elem-text">O Art. 54 adota o mesmo prazo de 5 anos para prescrição das cobranças de multas e anuidades. Há simetria entre o prazo disciplinar (Art. 23) e o prazo para cobrança (Art. 54).</div>
-      <span class="elem-tag">Simetria com Art. 54</span>
-    </div>
-  </div>
+ 
   <div class="footnote">
     <span style="font-size:18px;flex-shrink:0;margin-top:2px">⚖️</span>
     <p><strong>Nota legal:</strong> Esta representação é uma simplificação visual da Lei nº 12.378/2010,

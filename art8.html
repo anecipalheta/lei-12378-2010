@@ -118,7 +118,7 @@
     background:rgba(167,139,250,0.04);
     border:1px solid rgba(167,139,250,0.2);
     border-left:3px solid var(--accent);
-    border-radius:4px; padding:20px 160px 20px 24px;
+    border-radius:4px; padding:40px 80px 20px 24px;
     margin-bottom:52px;
     font-family:'DM Mono',monospace; font-size:13px;
     color:var(--muted2); line-height:1.8;
@@ -135,132 +135,7 @@
 
   .caput-box strong { color:var(--text); font-weight:500; }
 
-  /* ── SECTION LABEL ── */
-  .section-label {
-    display:flex; align-items:center; gap:14px;
-    margin-bottom:20px;
-  }
-
-  .section-label h2 {
-    font-family:'DM Mono',monospace; font-size:12px;
-    color:var(--muted); letter-spacing:0.2em;
-    text-transform:uppercase; white-space:nowrap;
-  }
-
-  .section-label::after {
-    content:''; flex:1; height:1px; background:var(--border2);
-  }
-
-  /* ── DOIS EFEITOS ── */
-  .efeitos-wrapper {
-    margin-bottom:52px;
-    animation:fadeUp 0.6s 0.15s ease both;
-  }
-
-  .efeitos-grid {
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
-  }
-
-  .efeito-card {
-    background:rgba(167,139,250,0.05);
-    border:1px solid rgba(167,139,250,0.2);
-    border-radius:4px; padding:28px;
-    display:flex; flex-direction:column; gap:10px;
-    transition:all 0.22s;
-    position:relative; overflow:hidden;
-  }
-
-  .efeito-card::before {
-    content:'';
-    position:absolute; top:0; left:0;
-    width:100%; height:3px;
-    background:linear-gradient(90deg, var(--accent), transparent);
-  }
-
-  .efeito-card:hover {
-    border-color:rgba(167,139,250,0.4);
-    transform:translateY(-2px);
-  }
-
-  .efeito-num {
-    font-family:'DM Mono',monospace; font-size:11px;
-    color:var(--accent); letter-spacing:0.18em;
-    text-transform:uppercase; opacity:0.8;
-  }
-
-  .efeito-icon { font-size:32px; }
-
-  .efeito-title {
-    font-family:'Fraunces',serif; font-size:20px;
-    font-weight:600; color:var(--text); line-height:1.2;
-  }
-
-  .efeito-text {
-    font-family:'DM Mono',monospace; font-size:13px;
-    color:var(--muted2); line-height:1.65;
-  }
-
-  .efeito-tag {
-    display:inline-block; margin-top:4px;
-    padding:3px 10px; border-radius:2px;
-    font-family:'DM Mono',monospace; font-size:11px;
-    letter-spacing:0.12em; text-transform:uppercase;
-    border:1px solid rgba(167,139,250,0.4);
-    color:var(--accent); align-self:flex-start;
-  }
-
-  /* ── COMPARATIVO ── */
-  .comp-wrapper {
-    margin-bottom:52px;
-    animation:fadeUp 0.6s 0.2s ease both;
-  }
-
-  .comp-box {
-    background:var(--card);
-    border:1px solid var(--border2);
-    border-radius:4px;
-    padding:24px 28px;
-    display:flex; gap:0; flex-wrap:wrap;
-    align-items:stretch;
-  }
-
-  .comp-item {
-    flex:1; min-width:180px;
-    display:flex; flex-direction:column; gap:8px;
-    padding:0 24px;
-    border-right:1px solid var(--border2);
-  }
-
-  .comp-item:first-child { padding-left:0; }
-  .comp-item:last-child { border-right:none; padding-right:0; }
-
-  .comp-label {
-    font-family:'DM Mono',monospace; font-size:11px;
-    color:var(--muted); letter-spacing:0.18em; text-transform:uppercase;
-  }
-
-  .comp-value {
-    font-size:15px; font-weight:700;
-    color:var(--text); line-height:1.3;
-  }
-
-  .comp-sub {
-    font-family:'DM Mono',monospace; font-size:12px;
-    color:var(--muted2); line-height:1.5;
-  }
-
-  .comp-badge {
-    display:inline-block; margin-top:2px;
-    padding:2px 8px; border-radius:2px;
-    font-family:'DM Mono',monospace; font-size:11px;
-    letter-spacing:0.1em; text-transform:uppercase;
-    background:rgba(167,139,250,0.08);
-    border:1px solid rgba(167,139,250,0.2);
-    color:var(--accent); align-self:flex-start;
-  }
-
+ 
   /* ── NOTE ── */
   .footnote {
     border:1px solid var(--border2);
@@ -334,59 +209,6 @@
   <!-- CAPUT -->
   <div class="caput-box">
     A <strong>carteira profissional de arquiteto e urbanista</strong> possui <strong>fé pública</strong> e constitui <strong>prova de identidade civil</strong> para todos os fins legais.
-  </div>
-
-  <!-- DOIS EFEITOS JURÍDICOS -->
-  <div class="efeitos-wrapper">
-    <div class="section-label"><h2>Dois efeitos jurídicos — caput</h2></div>
-    <div class="efeitos-grid">
-
-      <div class="efeito-card">
-        <div class="efeito-num">Efeito I</div>
-        <span class="efeito-icon">🔏</span>
-        <div class="efeito-title">Fé pública</div>
-        <div class="efeito-text">A carteira goza de fé pública — seus dados são presumidos verdadeiros e têm força probatória equivalente à de documento oficial emitido por órgão público. Terceiros e autoridades devem aceitá-la como documento válido.</div>
-        <span class="efeito-tag">Presunção de veracidade</span>
-      </div>
-
-      <div class="efeito-card">
-        <div class="efeito-num">Efeito II</div>
-        <span class="efeito-icon">🪪</span>
-        <div class="efeito-title">Prova de identidade civil</div>
-        <div class="efeito-text">A carteira constitui prova de identidade civil para <strong style="color:var(--text)">todos os fins legais</strong> — pode ser apresentada em substituição a outros documentos de identidade em qualquer situação que exija identificação civil.</div>
-        <span class="efeito-tag">Validade universal</span>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- COMPARATIVO COM OUTROS CONSELHOS -->
-  <div class="comp-wrapper">
-    <div class="section-label"><h2>Alcance e natureza jurídica</h2></div>
-    <div class="comp-box">
-
-      <div class="comp-item">
-        <div class="comp-label">Emitida por</div>
-        <div class="comp-value">CAU Estadual ou DF</div>
-        <div class="comp-sub">Conselho com personalidade jurídica de direito público (Art. 24)</div>
-        <span class="comp-badge">Autarquia federal</span>
-      </div>
-
-      <div class="comp-item">
-        <div class="comp-label">Abrangência</div>
-        <div class="comp-value">Todo o território nacional</div>
-        <div class="comp-sub">Válida em qualquer estado, conforme Art. 5º, parágrafo único</div>
-        <span class="comp-badge">Validade nacional</span>
-      </div>
-
-      <div class="comp-item">
-        <div class="comp-label">Fins legais</div>
-        <div class="comp-value">Todos</div>
-        <div class="comp-sub">Sem restrição — equivale aos demais documentos de identidade civil reconhecidos por lei</div>
-        <span class="comp-badge">Sem limitação</span>
-      </div>
-
-    </div>
   </div>
 
   <div class="footnote">

@@ -309,37 +309,6 @@
   line-height: 1.5;
 }
 
-  /* ── FILTER BAR ── */
-  .filter-bar {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-bottom: 28px;
-    animation: fadeUp 0.5s 0.05s ease both;
-  }
-
-  .filter-btn {
-  background: transparent;
-  border: 1px solid var(--border);
-  color: var(--muted);
-  padding: 6px 14px;
-  border-radius: 2px;
-  font-family: 'DM Mono', monospace;
-  font-size: 12px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-  .filter-btn:hover { border-color: var(--blue); color: var(--blue2); }
-
-  .filter-btn.active {
-    background: var(--filter-color, var(--blue));
-    border-color: var(--filter-color, var(--blue));
-    color: #0d1117;
-    font-weight: 600;
-  }
 
   /* ── TOOLTIP ── */
   .tooltip {
@@ -548,107 +517,98 @@
 
   <!-- HEADER -->
   <header class="header">
-    <div class="header-eyebrow">Art. 2º · CAU/BR</div>
+    <div class="header-eyebrow">Atribuições de Arquitetos e Urbanistas</div>
+    <div class="header-eyebrow">Art. 2º</div>
     <h1>Atividades e atribuições de<br><span>arquitetos e urbanistas</span></h1>    
   </header>
 
 
   <!-- ACTIVITIES SECTION -->
   <div class="section-title">
-    <h2>Atividades & atribuições — incisos I ao XII</h2>
-  </div>
-
-  <!-- FILTER -->
-  <div class="filter-bar" id="filterBar">
-    <button class="filter-btn active" data-filter="all" style="--filter-color: #4e96dc">Todas</button>
-    <button class="filter-btn" data-filter="gestao" style="--filter-color: #e8b84b">Gestão</button>
-    <button class="filter-btn" data-filter="projeto" style="--filter-color: #4e96dc">Projeto</button>
-    <button class="filter-btn" data-filter="assessoria" style="--filter-color: #3dd6c8">Assessoria</button>
-    <button class="filter-btn" data-filter="ensino" style="--filter-color: #e8604b">Ensino & P&D</button>
-    <button class="filter-btn" data-filter="execucao" style="--filter-color: #a78bfa">Execução</button>
+    <h2>Incisos I ao XII</h2>
   </div>
 
   <!-- ACTIVITIES GRID -->
   <div class="activities-grid" id="activitiesGrid">
 
-    <div class="activity-card" data-cat="gestao" style="--cat-color:#e8b84b" data-tooltip="Coordenação de equipes, gestão de processos e diretrizes técnicas em todas as fases de um empreendimento.">
+    <div class="activity-card" data-cat="gestao" style="--cat-color:#e8b84b" data-tooltip=>
       <div class="card-number">INCISO I</div>
       <span class="card-icon">🎯</span>
       <div class="card-title">Supervisão, coordenação, gestão e orientação técnica</div>
       <span class="card-tag">Gestão</span>
     </div>
 
-    <div class="activity-card" data-cat="projeto" style="--cat-color:#4e96dc" data-tooltip="Da coleta inicial de dados ao projeto executivo completo, incluindo especificações técnicas de materiais e sistemas.">
+    <div class="activity-card" data-cat="projeto" style="--cat-color:#4e96dc" data-tooltip=>
       <div class="card-number">INCISO II</div>
       <span class="card-icon">📐</span>
       <div class="card-title">Coleta de dados, estudo, planejamento, projeto e especificação</div>      
       <span class="card-tag">Projeto</span>
     </div>
 
-    <div class="activity-card" data-cat="projeto" style="--cat-color:#4e96dc" data-tooltip="Análise de viabilidade sob as perspectivas técnica e ambiental, incluindo estudos de impacto e licenciamento.">
+    <div class="activity-card" data-cat="projeto" style="--cat-color:#4e96dc" data-tooltip=>
       <div class="card-number">INCISO III</div>
       <span class="card-icon">🌿</span>
       <div class="card-title">Estudo de viabilidade técnica e ambiental</div>      
       <span class="card-tag">Projeto</span>
     </div>
 
-    <div class="activity-card" data-cat="assessoria" style="--cat-color:#3dd6c8" data-tooltip="Suporte técnico especializado a clientes, órgãos públicos, empresas e demais profissionais.">
+    <div class="activity-card" data-cat="assessoria" style="--cat-color:#3dd6c8" data-tooltip=>
       <div class="card-number">INCISO IV</div>
       <span class="card-icon">🤝</span>
       <div class="card-title">Assistência técnica, assessoria e consultoria</div>      
       <span class="card-tag">Assessoria</span>
     </div>
 
-    <div class="activity-card" data-cat="gestao" style="--cat-color:#e8b84b" data-tooltip="Direção e supervisão de obras e serviços técnicos, garantindo conformidade com o projeto aprovado.">
+    <div class="activity-card" data-cat="gestao" style="--cat-color:#e8b84b" data-tooltip=>
       <div class="card-number">INCISO V</div>
       <span class="card-icon">🏗️</span>
       <div class="card-title">Direção de obras e de serviço técnico</div>      
       <span class="card-tag">Gestão</span>
     </div>
 
-    <div class="activity-card" data-cat="assessoria" style="--cat-color:#3dd6c8" data-tooltip="Inspeção formal de edificações, avaliações para fins judiciais ou extrajudiciais, laudos periciais e arbitragem técnica.">
+    <div class="activity-card" data-cat="assessoria" style="--cat-color:#3dd6c8" data-tooltip=>
       <div class="card-number">INCISO VI</div>
       <span class="card-icon">🔍</span>
       <div class="card-title">Vistoria, perícia, avaliação, monitoramento, laudo, parecer técnico, auditoria e arbitragem</div>      
       <span class="card-tag">Assessoria</span>
     </div>
 
-    <div class="activity-card" data-cat="gestao" style="--cat-color:#e8b84b" data-tooltip="Ocupação de cargos e funções técnicas em órgãos públicos, empresas privadas e instituições diversas.">
+    <div class="activity-card" data-cat="gestao" style="--cat-color:#e8b84b" data-tooltip=>
       <div class="card-number">INCISO VII</div>
       <span class="card-icon">🏛️</span>
       <div class="card-title">Desempenho de cargo e função técnica</div>      
       <span class="card-tag">Gestão</span>
     </div>
 
-    <div class="activity-card" data-cat="ensino" style="--cat-color:#e8604b" data-tooltip="Atuação em ensino formal, pesquisa acadêmica, extensão universitária e programas de capacitação profissional.">
+    <div class="activity-card" data-cat="ensino" style="--cat-color:#e8604b" data-tooltip=>
       <div class="card-number">INCISO VIII</div>
       <span class="card-icon">📚</span>
       <div class="card-title">Treinamento, ensino, pesquisa e extensão universitária</div>      
       <span class="card-tag">Ensino & P&D</span>
     </div>
 
-    <div class="activity-card" data-cat="ensino" style="--cat-color:#e8604b" data-tooltip="Desenvolvimento de novos materiais, ensaios tecnológicos, padronização técnica e controle de qualidade de produtos e sistemas construtivos.">
+    <div class="activity-card" data-cat="ensino" style="--cat-color:#e8604b" data-tooltip=>
       <div class="card-number">INCISO IX</div>
       <span class="card-icon">🔬</span>
       <div class="card-title">Desenvolvimento, análise, experimentação, ensaio, padronização, mensuração e controle de qualidade</div>      
       <span class="card-tag">Ensino & P&D</span>
     </div>
 
-    <div class="activity-card" data-cat="projeto" style="--cat-color:#4e96dc" data-tooltip="Elaboração de orçamentos detalhados para obras, projetos e serviços técnicos, com quantitativos e composição de custos.">
+    <div class="activity-card" data-cat="projeto" style="--cat-color:#4e96dc" data-tooltip=>
       <div class="card-number">INCISO X</div>
       <span class="card-icon">📊</span>
       <div class="card-title">Elaboração de orçamento</div>      
       <span class="card-tag">Projeto</span>
     </div>
 
-    <div class="activity-card" data-cat="ensino" style="--cat-color:#e8604b" data-tooltip="Produção de artigos, publicações, manuais técnicos e conteúdo especializado de divulgação para o setor.">
+    <div class="activity-card" data-cat="ensino" style="--cat-color:#e8604b" data-tooltip=>
       <div class="card-number">INCISO XI</div>
       <span class="card-icon">📝</span>
       <div class="card-title">Produção e divulgação técnica especializada</div>      
       <span class="card-tag">Ensino & P&D</span>
     </div>
 
-    <div class="activity-card" data-cat="execucao" style="--cat-color:#a78bfa" data-tooltip="Execução direta de obras e instalações, fiscalização de serviços terceirizados e condução técnica do canteiro.">
+    <div class="activity-card" data-cat="execucao" style="--cat-color:#a78bfa" data-tooltip=>
       <div class="card-number">INCISO XII</div>
       <span class="card-icon">⚙️</span>
       <div class="card-title">Execução, fiscalização e condução de obra, instalação e serviço técnico</div>      
@@ -664,81 +624,70 @@
 
   <div class="campos-grid" id="camposGrid">
 
-    <div class="campo-card">
-      <div class="campo-number">CAMPO I</div>
-      <span class="campo-icon">🏙️</span>
-      <div class="campo-title">Arquitetura & Urbanismo</div>
-      <div class="campo-desc">Concepção e execução de projetos</div>
+    <div class="activity-card" data-cat="Arq&Urb" style="--cat-color:#a78bfa" data-tooltip="Da Arquitetura e Urbanismo, concepção e execução de projetos">
+      <div class="campo-number">§ 1º</div>
+      <span class="campo-icon">🏙️</span>      
+      <div class="campo-desc">Da Arquitetura e Urbanismo, concepção e execução de projetos</div>
     </div>
 
-    <div class="campo-card">
-      <div class="campo-number">CAMPO II</div>
-      <span class="campo-icon">🛋️</span>
-      <div class="campo-title">Arquitetura de Interiores</div>
-      <div class="campo-desc">Projetos de ambientes</div>
+    <div class="activity-card" data-cat="interiores" style="--cat-color:#a78bfa" data-tooltip="Da Arquitetura de Interiores, concepção e execução de projetos de ambientes">
+      <div class="campo-number">§ 2º</div>
+      <span class="campo-icon">🛋️</span>      
+      <div class="campo-desc">Da Arquitetura de Interiores, concepção e execução de projetos de ambientes</div>
     </div>
 
-    <div class="campo-card">
-      <div class="campo-number">CAMPO III</div>
-      <span class="campo-icon">🌳</span>
-      <div class="campo-title">Arquitetura Paisagística</div>
-      <div class="campo-desc">Parques, praças, espaços livres e territoriais</div>
+    <div class="activity-card" data-cat="paisagismo" style="--cat-color:#a78bfa" data-tooltip="...para espaços externos, livres e abertos, privados ou públicos, como parques e praças, considerados isoladamente ou em sistemas, dentro de várias escalas, inclusive a territorial">
+      <div class="campo-number">§ 3º</div>
+      <span class="campo-icon">🌳</span>      
+      <div class="campo-desc">Da Arquitetura Paisagística, concepção e execução de projetos</div>
     </div>
 
-    <div class="campo-card">
-      <div class="campo-number">CAMPO IV</div>
-      <span class="campo-icon">🏰</span>
-      <div class="campo-title">Patrimônio Histórico</div>
-      <div class="campo-desc">Restauro, conservação e valorização</div>
+    <div class="activity-card" data-cat="patrimônio" style="--cat-color:#a78bfa" data-tooltip="...arquitetônico, urbanístico, paisagístico, monumentos, restauro, práticas de projeto e soluções tecnológicas para reutilização, reabilitação, reconstrução, preservação, conservação, restauro e valorização de edificações, conjuntos e cidades">
+      <div class="campo-number">§ 4º</div>
+      <span class="campo-icon">🏰</span>      
+      <div class="campo-desc">Do Patrimônio Histórico Cultural e Artístico</div>
     </div>
 
-    <div class="campo-card">
-      <div class="campo-number">CAMPO V</div>
-      <span class="campo-icon">🗺️</span>
-      <div class="campo-title">Planejamento Urbano & Regional</div>
-      <div class="campo-desc">Plano diretor, parcelamento, mobilidade</div>
+    <div class="activity-card" data-cat="planejamento" style="--cat-color:#a78bfa" data-tooltip="...planejamento físico-territorial, planos de intervenção no espaço urbano, metropolitano e regional fundamentados nos sistemas de infraestrutura, saneamento básico e ambiental, sistema viário, sinalização, tráfego e trânsito urbano e rural, acessibilidade, gestão territorial e ambiental, parcelamento do solo, loteamento, desmembramento, remembramento, arruamento, planejamento urbano, plano diretor, traçado de cidades, desenho urbano, sistema viário, tráfego e trânsito urbano e rural, inventário urbano e regional, assentamentos humanos e requalificação em áreas urbanas e rurais">
+      <div class="campo-number">§ 5º</div>
+      <span class="campo-icon">🗺️</span>      
+      <div class="campo-desc">Do Planejamento Urbano e Regional</div>
     </div>
 
-    <div class="campo-card">
-      <div class="campo-number">CAMPO VI</div>
-      <span class="campo-icon">📏</span>
-      <div class="campo-title">Topografia</div>
-      <div class="campo-desc">Levantamentos, foto-interpretação e sensoriamento</div>
+    <div class="activity-card" data-cat="topografia" style="--cat-color:#a78bfa" data-tooltip="...cadastrais para a realização de projetos de arquitetura, de urbanismo e de paisagismo, foto-interpretação, leitura, interpretação e análise de dados e informações topográficas e sensoriamento remoto">
+      <div class="campo-number">§ 6º</div>
+      <span class="campo-icon">📏</span>      
+      <div class="campo-desc">Da Topografia, elaboração e interpretação de levantamentos topográficos</div>
     </div>
 
-    <div class="campo-card">
-      <div class="campo-number">CAMPO VII</div>
-      <span class="campo-icon">🧱</span>
-      <div class="campo-title">Tecnologia de materiais</div>
-      <div class="campo-desc">Resistência, patologias e recuperações</div>
+    <div class="activity-card" data-cat="tecnologia" style="--cat-color:#a78bfa" data-tooltip="...dos elementos e produtos de construção, patologias e recuperações">
+      <div class="campo-number">§ 7º</div>
+      <span class="campo-icon">🧱</span>      
+      <div class="campo-desc">Da Tecnologia e resistência dos materiais</div>
     </div>
 
-    <div class="campo-card">
-      <div class="campo-number">CAMPO VIII</div>
-      <span class="campo-icon">🏗️</span>
-      <div class="campo-title">Sistemas construtivos & estruturais</div>
-      <div class="campo-desc">Estruturas e aplicação tecnológica</div>
+    <div class="activity-card" data-cat="estruturas" style="--cat-color:#a78bfa" data-tooltip="...estruturas, desenvolvimento de estruturas e aplicação tecnológica de estruturas">
+      <div class="campo-number">§ 8º</div>
+      <span class="campo-icon">🏗️</span>      
+      <div class="campo-desc">Dos sistemas construtivos e estruturais</div>
     </div>
 
-    <div class="campo-card">
-      <div class="campo-number">CAMPO IX</div>
-      <span class="campo-icon">⚡</span>
-      <div class="campo-title">Instalações & equipamentos</div>
-      <div class="campo-desc">Sistemas referentes à arquitetura e urbanismo</div>
+    <div class="activity-card" data-cat="instalações" style="--cat-color:#a78bfa" data-tooltip="De instalações e equipamentos referentes à arquitetura e urbanismo">
+      <div class="campo-number">§ 9º</div>
+      <span class="campo-icon">⚡</span>      
+      <div class="campo-desc">De instalações e equipamentos referentes à arquitetura e urbanismo</div>
     </div>
 
-    <div class="campo-card">
-      <div class="campo-number">CAMPO X</div>
-      <span class="campo-icon">🌡️</span>
-      <div class="campo-title">Conforto Ambiental</div>
-      <div class="campo-desc">Clima, acústica, luminosidade e ergonomia</div>
+    <div class="activity-card" data-cat="conforto" style="--cat-color:#a78bfa" data-tooltip="...acústicas, lumínicas e ergonômicas, para a concepção, organização e construção dos espaços">
+      <div class="campo-number">§ 10º</div>
+      <span class="campo-icon">🌡️</span>      
+      <div class="campo-desc">Do Conforto Ambiental, técnicas referentes ao estabelecimento de condições climáticas</div>
     </div>
 
-    <div class="campo-card">
-      <div class="campo-number">CAMPO XI</div>
-      <span class="campo-icon">♻️</span>
-      <div class="campo-title">Meio Ambiente</div>
-      <div class="campo-desc">Impacto ambiental, licenciamento e sustentabilidade</div>
+    <div class="activity-card" data-cat="ambiente" style="--cat-color:#a78bfa" data-tooltip="...Licenciamento Ambiental, Utilização Racional dos Recursos Disponíveis e Desenvolvimento Sustentável">
+      <div class="campo-number">§ 11º</div>
+      <span class="campo-icon">♻️</span>      
+      <div class="campo-desc">Do Meio Ambiente, Estudo e Avaliação dos Impactos Ambientais</div>
     </div>
 
   </div>

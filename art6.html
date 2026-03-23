@@ -118,7 +118,7 @@
     background:rgba(78,150,220,0.04);
     border:1px solid rgba(78,150,220,0.2);
     border-left:3px solid var(--accent);
-    border-radius:4px; padding:20px 160px 20px 24px;
+    border-radius:4px; padding:40px 80px 20px 24px;
     margin-bottom:32px;
     font-family:'DM Mono',monospace; font-size:13px;
     color:var(--muted2); line-height:1.8;
@@ -136,35 +136,7 @@
   .caput-box strong { color:var(--text); font-weight:500; }
 
   /* ── INCISOS ── */
-  .incisos-grid {
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
-    margin-bottom:52px;
-    animation:fadeUp 0.6s 0.12s ease both;
-  }
-
-  .inciso-card {
-    background:var(--card);
-    border:1px solid var(--border2);
-    border-radius:4px; padding:20px;
-    position:relative; overflow:hidden;
-    transition:all 0.22s;
-  }
-
-  .inciso-card::before {
-    content:'';
-    position:absolute; top:0; left:0;
-    width:100%; height:3px;
-    background:linear-gradient(90deg, var(--accent), transparent);
-  }
-
-  .inciso-card:hover {
-    border-color:rgba(255,255,255,0.12);
-    transform:translateY(-2px);
-  }
-
-  .inciso-num {
+   .inciso-num {
     font-family:'DM Mono',monospace; font-size:11px;
     color:var(--accent); letter-spacing:0.18em;
     text-transform:uppercase; margin-bottom:10px; opacity:0.8;
@@ -265,70 +237,7 @@
     border-color:var(--par-color, var(--blue));
   }
 
-  /* ── FLUXO ESTRANGEIROS ── */
-  .flow-wrapper {
-    margin-bottom:52px;
-    animation:fadeUp 0.6s 0.25s ease both;
-  }
-
-  .flow {
-    display:flex; align-items:stretch; gap:0;
-    overflow-x:auto; padding-bottom:8px;
-  }
-
-  .flow-step {
-    flex:1; min-width:180px;
-    background:var(--card);
-    border:1px solid var(--border2);
-    border-radius:4px; padding:16px;
-    transition:all 0.2s;
-  }
-
-  .flow-step:hover {
-    border-color:rgba(255,255,255,0.12);
-    background:rgba(20,34,52,0.98);
-  }
-
-  .flow-arrow {
-    display:flex; align-items:center; justify-content:center;
-    padding:0 6px; flex-shrink:0;
-    color:var(--muted); font-size:16px;
-    align-self:center;
-  }
-
-  .flow-num {
-    font-family:'DM Mono',monospace; font-size:11px;
-    color:var(--gold); letter-spacing:0.18em;
-    text-transform:uppercase; margin-bottom:10px;
-  }
-
-  .flow-icon { font-size:20px; margin-bottom:8px; display:block; }
-
-  .flow-title {
-    font-size:14px; font-weight:700;
-    color:var(--text); margin-bottom:6px; line-height:1.3;
-  }
-
-  .flow-desc {
-    font-family:'DM Mono',monospace; font-size:12px;
-    color:var(--muted2); line-height:1.6;
-  }
-
-  .flow-outcome {
-    margin-top:10px; padding:8px 10px;
-    border-radius:3px;
-    background:rgba(78,150,220,0.08);
-    border:1px solid rgba(78,150,220,0.15);
-    font-family:'DM Mono',monospace; font-size:12px;
-    color:var(--blue2); line-height:1.5;
-  }
-
-  .flow-outcome.red {
-    background:rgba(232,96,75,0.08);
-    border-color:rgba(232,96,75,0.2);
-    color:var(--red);
-  }
-
+  
   /* ── NOTE ── */
   .footnote {
     border:1px solid var(--border2);
@@ -396,7 +305,7 @@
 
   <header class="header">
     <div class="eyebrow">Art. 6º · CAU/BR</div>
-    <h1>Requisitos para o<br><em>registro profissional</em></h1>
+    <h1>São requisitos<br><em> para o registro</em></h1>
   </header>
 
   <!-- CAPUT -->
@@ -406,30 +315,9 @@
     <strong>II</strong> — diploma de graduação em arquitetura e urbanismo, obtido em instituição de ensino superior <strong>oficialmente reconhecida pelo poder público</strong>.
   </div>
 
-  <!-- INCISOS -->
-  <div class="section-label"><h2>Os dois requisitos — incisos I e II</h2></div>
-  <div class="incisos-grid">
-
-    <div class="inciso-card">
-      <div class="inciso-num">Inciso I</div>
-      <span class="inciso-icon">⚖️</span>
-      <div class="inciso-title">Capacidade civil</div>
-      <div class="inciso-text">Requisito de ordem pessoal. O profissional deve ser civilmente capaz nos termos do Código Civil — em regra, maior de 18 anos ou emancipado, sem interdição.</div>
-      <span class="inciso-tag">Requisito pessoal</span>
-    </div>
-
-    <div class="inciso-card">
-      <div class="inciso-num">Inciso II</div>
-      <span class="inciso-icon">🎓</span>
-      <div class="inciso-title">Diploma de graduação</div>
-      <div class="inciso-text">Diploma de graduação em arquitetura e urbanismo obtido em instituição de ensino superior oficialmente reconhecida pelo poder público.</div>
-      <span class="inciso-tag">Requisito formativo</span>
-    </div>
-
-  </div>
 
   <!-- PARÁGRAFOS -->
-  <div class="section-label"><h2>Casos especiais — §§ 1º ao 3º</h2></div>
+  <div class="section-label"><h2>§§ 1º ao 3º</h2></div>
 
   <div class="parag-grid">
 
@@ -437,62 +325,34 @@
       <div class="par-num">§ 1º</div>
       <span class="par-icon">🌐</span>
       <div class="par-title">Diploma estrangeiro revalidado</div>
-      <div class="par-text">Poderão obter registro no CAU os portadores de diploma de graduação em Arquitetura e Urbanismo ou de diploma de arquiteto ou arquiteto e urbanista, obtido em instituição estrangeira de ensino superior reconhecida no respectivo país e <strong style="color:var(--text)">devidamente revalidado por instituição nacional credenciada</strong>.</div>
-      <span class="par-tag">Diploma estrangeiro</span>
+      <div class="par-text">Poderão obter registro no CAU os portadores de diploma de graduação em Arquitetura e Urbanismo ou de diploma 
+        de arquiteto ou arquiteto e urbanista, obtido em instituição estrangeira de ensino 
+        superior reconhecida no respectivo país e <strong style="color:var(--text)">devidamente revalidado por 
+          instituição nacional credenciada</strong>.</div>      
     </div>
 
     <div class="par-card" style="--par-color:#e8b84b">
       <div class="par-num">§ 2º</div>
       <span class="par-icon">🛂</span>
       <div class="par-title">Profissional estrangeiro sem domicílio no País</div>
-      <div class="par-text">Cumpridos os requisitos dos incisos I e II do caput, poderão obter registro no CAU dos Estados ou do Distrito Federal, <strong style="color:var(--text)">em caráter excepcional e por tempo determinado</strong>, profissionais estrangeiros sem domicílio no País.</div>
-      <span class="par-tag">Excepcional · temporário</span>
+      <div class="par-text">Cumpridos os requisitos dos incisos I e II do caput, poderão obter registro no CAU dos Estados ou do Distrito 
+        Federal, <strong style="color:var(--text)">em caráter excepcional e por tempo determinado</strong>, profissionais 
+        estrangeiros sem domicílio no País.</div>      
     </div>
 
     <div class="par-card" style="--par-color:#e8604b">
       <div class="par-num">§ 3º</div>
       <span class="par-icon">🤝</span>
       <div class="par-title">Condição para o registro excepcional</div>
-      <div class="par-text">A concessão do registro de que trata o § 2º é condicionada à efetiva participação de <strong style="color:var(--text)">arquiteto e urbanista ou sociedade de arquitetos, com registro no CAU Estadual ou no Distrito Federal e com domicílio no País</strong>, no acompanhamento em todas as fases das atividades a serem desenvolvidas pelos profissionais estrangeiros.</div>
-      <span class="par-tag">Condição de acompanhamento</span>
+      <div class="par-text">A concessão do registro de que trata o § 2º é condicionada à 
+        efetiva participação de <strong style="color:var(--text)">arquiteto e urbanista ou sociedade de arquitetos, com registro no
+           CAU Estadual ou no Distrito Federal e com domicílio no País</strong>, no acompanhamento em todas as fases das atividades 
+           a serem desenvolvidas pelos profissionais estrangeiros.</div>      
     </div>
 
   </div>
 
-  <!-- FLUXO ESTRANGEIRO -->
-  <div class="flow-wrapper">
-    <div class="section-label"><h2>Fluxo para registro de profissional estrangeiro — §§ 2º e 3º</h2></div>
-    <div class="flow">
 
-      <div class="flow-step">
-        <div class="flow-num">Pré-requisito</div>
-        <span class="flow-icon">📋</span>
-        <div class="flow-title">Requisitos do caput</div>
-        <div class="flow-desc">Capacidade civil e diploma reconhecido no país de origem</div>
-      </div>
-
-      <div class="flow-arrow">›</div>
-
-      <div class="flow-step">
-        <div class="flow-num">Condição</div>
-        <span class="flow-icon">🤝</span>
-        <div class="flow-title">Participação de profissional local</div>
-        <div class="flow-desc">Arquiteto ou sociedade com registro no CAU e domicílio no Brasil deve acompanhar todas as fases</div>
-        <div class="flow-outcome">§ 3º — condição obrigatória</div>
-      </div>
-
-      <div class="flow-arrow">›</div>
-
-      <div class="flow-step">
-        <div class="flow-num">Resultado</div>
-        <span class="flow-icon">🛂</span>
-        <div class="flow-title">Registro excepcional</div>
-        <div class="flow-desc">Concedido pelo CAU do Estado ou do DF em caráter excepcional e por tempo determinado</div>
-        <div class="flow-outcome red">§ 2º — não é registro ordinário</div>
-      </div>
-
-    </div>
-  </div>
 
   <div class="footnote">
     <span style="font-size:18px;flex-shrink:0;margin-top:2px">⚖️</span>

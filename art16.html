@@ -131,73 +131,7 @@
 
   .caput-box strong { color:var(--text); font-weight:500; }
 
-  .section-label {
-    display:flex; align-items:center; gap:14px;
-    margin-bottom:20px;
-  }
-
-  .section-label h2 {
-    font-family:'DM Mono',monospace; font-size:12px;
-    color:var(--muted); letter-spacing:0.2em;
-    text-transform:uppercase; white-space:nowrap;
-  }
-
-  .section-label::after {
-    content:''; flex:1; height:1px; background:var(--border2);
-  }
-
-  /* REGRA DO CAPUT */
-  .regra-wrapper {
-    margin-bottom:52px;
-    animation:fadeUp 0.6s 0.15s ease both;
-  }
-
-  .regra-card {
-    background:rgba(122,184,245,0.05);
-    border:1px solid rgba(122,184,245,0.2);
-    border-radius:4px; padding:28px 32px;
-    display:flex; align-items:flex-start; gap:24px;
-    margin-bottom:14px;
-  }
-
-  .regra-icon { font-size:36px; flex-shrink:0; }
-
-  .regra-label {
-    font-family:'DM Mono',monospace; font-size:11px;
-    color:var(--accent); letter-spacing:0.2em;
-    text-transform:uppercase; margin-bottom:8px; opacity:0.8;
-  }
-
-  .regra-title {
-    font-family:'Fraunces',serif; font-size:20px;
-    font-weight:600; color:var(--text); margin-bottom:8px;
-  }
-
-  .regra-text {
-    font-family:'DM Mono',monospace; font-size:13px;
-    color:var(--muted2); line-height:1.65;
-  }
-
-  .regra-tag {
-    display:inline-block; margin-top:10px;
-    padding:3px 10px; border-radius:2px;
-    font-family:'DM Mono',monospace; font-size:11px;
-    letter-spacing:0.12em; text-transform:uppercase;
-    border:1px solid rgba(122,184,245,0.4);
-    color:var(--accent);
-  }
-
-  .excecao-note {
-    background:var(--card);
-    border:1px solid var(--border2);
-    border-radius:4px; padding:14px 20px;
-    font-family:'DM Mono',monospace; font-size:13px;
-    color:var(--muted2); line-height:1.65;
-    display:flex; gap:12px; align-items:flex-start;
-  }
-
-  .excecao-note strong { color:var(--text); font-weight:500; }
-
+ 
   /* PARÁGRAFOS */
   .par-grid {
     display:grid;
@@ -253,64 +187,7 @@
     border-color:var(--par-color, var(--accent));
   }
 
-  /* FLUXO DE AUTORIA PÓS-ALTERAÇÃO */
-  .fluxo-wrapper {
-    margin-bottom:52px;
-    animation:fadeUp 0.6s 0.25s ease both;
-  }
-
-  .fluxo {
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
-  }
-
-  .fluxo-card {
-    background:var(--card);
-    border:1px solid var(--border2);
-    border-radius:4px; padding:20px;
-    position:relative; overflow:hidden;
-    transition:all 0.22s;
-  }
-
-  .fluxo-card::before {
-    content:'';
-    position:absolute; top:0; left:0;
-    width:2px; height:100%;
-    background:var(--fluxo-color, var(--teal));
-    opacity:0.5; transition:opacity 0.22s;
-  }
-
-  .fluxo-card:hover { border-color:rgba(255,255,255,0.12); transform:translateY(-2px); }
-  .fluxo-card:hover::before { opacity:1; }
-
-  .fluxo-label {
-    font-family:'DM Mono',monospace; font-size:11px;
-    color:var(--fluxo-color, var(--teal));
-    letter-spacing:0.18em; text-transform:uppercase;
-    margin-bottom:10px; opacity:0.8;
-  }
-
-  .fluxo-scenario {
-    font-size:14px; font-weight:700;
-    color:var(--text); margin-bottom:6px; line-height:1.3;
-  }
-
-  .fluxo-result {
-    font-family:'DM Mono',monospace; font-size:13px;
-    color:var(--muted2); line-height:1.6;
-    margin-bottom:10px;
-  }
-
-  .fluxo-tag {
-    display:inline-block;
-    padding:2px 8px; border-radius:2px;
-    font-family:'DM Mono',monospace; font-size:11px;
-    letter-spacing:0.12em; text-transform:uppercase;
-    border:1px solid; opacity:0.7;
-    color:var(--fluxo-color, var(--teal));
-    border-color:var(--fluxo-color, var(--teal));
-  }
+  
 
   .footnote {
     border:1px solid var(--border2);
@@ -385,83 +262,46 @@
     Alterações em trabalho de autoria de arquiteto e urbanista, tanto em <strong>projeto</strong> como em <strong>obra dele resultante</strong>, somente poderão ser feitas mediante <strong>consentimento por escrito</strong> da pessoa natural titular dos direitos autorais, salvo <strong>pactuação em contrário</strong>.
   </div>
 
-  <!-- REGRA DO CAPUT -->
-  <div class="regra-wrapper">
-    <div class="section-label"><h2>Regra geral — caput</h2></div>
-    <div class="regra-card">
-      <span class="regra-icon">✍️</span>
-      <div>
-        <div class="regra-label">Condição para alteração</div>
-        <div class="regra-title">Consentimento por escrito do autor</div>
-        <div class="regra-text">Qualquer alteração — tanto no projeto quanto na obra construída — exige o consentimento <strong style="color:var(--text)">por escrito</strong> da pessoa natural titular dos direitos autorais. A regra protege a integridade intelectual e técnica da obra. Aplica-se a projeto e a obra construída igualmente.</div>
-        <span class="regra-tag">Forma escrita obrigatória</span>
-      </div>
-    </div>
-    <div class="excecao-note">
-      <span style="font-size:16px;flex-shrink:0;margin-top:2px">⚠️</span>
-      <p><strong>Exceção expressa:</strong> A exigência de consentimento por escrito cede diante de <strong>pactuação em contrário</strong> — condição negociada no contrato original que autorize determinadas modificações sem necessidade de aprovação caso a caso.</p>
-    </div>
-  </div>
-
   <!-- QUATRO PARÁGRAFOS -->
-  <div class="section-label"><h2>Casos especiais — §§ 1º ao 4º</h2></div>
+  <div class="section-label"><h2>§§ 1º a 4º</h2></div>
   <div class="par-grid">
 
     <div class="par-card" style="--par-color:#7ab8f5">
       <div class="par-num">§ 1º</div>
       <span class="par-icon">🤝</span>
       <div class="par-title">Coautoria — concordância de todos</div>
-      <div class="par-text">No caso de existência de coautoria, salvo pactuação em contrário, será necessária a <strong style="color:var(--text)">concordância de todos os coautores</strong> para que a alteração seja autorizada. Nenhum coautor sozinho pode consentir em nome dos demais.</div>
-      <span class="par-tag">Unanimidade dos coautores</span>
+      <div class="par-text">No caso de existência de coautoria, salvo pactuação em contrário, será necessária a <strong style="color:var(--text)">concordância de todos os coautores.</strong></div>
     </div>
 
     <div class="par-card" style="--par-color:#3dd6c8">
       <div class="par-num">§ 2º</div>
       <span class="par-icon">⚖️</span>
       <div class="par-title">Falecimento ou incapacidade civil do autor</div>
-      <div class="par-text">Em caso de <strong style="color:var(--text)">falecimento ou incapacidade civil</strong> do autor do projeto original, as alterações poderão ser feitas pelo coautor ou, não havendo coautor, por outro profissional habilitado, <strong style="color:var(--text)">independentemente de autorização</strong>, assumindo a responsabilidade pelo projeto modificado.</div>
-      <span class="par-tag">Continuidade da obra</span>
+      <div class="par-text">Em caso de <strong style="color:var(--text)">falecimento ou de incapacidade civil</strong> do autor do projeto original, 
+        as alterações ou modificações poderão ser feitas pelo coautor ou, em não havendo coautor, 
+    por outro profissional habilitado, <strong style="color:var(--text)">independentemente de autorização</strong>, que assumirá a responsabilidade pelo projeto modificado.</div>
     </div>
 
     <div class="par-card" style="--par-color:#e8b84b">
       <div class="par-num">§ 3º</div>
       <span class="par-icon">📋</span>
       <div class="par-title">Laudo de não participação</div>
-      <div class="par-text">Ao arquiteto e urbanista que <strong style="color:var(--text)">não participar de alteração</strong> em obra ou trabalho de sua autoria é permitido o registro de <strong style="color:var(--text)">laudo no CAU de seu domicílio</strong>, com o objetivo de garantir a autoria e determinar os limites de sua responsabilidade.</div>
-      <span class="par-tag">Proteção da autoria</span>
+      <div class="par-text">Ao arquiteto e urbanista que <strong style="color:var(--text)">não participar de alteração</strong> em obra ou trabalho
+         de sua autoria é permitido o registro de <strong style="color:var(--text)">laudo no CAU de seu domicílio</strong>, com o objetivo de 
+         garantir a autoria e determinar os limites de sua responsabilidade.</div>
     </div>
-
+  
     <div class="par-card" style="--par-color:#a78bfa">
       <div class="par-num">§ 4º</div>
       <span class="par-icon">👥</span>
       <div class="par-title">Coautoria do resultado alterado</div>
-      <div class="par-text">Se a alteração não foi concebida pelo autor do projeto original, o resultado final terá como <strong style="color:var(--text)">coautores</strong> o autor original e o autor da alteração — salvo decisão expressa em contrário do primeiro, caso em que a autoria passa a ser <strong style="color:var(--text)">apenas do autor das alterações</strong>.</div>
-      <span class="par-tag">Coautoria ou transferência</span>
+      <div class="par-text">Na hipótese de a alteração não ter sido concebida pelo autor do projeto original, o resultado final terá como <strong style="color:var(--text)">coautores</strong> o arquiteto e urbanista 
+    autor do projeto original e o autor do projeto de alteração, salvo decisão expressa em contrário do primeiro, caso em que a 
+    autoria da obra passa a ser <strong style="color:var(--text)">apenas do profissional que houver efetuado as alterações.</strong>.</div>
     </div>
 
   </div>
 
-  <!-- FLUXO DE AUTORIA PÓS-ALTERAÇÃO -->
-  <div class="fluxo-wrapper">
-    <div class="section-label"><h2>Resultado de autoria após alteração — § 4º</h2></div>
-    <div class="fluxo">
-
-      <div class="fluxo-card" style="--fluxo-color:#7ab8f5">
-        <div class="fluxo-label">Cenário A</div>
-        <div class="fluxo-scenario">Autor original não se manifesta contrariamente</div>
-        <div class="fluxo-result">O resultado final da obra alterada tem como <strong style="color:var(--text)">coautores</strong> o arquiteto autor do projeto original e o arquiteto autor do projeto de alteração.</div>
-        <span class="fluxo-tag">Coautoria presumida</span>
-      </div>
-
-      <div class="fluxo-card" style="--fluxo-color:#a78bfa">
-        <div class="fluxo-label">Cenário B</div>
-        <div class="fluxo-scenario">Autor original decide expressamente não ser coautor</div>
-        <div class="fluxo-result">A autoria da obra <strong style="color:var(--text)">passa a ser apenas</strong> do profissional que efetuou as alterações. O autor original se desvincula da responsabilidade e da autoria do resultado final.</div>
-        <span class="fluxo-tag">Transferência de autoria</span>
-      </div>
-
-    </div>
-  </div>
 
   <div class="footnote">
     <span style="font-size:18px;flex-shrink:0;margin-top:2px">⚖️</span>

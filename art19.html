@@ -28,18 +28,7 @@
   .section-label{display:flex;align-items:center;gap:14px;margin-bottom:20px;}
   .section-label h2{font-family:'DM Mono',monospace;font-size:12px;color:var(--muted);letter-spacing:0.2em;text-transform:uppercase;white-space:nowrap;}
   .section-label::after{content:'';flex:1;height:1px;background:var(--border2);}
-  /* SANÇÕES */
-  .san-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:32px;animation:fadeUp 0.6s 0.15s ease both;}
-  .san-card{background:var(--card);border:1px solid var(--border2);border-radius:4px;overflow:hidden;transition:all 0.22s;}
-  .san-card:hover{border-color:rgba(232,96,75,0.4);transform:translateY(-2px);}
-  .san-header{background:rgba(232,96,75,0.08);padding:14px 20px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(232,96,75,0.12);}
-  .san-icon{font-size:20px;}
-  .san-num{font-family:'DM Mono',monospace;font-size:11px;color:var(--red);letter-spacing:0.15em;text-transform:uppercase;opacity:0.8;}
-  .san-title{font-size:15px;font-weight:700;color:var(--red);line-height:1.2;}
-  .san-body{padding:18px 20px;}
-  .san-text{font-family:'DM Mono',monospace;font-size:13px;color:var(--muted2);line-height:1.6;}
-  .san-detail{display:inline-block;margin-top:10px;padding:3px 10px;border-radius:2px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;background:rgba(232,96,75,0.08);border:1px solid rgba(232,96,75,0.25);color:var(--red);}
-  /* PARÁGRAFOS */
+/* PARÁGRAFOS */
   .par-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;margin-bottom:52px;animation:fadeUp 0.6s 0.2s ease both;}
   .par-card{background:var(--card);border:1px solid var(--border2);border-radius:4px;padding:20px;position:relative;overflow:hidden;transition:all 0.22s;}
   .par-card::before{content:'';position:absolute;top:0;left:0;width:2px;height:100%;background:var(--pc,var(--red));opacity:0.5;transition:opacity 0.22s;}
@@ -65,11 +54,13 @@
   <div class="topbar-crumb"></div>
   <a class="topbar-next" href="art20.html">Art. 20 </a>
 </div>
+
 <div class="container">
   <header class="header">
-    <div class="eyebrow">Art. 19 · Ética & Sanções</div>
+    <div class="eyebrow">Art. 19 · Ética</div>
     <h1>Sanções disciplinares —<br><em>advertência, suspensão, cancelamento e multa</em></h1>
   </header>
+
   <div class="caput-box">
     São <strong>sanções disciplinares</strong>:<br><br>
     <strong>I</strong> — advertência;<br>
@@ -77,70 +68,46 @@
     <strong>III</strong> — cancelamento do registro; e<br>
     <strong>IV</strong> — multa no valor entre <strong>1 (uma) a 10 (dez) anuidades</strong>.
   </div>
-  <div class="section-label"><h2>Regras especiais — §§ 1º ao 5º</h2></div>
+  <div class="section-label"><h2>§§ 1º ao 5º</h2></div>
   <div class="par-grid">
     <div class="par-card" style="--pc:#7ab8f5">
       <div class="par-num">§ 1º</div>
       <div class="par-title">Aplicação à pessoa natural</div>
       <div class="par-text">As sanções deste artigo são aplicáveis à <strong style="color:var(--text)">pessoa natural</strong> dos arquitetos e urbanistas.</div>
-      <span class="par-tag">Pessoa física</span>
+      
     </div>
+
     <div class="par-card" style="--pc:#3dd6c8">
       <div class="par-num">§ 2º</div>
       <div class="par-title">Extensão às sociedades</div>
       <div class="par-text">As sanções poderão ser aplicadas às <strong style="color:var(--text)">sociedades de prestação de serviços com atuação nos campos da arquitetura e do urbanismo,</strong> sem prejuízo da responsabilização da pessoa natural do arquiteto e urbanista.</div>
-      <span class="par-tag">Pessoa jurídica + pessoa física</span>
+      
     </div>
+
     <div class="par-card" style="--pc:#e8b84b">
       <div class="par-num">§ 3º</div>
       <div class="par-title">Suspensão por inadimplência</div>
       <div class="par-text">No caso em que o profissional ou sociedade de arquitetos e urbanistas deixar de pagar a anuidade, taxas, preços de serviços e multas devidos ao CAU/BR ou aos CAUs, quando devidamente notificado, será aplicada <strong style="color:var(--text)">suspensão até a regularização da dívida</strong>.</div>
-      <span class="par-tag">Suspensão por dívida</span>
+      
     </div>
+
     <div class="par-card" style="--pc:#e8604b">
       <div class="par-num">§ 4º</div>
       <div class="par-title">Cumulatividade da multa</div>
       <div class="par-text">A sanção prevista no inciso IV pode <strong style="color:var(--text)">incidir cumulativamente</strong> com as demais.</div>
-      <span class="par-tag">Multa cumulável</span>
+      
     </div>
+
     <div class="par-card" style="--pc:#a78bfa">
       <div class="par-num">§ 5º</div>
       <div class="par-title">Comunicação a outro Conselho</div>
       <div class="par-text">Caso constatado que a infração disciplinar teve participação de <strong style="color:var(--text)">profissional vinculado ao conselho de outra profissão</strong>, será comunicado o conselho responsável.</div>
-      <span class="par-tag">Comunicação interconselhos</span>
+      
     </div>
   </div>
-  <div class="section-label"><h2>Quatro sanções — incisos I ao IV</h2></div>
-  <div class="san-grid">
-    <div class="san-card">
-      <div class="san-header"><span class="san-icon">📋</span><div><div class="san-num">Inciso I</div><div class="san-title">Advertência</div></div></div>
-      <div class="san-body">
-        <div class="san-text">Sanção mais leve — formal notificação de que a conduta do profissional viola norma ética ou legal. Não suspende o exercício da profissão, mas integra o histórico disciplinar do profissional.</div>
-        <span class="san-detail">Sanção mais leve</span>
-      </div>
-    </div>
-    <div class="san-card">
-      <div class="san-header"><span class="san-icon">⏸️</span><div><div class="san-num">Inciso II</div><div class="san-title">Suspensão</div></div></div>
-      <div class="san-body">
-        <div class="san-text">Proibição temporária de exercer a atividade de arquitetura e urbanismo em todo o território nacional. Duração: mínimo de 30 dias, máximo de 1 ano. Aplica-se em todo o Brasil.</div>
-        <span class="san-detail">30 dias a 1 ano · nacional</span>
-      </div>
-    </div>
-    <div class="san-card">
-      <div class="san-header"><span class="san-icon">🚫</span><div><div class="san-num">Inciso III</div><div class="san-title">Cancelamento do registro</div></div></div>
-      <div class="san-body">
-        <div class="san-text">Sanção máxima — extinção do registro profissional no CAU, impedindo definitivamente o exercício da profissão. Reservada para infrações graves ou reiteradas.</div>
-        <span class="san-detail">Sanção máxima</span>
-      </div>
-    </div>
-    <div class="san-card">
-      <div class="san-header"><span class="san-icon">💰</span><div><div class="san-num">Inciso IV</div><div class="san-title">Multa</div></div></div>
-      <div class="san-body">
-        <div class="san-text">Sanção pecuniária entre 1 e 10 anuidades. Pode incidir cumulativamente com as demais sanções (§ 4º) — é a única com previsão expressa de cumulatividade.</div>
-        <span class="san-detail">1 a 10 anuidades · cumulável</span>
-      </div>
-    </div>
-  </div>
+
+ 
+
   <div class="footnote">
     <span style="font-size:18px;flex-shrink:0;margin-top:2px">⚖️</span>
     <p><strong>Nota legal:</strong> Esta representação é uma simplificação visual da Lei nº 12.378/2010,
