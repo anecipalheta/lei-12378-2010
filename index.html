@@ -7,531 +7,85 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0d1117;
-    --bg2: #131920;
-    --grid: rgba(78,150,220,0.065);
-    --gold: #e8b84b;
-    --gold2: #f5d07a;
-    --blue: #4e96dc;
-    --blue2: #7ab8f5;
-    --teal: #3dd6c8;
-    --red: #e8604b;
-    --violet: #a78bfa;
-    --text: #e8e6e0;
-    --muted: #5a6a7d;
-    --muted2: #8a9ab0;
-    --border: rgba(78,150,220,0.15);
-    --border2: rgba(255,255,255,0.06);
-    --card: rgba(16,24,36,0.9);
+    --bg:#0d1117;--grid:rgba(78,150,220,0.065);--gold:#e8b84b;--blue:#4e96dc;--blue2:#7ab8f5;
+    --teal:#3dd6c8;--red:#e8604b;--violet:#a78bfa;--text:#e8e6e0;--muted:#5a6a7d;--muted2:#8a9ab0;
+    --border:rgba(78,150,220,0.15);--border2:rgba(255,255,255,0.06);--card:rgba(16,24,36,0.9);
   }
-
-  * { margin:0; padding:0; box-sizing:border-box; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Syne', sans-serif;
-    min-height: 100vh;
-    overflow-x: hidden;
-    font-size: 22px;
-  }
-
-  /* Grid blueprint */
-  body::before {
-    content:'';
-    position:fixed; inset:0;
-    background-image:
-      linear-gradient(var(--grid) 1px, transparent 1px),
-      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-    background-size: 40px 40px;
-    pointer-events:none; z-index:0;
-  }
-
-  /* Ambient glow */
-  .ambient {
-    position:fixed; inset:0; pointer-events:none; z-index:0;
-    background:
-      radial-gradient(ellipse 60% 50% at 15% 10%, rgba(78,150,220,0.08) 0%, transparent 70%),
-      radial-gradient(ellipse 50% 40% at 85% 85%, rgba(232,184,75,0.07) 0%, transparent 70%),
-      radial-gradient(ellipse 40% 40% at 50% 50%, rgba(61,214,200,0.03) 0%, transparent 70%);
-  }
-
-  .container { position:relative; z-index:1; max-width:1200px; margin:0 auto; padding:0 24px 80px; }
-
-  /* ── TOP BAR ── */
-  .topbar {
-    display:flex; align-items:center; justify-content:space-between;
-    padding: 18px 24px;
-    border-bottom: 1px solid var(--border2);
-    position:relative; z-index:10;
-    margin-bottom: 0;
-  }
-
-  .topbar-logo {
-    display:flex; align-items:center; gap:10px;
-  }
-
-  .topbar-badge {
-    display:inline-flex; align-items:center; gap:6px;
-    background: rgba(232,184,75,0.1);
-    border: 1px solid rgba(232,184,75,0.25);
-    border-radius:2px;
-    padding: 4px 10px;
-    font-family:'DM Mono',monospace;
-    font-size:12px;
-    color: var(--gold);
-    letter-spacing:0.12em;
-    text-transform:uppercase;
-  }
-
-  .topbar-badge::before {
-    content:'';
-    width:6px; height:6px;
-    border-radius:50%;
-    background:var(--gold);
-    animation: pulse 2s infinite;
-  }
-
-  @keyframes pulse {
-    0%,100% { opacity:1; }
-    50% { opacity:0.3; }
-  }
-
-  .topbar-right {
-    font-family:'DM Mono',monospace;
-    font-size:10px;
-    color:var(--muted);
-    letter-spacing:0.08em;
-  }
-
-  /* ── HERO ── */
-  .hero {
-    padding: 64px 0 52px;
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
-    align-items: start;
-    animation: fadeUp 0.8s ease both;
-  }
-
-  @media(max-width:800px) {
-    .hero { grid-template-columns:1fr; gap:40px; }
-  }
-
-
-  .hero-eyebrow {
-    font-family:'DM Mono',monospace;
-    font-size:12px;
-    color:var(--gold);
-    letter-spacing:0.22em;
-    text-transform:uppercase;
-    margin-bottom:16px;
-    display:flex; align-items:center; gap:10px;
-  }
-
-  .hero-eyebrow::before {
-    content:'';
-    display:block; width:32px; height:1px;
-    background:var(--gold);
-  }
-
-  .hero h1 {
-    font-family:'Fraunces',serif;
-    font-size: clamp(26px,4vw,46px);
-    font-weight:600;
-    line-height:1.12;
-    margin-bottom:12px;
-    letter-spacing:-0.01em;
-  }
-
-  .hero h1 em {
-    color:var(--gold);
-    font-style:italic;
-    font-weight:300;
-  }
-
-  .hero-sub {
-    font-family:'DM Mono',monospace;
-    font-size:13px;
-    color:var(--muted2);
-    letter-spacing:0.06em;
-    text-transform:uppercase;
-    margin-bottom:32px;
-  }
-
-  .hero-box {
-    border:1px solid var(--border);
-    border-radius:4px;
-    background: rgba(78,150,220,0.05);
-    padding:20px 24px;
-    border-left: 3px solid var(--blue);
-    position:relative;
-    overflow:hidden;
-    margin-top: 44px;
-  }
-
-  .hero-box::before {
-    content:'ementa';
-    position:absolute; top:12px; right:14px;
-    font-family:'DM Mono',monospace;
-    font-size:9px;
-    letter-spacing:0.15em;
-    color:var(--muted);
-    text-transform:uppercase;
-  }
-
-  .hero-box p {
-    font-size:13px;
-    color:var(--muted2);
-    line-height:1.75;
-    font-family:'DM Mono',monospace;
-    padding-right:40px;
-  }
-
-  /* RIGHT SIDE */
-  .hero-right {
-    display:flex; flex-direction:column; gap:16px;
-  }
-
-  .art1-highlight {
-    background: var(--card);
-    border:1px solid rgba(232,184,75,0.25);
-    border-radius:4px;
-    padding:24px;
-    position:relative;
-    overflow:hidden;
-  }
-
-  .art1-highlight::before {
-    content:'';
-    position:absolute; top:0; left:0;
-    width:100%; height:3px;
-    background: linear-gradient(90deg, var(--gold), transparent);
-  }
-
-  .art1-num {
-    font-family:'DM Mono',monospace;
-    font-size:12px;
-    color:var(--gold);
-    letter-spacing:0.18em;
-    text-transform:uppercase;
-    margin-bottom:12px;
-  }
-
-  .art1-quote {
-    font-family:'Fraunces',serif;
-    font-size:18px;
-    font-weight:300;
-    font-style:italic;
-    line-height:1.5;
-    color:var(--text);
-    margin-bottom:10px;
-  }
-
-  .art1-label {
-    font-family:'DM Mono',monospace;
-    font-size:12px;
-    color:var(--muted);
-    letter-spacing:0.1em;
-  }
-
-  /* STATS */
-  .stats-row {
-    display:grid; grid-template-columns: repeat(3,1fr);
-    gap:1px;
-    background:var(--border2);
-    border:1px solid var(--border2);
-    border-radius:4px;
-    overflow:hidden;
-  }
-
-  .stat-box {
-    background:var(--card);
-    padding:16px;
-    text-align:center;
-    transition: background 0.2s;
-  }
-
-  .stat-box:hover { background:rgba(20,30,45,0.98); }
-
-  .stat-n {
-    font-family:'Fraunces',serif;
-    font-size:30px;
-    font-weight:300;
-    color:var(--teal);
-    line-height:1;
-    margin-bottom:4px;
-  }
-
-  .stat-l {
-    font-family:'DM Mono',monospace;
-    font-size:9px;
-    color:var(--muted);
-    letter-spacing:0.1em;
-    text-transform:uppercase;
-  }
-
-  /* ── SEARCH + FILTER ── */
-  .search-section {
-    margin-bottom:28px;
-    animation: fadeUp 0.6s 0.15s ease both;
-  }
-
-  .search-wrapper {
-    position:relative;
-    margin-bottom:16px;
-  }
-
-  .search-input {
-    width:100%;
-    background: rgba(16,24,36,0.9);
-    border:1px solid var(--border);
-    border-radius:3px;
-    padding:12px 16px 12px 44px;
-    font-family:'DM Mono',monospace;
-    font-size:12px;
-    color:var(--text);
-    outline:none;
-    transition:border-color 0.2s;
-    letter-spacing:0.04em;
-  }
-
-  .search-input::placeholder { color:var(--muted); }
-  .search-input:focus { border-color:var(--blue); }
-
-  .search-icon {
-    position:absolute; left:14px; top:50%;
-    transform:translateY(-50%);
-    color:var(--muted);
-    font-size:14px;
-    pointer-events:none;
-  }
-
-  .search-count {
-    position:absolute; right:14px; top:50%;
-    transform:translateY(-50%);
-    font-family:'DM Mono',monospace;
-    font-size:10px;
-    color:var(--muted);
-  }
-
-  .chapter-filters {
-    display:flex; gap:8px; flex-wrap:wrap;
-  }
-
-  .ch-btn {
-    background:transparent;
-    border:1px solid var(--border2);
-    border-radius:2px;
-    color:var(--muted);
-    padding:5px 12px;
-    font-family:'DM Mono',monospace;
-    font-size:12px;
-    letter-spacing:0.08em;
-    text-transform:uppercase;
-    cursor:pointer;
-    transition:all 0.18s;
-    white-space:nowrap;
-  }
-
-  .ch-btn:hover { border-color:var(--blue); color:var(--blue2); }
-  .ch-btn.active {
-    background:var(--ch-color,var(--blue));
-    border-color:var(--ch-color,var(--blue));
-    color:#0d1117;
-    font-weight:600;
-  }
-
-  /* ── CHAPTERS + ARTICLES ── */
-  .chapters {
-    display:flex; flex-direction:column; gap:32px;
-    animation: fadeUp 0.6s 0.2s ease both;
-  }
-
-
-  .chapter-header {
-    display:flex; align-items:center; gap:14px;
-    margin-bottom:14px;
-    cursor:pointer;
-    user-select:none;
-  }
-
-  .chapter-tag {
-    display:inline-flex; align-items:center; gap:6px;
-    padding:4px 10px;
-    border-radius:2px;
-    font-family:'DM Mono',monospace;
-    font-size:9px;
-    font-weight:600;
-    letter-spacing:0.16em;
-    text-transform:uppercase;
-    white-space:nowrap;
-    background:rgba(0,0,0,0.3);
-    border:1px solid;
-    flex-shrink:0;
-  }
-
-  .chapter-name {
-    font-size:14px;
-    font-weight:700;
-    color:var(--text);
-    letter-spacing:0.02em;
-  }
-
-  .chapter-count {
-    margin-left:auto;
-    font-family:'DM Mono',monospace;
-    font-size:12px;
-    color:var(--muted);
-    flex-shrink:0;
-  }
-
-  .chapter-line {
-    flex:1; height:1px; background:var(--border2);
-  }
-
-  /* Article list */
-  .article-list {
-    display:grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px,1fr));
-    gap:8px;
-    overflow:hidden;
-    transition:max-height 0.4s ease;
-  }
-
-  .article-item {
-    display:flex; align-items:flex-start; gap:14px;
-    background: var(--card);
-    border:1px solid var(--border2);
-    border-radius:3px;
-    padding:14px 16px;
-    cursor:pointer;
-    transition:all 0.2s;
-    text-decoration:none;
-    position:relative;
-    overflow:hidden;
-  }
-
-  .article-item::before {
-    content:'';
-    position:absolute; top:0; left:0;
-    width:2px; height:100%;
-    background:var(--ch-color,var(--blue));
-    opacity:0;
-    transition:opacity 0.2s;
-  }
-
-  .article-item:hover {
-    border-color:rgba(255,255,255,0.12);
-    background:rgba(20,32,50,0.95);
-    transform:translateY(-1px);
-  }
-
-  .article-item:hover::before { opacity:1; }
-
-  .article-item.vetado {
-    opacity:0.45;
-  }
-
-  .article-item.vetado:hover { opacity:0.6; }
-
-  .art-num {
-    font-family:'DM Mono',monospace;
-    font-size:13px;
-    font-weight:500;
-    color:var(--ch-color,var(--blue));
-    white-space:nowrap;
-    padding-top:1px;
-    min-width:44px;
-    flex-shrink:0;
-  }
-
-
-  .art-title {
-    font-size:14px;
-    font-weight:600;
-    color:var(--text);
-    line-height:1.4;
-    margin-bottom:3px;
-  }
-
-  .art-item.vetado .art-title { text-decoration:line-through; }
-
-  .art-badge {
-    display:inline-block;
-    padding:1px 7px;
-    border-radius:2px;
-    font-family:'DM Mono',monospace;
-    font-size:9px;
-    letter-spacing:0.1em;
-    text-transform:uppercase;
-    background:rgba(232,96,75,0.15);
-    color:var(--red);
-    border:1px solid rgba(232,96,75,0.3);
-    margin-top:4px;
-  }
-
-  /* highlight via art2 link */
-  .article-item.highlighted {
-    border-color:var(--gold);
-    background:rgba(232,184,75,0.07);
-  }
-
-  /* ── FOOTER ── */
-  .page-footer {
-    margin-top:64px;
-    padding-top:24px;
-    border-top:1px solid var(--border2);
-    display:flex; align-items:center; justify-content:space-between;
-    flex-wrap:wrap; gap:16px;
-  }
-
-  .footer-left {
-    font-family:'DM Mono',monospace;
-    font-size:12px;
-    color:var(--muted);
-    line-height:1.8;
-  }
-
-  .footer-left strong { color:var(--muted2); font-weight:400; }
-
-  .footer-badge {
-  font-family: 'DM Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  color: var(--muted);
-  border: 1px solid var(--border2);
-  padding: 4px 10px;
-  border-radius: 2px;
-  text-transform: uppercase;
-  display: inline-block;
-}
-
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp {
-    from { opacity:0; transform:translateY(18px); }
-    to   { opacity:1; transform:translateY(0); }
-  }
-
-  /* no results */
-  .no-results {
-    grid-column:1/-1;
-    text-align:center;
-    padding:40px;
-    font-family:'DM Mono',monospace;
-    font-size:12px;
-    color:var(--muted);
-    display:none;
-  }
-
-  @media(max-width:600px) {
-    .hero { padding:40px 0 36px; }
-    .stats-row { grid-template-columns:1fr 1fr 1fr; }
-    .article-list { grid-template-columns:1fr; }
-    .chapter-filters { display:none; }
-  }
+  *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--text);font-family:'Syne',sans-serif;min-height:100vh;overflow-x:hidden;font-size:22px;}
+  body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0;}
+  .ambient{position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse 60% 50% at 15% 10%,rgba(78,150,220,0.08) 0%,transparent 70%),radial-gradient(ellipse 50% 40% at 85% 85%,rgba(232,184,75,0.07) 0%,transparent 70%);}
+  .container{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 24px 80px;}
+
+  /* TOPBAR */
+  .topbar{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;border-bottom:1px solid var(--border2);position:relative;z-index:10;}
+  .topbar-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(232,184,75,0.1);border:1px solid rgba(232,184,75,0.25);border-radius:2px;padding:4px 10px;font-family:'DM Mono',monospace;font-size:12px;color:var(--gold);letter-spacing:0.12em;text-transform:uppercase;}
+  .topbar-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
+  .topbar-right{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:0.08em;}
+
+  /* HERO */
+  .hero{padding:64px 0 52px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;animation:fadeUp 0.8s ease both;}
+  @media(max-width:800px){.hero{grid-template-columns:1fr;gap:40px;}}
+  .hero-eyebrow{font-family:'DM Mono',monospace;font-size:12px;color:var(--gold);letter-spacing:0.22em;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+  .hero-eyebrow::before{content:'';display:block;width:32px;height:1px;background:var(--gold);}
+  .hero h1{font-family:'Fraunces',serif;font-size:clamp(26px,4vw,46px);font-weight:600;line-height:1.12;margin-bottom:12px;letter-spacing:-0.01em;}
+  .hero h1 em{color:var(--gold);font-style:italic;font-weight:300;}
+  .hero-sub{font-family:'DM Mono',monospace;font-size:13px;color:var(--muted2);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:32px;}
+  .hero-box{border:1px solid var(--border);border-radius:4px;background:rgba(78,150,220,0.05);padding:20px 24px;border-left:3px solid var(--blue);position:relative;overflow:hidden;margin-top:44px;}
+  .hero-box::before{content:'ementa';position:absolute;top:12px;right:14px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;color:var(--muted);text-transform:uppercase;}
+  .hero-box p{font-size:13px;color:var(--muted2);line-height:1.75;font-family:'DM Mono',monospace;padding-right:40px;}
+  .hero-right{display:flex;flex-direction:column;gap:16px;}
+  .art1-highlight{background:var(--card);border:1px solid rgba(232,184,75,0.25);border-radius:4px;padding:24px;position:relative;overflow:hidden;}
+  .art1-highlight::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--gold),transparent);}
+  .art1-num{font-family:'DM Mono',monospace;font-size:12px;color:var(--gold);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:12px;}
+  .art1-quote{font-family:'Fraunces',serif;font-size:18px;font-weight:300;font-style:italic;line-height:1.5;color:var(--text);margin-bottom:10px;}
+  .art1-label{font-family:'DM Mono',monospace;font-size:12px;color:var(--muted);letter-spacing:0.1em;}
+
+  /* SEARCH */
+  .search-section{margin-bottom:28px;animation:fadeUp 0.6s 0.15s ease both;}
+  .search-wrapper{position:relative;margin-bottom:16px;}
+  .search-input{width:100%;background:rgba(16,24,36,0.9);border:1px solid var(--border);border-radius:3px;padding:12px 16px 12px 44px;font-family:'DM Mono',monospace;font-size:12px;color:var(--text);outline:none;transition:border-color 0.2s;letter-spacing:0.04em;}
+  .search-input::placeholder{color:var(--muted);}
+  .search-input:focus{border-color:var(--blue);}
+  .search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:14px;pointer-events:none;}
+  .search-count{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);}
+
+  /* FILTER BUTTONS */
+  .chapter-filters{display:flex;gap:8px;flex-wrap:wrap;}
+  .ch-btn{background:transparent;border:1px solid var(--border2);border-radius:2px;color:var(--muted);padding:5px 12px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all 0.18s;white-space:nowrap;}
+  .ch-btn:hover{border-color:var(--blue);color:var(--blue2);}
+  .ch-btn.active{background:var(--ch-color,var(--blue));border-color:var(--ch-color,var(--blue));color:#0d1117;font-weight:600;}
+
+  /* CHAPTERS */
+  .chapters{display:flex;flex-direction:column;gap:28px;animation:fadeUp 0.6s 0.2s ease both;}
+  .chapter-block{/* each block = one law section; future: link to combined page */}
+  .chapter-header{display:flex;align-items:center;gap:14px;margin-bottom:12px;cursor:pointer;user-select:none;}
+  .chapter-tag{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:2px;font-family:'DM Mono',monospace;font-size:9px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;white-space:nowrap;background:rgba(0,0,0,0.3);border:1px solid;flex-shrink:0;}
+  .chapter-name{font-size:13px;font-weight:700;color:var(--text);letter-spacing:0.02em;}
+  .chapter-arts{margin-left:auto;font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);flex-shrink:0;}
+  .chapter-line{flex:1;height:1px;background:var(--border2);}
+  .toggle-icon{color:var(--muted);font-size:12px;margin-left:4px;transition:transform 0.2s;}
+
+  /* ARTICLE LIST */
+  .article-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:8px;overflow:hidden;transition:max-height 0.4s ease;}
+  .article-item{display:flex;align-items:flex-start;gap:14px;background:var(--card);border:1px solid var(--border2);border-radius:3px;padding:14px 16px;cursor:pointer;transition:all 0.2s;text-decoration:none;position:relative;overflow:hidden;color:inherit;}
+  .article-item::before{content:'';position:absolute;top:0;left:0;width:2px;height:100%;background:var(--ch-color,var(--blue));opacity:0;transition:opacity 0.2s;}
+  .article-item:hover{border-color:rgba(255,255,255,0.12);background:rgba(20,32,50,0.95);transform:translateY(-1px);}
+  .article-item:hover::before{opacity:1;}
+  .article-item.vetado{opacity:0.45;}
+  .art-num{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:var(--ch-color,var(--blue));white-space:nowrap;padding-top:1px;min-width:44px;flex-shrink:0;}
+  .art-title{font-size:13px;font-weight:600;color:var(--text);line-height:1.4;margin-bottom:3px;}
+  .art-badge{display:inline-block;padding:1px 7px;border-radius:2px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;background:rgba(232,96,75,0.15);color:var(--red);border:1px solid rgba(232,96,75,0.3);margin-top:4px;}
+
+  /* FOOTER */
+  .page-footer{margin-top:64px;padding-top:24px;border-top:1px solid var(--border2);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+  .footer-left{font-family:'DM Mono',monospace;font-size:12px;color:var(--muted);line-height:1.8;}
+  .footer-left strong{color:var(--muted2);font-weight:400;}
+  .footer-badge{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.14em;color:var(--muted);border:1px solid var(--border2);padding:4px 10px;border-radius:2px;text-transform:uppercase;display:inline-block;}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+  @media(max-width:600px){.hero{padding:40px 0 36px;}.article-list{grid-template-columns:1fr;}.chapter-filters{display:none;}}
 </style>
 </head>
 <body>
@@ -541,23 +95,22 @@
 
   <!-- HERO -->
   <section class="hero">
-  <div class="hero-left">
-    <div class="hero-eyebrow">Lei federal nº 12.378 · 31 dez 2010</div>
-    <h1>Exercício da profissão de<br><em>arquiteto e urbanista</em></h1>
-    <div class="hero-sub">Presidência da República · Casa Civil</div>
-    <div class="art1-highlight">
-      <div class="art1-num">Art. 1º · Âmbito de abrangência</div>
-      <div class="art1-quote">"O exercício da profissão de arquiteto e urbanista passa a ser regulado por esta Lei."</div>
-      <div class="art1-label">Disposição inaugural · vigência nos termos do Art. 68</div>
+    <div class="hero-left">
+      <div class="hero-eyebrow">Lei federal nº 12.378 · 31 dez 2010</div>
+      <h1>Exercício da profissão de<br><em>arquiteto e urbanista</em></h1>
+      <div class="hero-sub">Presidência da República · Casa Civil</div>
+      <div class="art1-highlight">
+        <div class="art1-num">Art. 1º · Âmbito de abrangência</div>
+        <div class="art1-quote">"O exercício da profissão de arquiteto e urbanista passa a ser regulado por esta Lei."</div>
+        <div class="art1-label">Disposição inaugural · vigência nos termos do Art. 68</div>
+      </div>
     </div>
-  </div>
-
-  <div class="hero-right">
-    <div class="hero-box">
-      <p>Regulamenta o exercício da Arquitetura e Urbanismo; cria o Conselho de Arquitetura e Urbanismo do Brasil — CAU/BR e os Conselhos de Arquitetura e Urbanismo dos Estados e do Distrito Federal — CAUs; e dá outras providências.</p>
+    <div class="hero-right">
+      <div class="hero-box">
+        <p>Regulamenta o exercício da Arquitetura e Urbanismo; cria o Conselho de Arquitetura e Urbanismo do Brasil — CAU/BR e os Conselhos de Arquitetura e Urbanismo dos Estados e do Distrito Federal — CAUs; e dá outras providências.</p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <!-- SEARCH & FILTERS -->
   <div class="search-section">
@@ -566,375 +119,353 @@
       <input class="search-input" type="text" id="searchInput" placeholder="Buscar artigo, tema ou palavra-chave…">
       <span class="search-count" id="searchCount"></span>
     </div>
+  
     <div class="chapter-filters" id="chapterFilters">
-      <button class="ch-btn active" data-ch="all" style="--ch-color:#4e96dc">Todos</button>
-      <button class="ch-btn" data-ch="profissao" style="--ch-color:#e8b84b">Profissão & Registro</button>
-      <button class="ch-btn" data-ch="acervo" style="--ch-color:#7ab8f5">Acervo & Autoria</button>
-      <button class="ch-btn" data-ch="etica" style="--ch-color:#e8604b">Ética & Sanções</button>
-      <button class="ch-btn" data-ch="cau" style="--ch-color:#a78bfa">CAU/BR & CAUs</button>
-      <button class="ch-btn" data-ch="anuidade" style="--ch-color:#3dd6c8">Anuidade & RRT</button>
-      <button class="ch-btn" data-ch="transicao" style="--ch-color:#e8b84b">Transição & Vigência</button>
+      <button class="ch-btn active"  data-ch="all"        style="--ch-color:#4e96dc">Todos</button>
+      <button class="ch-btn"         data-ch="atribuicoes" style="--ch-color:#a78bfa">Atribuições</button>
+      <button class="ch-btn"         data-ch="registro"    style="--ch-color:#4e96dc">Registro</button>
+      <button class="ch-btn"         data-ch="sociedade"   style="--ch-color:#e8b84b">Sociedade</button>
+      <button class="ch-btn"         data-ch="acervos"     style="--ch-color:#7ab8f5">Acervos</button>
+      <button class="ch-btn"         data-ch="etica"       style="--ch-color:#e8604b">Ética</button>
+      <button class="ch-btn"         data-ch="cau"         style="--ch-color:#a78bfa">CAU/BR & CAUs</button>
+      <button class="ch-btn"         data-ch="rrt"         style="--ch-color:#3dd6c8">RRT</button>
+      <button class="ch-btn"         data-ch="cobranca"    style="--ch-color:#e8b84b">Cobrança</button>
+      <button class="ch-btn"         data-ch="instalacao"  style="--ch-color:#4e96dc">Instalação</button>
+      <button class="ch-btn"         data-ch="outros"      style="--ch-color:#5a6a7d">Disposições finais</button>
     </div>
   </div>
 
-  <!-- CHAPTERS -->
   <div class="chapters" id="chapters">
 
-    <!-- 1. PROFISSÃO -->
-    <div class="chapter-block" data-ch="profissao">
+    <!-- ── 1. ÂMBITO DE ABRANGÊNCIA ── Art. 1 -->
+    <div class="chapter-block" data-ch="atribuicoes">
       <div class="chapter-header" onclick="toggleChapter(this)">
-        <span class="chapter-tag" style="color:#e8b84b;border-color:rgba(232,184,75,0.35)">📋 Profissão</span>
+        <span class="chapter-tag" style="color:#e8b84b;border-color:rgba(232,184,75,0.35)">§ Âmbito</span>
         <span class="chapter-line"></span>
-        <span class="chapter-name">Regulação e exercício profissional</span>
-        <span class="chapter-count">Arts. 1–11</span>
-        <span style="color:var(--muted);font-size:12px;margin-left:8px" class="toggle-icon">▾</span>
+        <span class="chapter-name">Âmbito de abrangência</span>
+        <span class="chapter-arts">Art. 1</span>
+        <span class="toggle-icon">▾</span>
       </div>
-      <div class="article-list" data-ch="profissao" style="--ch-color:#e8b84b">
-        <div class="article-item" onclick="openArt(1)">
+      <div class="article-list" style="--ch-color:#e8b84b">
+        <a class="article-item" href="art1.html" style="text-decoration:none;">
           <span class="art-num">Art. 1º</span>
-          <div class="art-body"><div class="art-title">Regulação do exercício da profissão de arquiteto e urbanista</div></div>
-        </div>
-        <a class="article-item" href="art2.html" id="link-art2" style="text-decoration:none;">
-          <span class="art-num" style="color:#e8b84b">Art. 2º</span>
-          <div class="art-body">
-            <div class="art-title">Atividades, atribuições e campos de atuação do arquiteto e urbanista</div>            
-          </div>
+          <div><div class="art-title">O exercício da profissão de arquiteto e urbanista passa a ser regulado por esta Lei</div></div>
         </a>
-       <a class="article-item" href="art3.html" style="text-decoration:none;">
+      </div>
+    </div>
+
+    <!-- ── 2. ATRIBUIÇÕES DE ARQUITETOS E URBANISTAS ── Arts. 2–4 -->
+    <div class="chapter-block" data-ch="atribuicoes">
+      <div class="chapter-header" onclick="toggleChapter(this)">
+        <span class="chapter-tag" style="color:#a78bfa;border-color:rgba(167,139,250,0.35)">📐 Atribuições</span>
+        <span class="chapter-line"></span>
+        <span class="chapter-name">Atribuições de Arquitetos e Urbanistas</span>
+        <span class="chapter-arts">Arts. 2–4</span>
+        <span class="toggle-icon">▾</span>
+      </div>
+      <div class="article-list" style="--ch-color:#a78bfa">
+        <a class="article-item" href="art2.html" style="text-decoration:none;">
+          <span class="art-num">Art. 2º</span>
+          <div><div class="art-title">Atividades, atribuições e campos de atuação do arquiteto e urbanista</div></div>
+        </a>
+        <a class="article-item" href="art3.html" style="text-decoration:none;">
           <span class="art-num">Art. 3º</span>
-          <div class="art-body"><div class="art-title">Definição dos campos de atuação — diretrizes curriculares e áreas privativas ou compartilhadas</div></div>
+          <div><div class="art-title">Definição dos campos de atuação — áreas privativas ou compartilhadas</div></div>
         </a>
-       <a class="article-item" href="art4.html" style="text-decoration:none;">
+        <a class="article-item" href="art4.html" style="text-decoration:none;">
           <span class="art-num">Art. 4º</span>
-          <div class="art-body"><div class="art-title">Cadastro nacional das escolas e faculdades de arquitetura e urbanismo</div></div>
+          <div><div class="art-title">Cadastro nacional das escolas e faculdades de arquitetura e urbanismo</div></div>
         </a>
+      </div>
+    </div>
+
+    <!-- ── 3. REGISTRO NO CONSELHO ── Arts. 5–8 -->
+    <div class="chapter-block" data-ch="registro">
+      <div class="chapter-header" onclick="toggleChapter(this)">
+        <span class="chapter-tag" style="color:#4e96dc;border-color:rgba(78,150,220,0.35)">🪪 Registro</span>
+        <span class="chapter-line"></span>
+        <span class="chapter-name">Registro do arquiteto e urbanista no Conselho</span>
+        <span class="chapter-arts">Arts. 5–8</span>
+        <span class="toggle-icon">▾</span>
+      </div>
+      <div class="article-list" style="--ch-color:#4e96dc">
         <a class="article-item" href="art5.html" style="text-decoration:none;">
           <span class="art-num">Art. 5º</span>
-          <div class="art-body"><div class="art-title">Registro do arquiteto e urbanista no Conselho</div></div>
+          <div><div class="art-title">Registro do arquiteto e urbanista no Conselho — obrigatoriedade e validade nacional</div></div>
         </a>
         <a class="article-item" href="art6.html" style="text-decoration:none;">
           <span class="art-num">Art. 6º</span>
-          <div class="art-body"><div class="art-title">Requisitos para a obtenção do registro profissional — inclusive para estrangeiros</div></div>
+          <div><div class="art-title">Requisitos para a obtenção do registro — inclusive para estrangeiros</div></div>
         </a>
         <a class="article-item" href="art7.html" style="text-decoration:none;">
           <span class="art-num">Art. 7º</span>
-          <div class="art-body"><div class="art-title">Definição de exercício ilegal da profissão</div></div>
+          <div><div class="art-title">Exercício ilegal da profissão de arquiteto e urbanista</div></div>
         </a>
         <a class="article-item" href="art8.html" style="text-decoration:none;">
           <span class="art-num">Art. 8º</span>
-          <div class="art-body"><div class="art-title">Natureza jurídica e fé pública da carteira profissional</div></div>
+          <div><div class="art-title">Carteira profissional — fé pública e prova de identidade civil</div></div>
         </a>
+      </div>
+    </div>
+
+    <!-- ── 4. INTERRUPÇÃO E CANCELAMENTO ── Art. 9 -->
+    <div class="chapter-block" data-ch="registro">
+      <div class="chapter-header" onclick="toggleChapter(this)">
+        <span class="chapter-tag" style="color:#3dd6c8;border-color:rgba(61,214,200,0.35)">⏸ Interrupção</span>
+        <span class="chapter-line"></span>
+        <span class="chapter-name">Da Interrupção e do Cancelamento do registro profissional</span>
+        <span class="chapter-arts">Art. 9</span>
+        <span class="toggle-icon">▾</span>
+      </div>
+      <div class="article-list" style="--ch-color:#3dd6c8">
         <a class="article-item" href="art9.html" style="text-decoration:none;">
           <span class="art-num">Art. 9º</span>
-          <div class="art-body"><div class="art-title">Da Interrupção e do Cancelamento do registro profissional</div></div>
+          <div><div class="art-title">Faculdade de interrupção do registro por tempo indeterminado</div></div>
         </a>
+      </div>
+    </div>
+
+    <!-- ── 5. SOCIEDADE DE ARQUITETOS ── Arts. 10–11 -->
+    <div class="chapter-block" data-ch="sociedade">
+      <div class="chapter-header" onclick="toggleChapter(this)">
+        <span class="chapter-tag" style="color:#e8b84b;border-color:rgba(232,184,75,0.35)">🏢 Sociedade</span>
+        <span class="chapter-line"></span>
+        <span class="chapter-name">Sociedade de arquitetos e urbanistas</span>
+        <span class="chapter-arts">Arts. 10–11</span>
+        <span class="toggle-icon">▾</span>
+      </div>
+      <div class="article-list" style="--ch-color:#e8b84b">
         <a class="article-item" href="art10.html" style="text-decoration:none;">
           <span class="art-num">Art. 10</span>
-          <div class="art-body"><div class="art-title">Regras para sociedades de prestação de serviços de arquitetura e urbanismo</div></div>
+          <div><div class="art-title">Regras para constituição e cadastro de sociedades de arquitetura e urbanismo</div></div>
         </a>
         <a class="article-item" href="art11.html" style="text-decoration:none;">
           <span class="art-num">Art. 11</span>
-          <div class="art-body"><div class="art-title">Vedação do uso dos termos "arquitetura" ou "urbanismo" sem profissional habilitado</div></div>
+          <div><div class="art-title">Vedação do uso de "arquitetura" ou "urbanismo" sem profissional habilitado</div></div>
         </a>
       </div>
     </div>
 
-    <!-- 2. ACERVO & AUTORIA -->
-    <div class="chapter-block" data-ch="acervo">
+    <!-- ── 6. ACERVOS TÉCNICOS ── Arts. 12–16 -->
+    <div class="chapter-block" data-ch="acervos">
       <div class="chapter-header" onclick="toggleChapter(this)">
-        <span class="chapter-tag" style="color:#7ab8f5;border-color:rgba(122,184,245,0.35)">📁 Acervo & Autoria</span>
+        <span class="chapter-tag" style="color:#7ab8f5;border-color:rgba(122,184,245,0.35)">📁 Acervos</span>
         <span class="chapter-line"></span>
-        <span class="chapter-name">Acervos técnicos e direitos autorais</span>
-        <span class="chapter-count">Arts. 12–16</span>
-        <span style="color:var(--muted);font-size:12px;margin-left:8px" class="toggle-icon">▾</span>
+        <span class="chapter-name">Dos Acervos Técnicos</span>
+        <span class="chapter-arts">Arts. 12–16</span>
+        <span class="toggle-icon">▾</span>
       </div>
-      <div class="article-list" data-ch="acervo" style="--ch-color:#7ab8f5">
+      <div class="article-list" style="--ch-color:#7ab8f5">
         <a class="article-item" href="art12.html" style="text-decoration:none;">
           <span class="art-num">Art. 12</span>
-          <div class="art-body"><div class="art-title">Propriedade e composição do acervo técnico profissional</div></div>
+          <div><div class="art-title">Propriedade e composição do acervo técnico profissional</div></div>
         </a>
         <a class="article-item" href="art13.html" style="text-decoration:none;">
           <span class="art-num">Art. 13</span>
-          <div class="art-body"><div class="art-title">Registro de projetos e trabalhos para comprovação de autoria e formação de acervo</div></div>
+          <div><div class="art-title">Registro de projetos para comprovação de autoria e formação de acervo</div></div>
         </a>
         <a class="article-item" href="art14.html" style="text-decoration:none;">
           <span class="art-num">Art. 14</span>
-          <div class="art-body"><div class="art-title">Dever de identificação do autor e executante em documentos e placas</div></div>
+          <div><div class="art-title">Dever de identificação do autor e executante em documentos e placas</div></div>
         </a>
         <a class="article-item" href="art15.html" style="text-decoration:none;">
           <span class="art-num">Art. 15</span>
-          <div class="art-body"><div class="art-title">Fidelidade da execução ao projeto e direito de acompanhamento pelo autor</div></div>
+          <div><div class="art-title">Fidelidade da execução ao projeto e direito de acompanhamento pelo autor</div></div>
         </a>
         <a class="article-item" href="art16.html" style="text-decoration:none;">
           <span class="art-num">Art. 16</span>
-          <div class="art-body"><div class="art-title">Regras para alterações em trabalhos de autoria — direitos autorais e coautoria</div></div>
+          <div><div class="art-title">Alterações em trabalhos de autoria — consentimento, coautoria e laudo</div></div>
         </a>
       </div>
     </div>
 
-    <!-- 3. ÉTICA & SANÇÕES -->
+    <!-- ── 7. ÉTICA ── Arts. 17–23 -->
     <div class="chapter-block" data-ch="etica">
       <div class="chapter-header" onclick="toggleChapter(this)">
         <span class="chapter-tag" style="color:#e8604b;border-color:rgba(232,96,75,0.35)">⚖️ Ética</span>
         <span class="chapter-line"></span>
-        <span class="chapter-name">Ética, infrações e sanções disciplinares</span>
-        <span class="chapter-count">Arts. 17–23</span>
-        <span style="color:var(--muted);font-size:12px;margin-left:8px" class="toggle-icon">▾</span>
+        <span class="chapter-name">Ética</span>
+        <span class="chapter-arts">Arts. 17–23</span>
+        <span class="toggle-icon">▾</span>
       </div>
-      <div class="article-list" data-ch="etica" style="--ch-color:#e8604b">
+      <div class="article-list" style="--ch-color:#e8604b">
         <a class="article-item" href="art17.html" style="text-decoration:none;">
           <span class="art-num">Art. 17</span>
-          <div class="art-body"><div class="art-title">Conduta profissional regida pelo Código de Ética e Disciplina</div></div>
+          <div><div class="art-title">Conduta profissional regida pelo Código de Ética e Disciplina do CAU/BR</div></div>
         </a>
         <a class="article-item" href="art18.html" style="text-decoration:none;">
           <span class="art-num">Art. 18</span>
-          <div class="art-body"><div class="art-title">Definição das infrações disciplinares — rol de condutas</div></div>
+          <div><div class="art-title">Infrações disciplinares — rol de condutas vedadas (incisos I ao XII)</div></div>
         </a>
         <a class="article-item" href="art19.html" style="text-decoration:none;">
           <span class="art-num">Art. 19</span>
-          <div class="art-body"><div class="art-title">Sanções disciplinares aplicáveis a pessoas físicas e sociedades</div></div>
+          <div><div class="art-title">Sanções disciplinares — advertência, suspensão, cancelamento e multa</div></div>
         </a>
         <a class="article-item" href="art20.html" style="text-decoration:none;">
           <span class="art-num">Art. 20</span>
-          <div class="art-body"><div class="art-title">Regras gerais para os processos disciplinares</div></div>
+          <div><div class="art-title">Processo disciplinar — base normativa (Lei 9.784/1999 + Lei + Resoluções)</div></div>
         </a>
         <a class="article-item" href="art21.html" style="text-decoration:none;">
           <span class="art-num">Art. 21</span>
-          <div class="art-body"><div class="art-title">Instauração e publicidade do processo disciplinar</div></div>
+          <div><div class="art-title">Instauração do processo disciplinar — de ofício, por representação, sigilo e publicidade</div></div>
         </a>
         <a class="article-item" href="art22.html" style="text-decoration:none;">
           <span class="art-num">Art. 22</span>
-          <div class="art-body"><div class="art-title">Direito a recurso ao CAU/BR em última instância administrativa</div></div>
+          <div><div class="art-title">Recurso ao CAU/BR — última instância administrativa</div></div>
         </a>
         <a class="article-item" href="art23.html" style="text-decoration:none;">
           <span class="art-num">Art. 23</span>
-          <div class="art-body"><div class="art-title">Prazo prescricional de 5 anos para punição de sanções disciplinares</div></div>
+          <div><div class="art-title">Prescrição disciplinar — 5 anos a contar do fato</div></div>
         </a>
       </div>
     </div>
 
-    <!-- 4. CAU/BR & CAUS -->
+    <!-- ── 8. CAU/BR E CAUs ── Arts. 24–44 -->
     <div class="chapter-block" data-ch="cau">
       <div class="chapter-header" onclick="toggleChapter(this)">
-        <span class="chapter-tag" style="color:#a78bfa;border-color:rgba(167,139,250,0.35)">🏛️ Conselhos</span>
+        <span class="chapter-tag" style="color:#a78bfa;border-color:rgba(167,139,250,0.35)">🏛️ CAU/BR & CAUs</span>
         <span class="chapter-line"></span>
-        <span class="chapter-name">CAU/BR, CAUs — criação, organização e competências</span>
-        <span class="chapter-count">Arts. 24–41</span>
-        <span style="color:var(--muted);font-size:12px;margin-left:8px" class="toggle-icon">▾</span>
+        <span class="chapter-name">Criação e organização do CAU/BR e dos CAUs</span>
+        <span class="chapter-arts">Arts. 24–44</span>
+        <span class="toggle-icon">▾</span>
       </div>
-      <div class="article-list" data-ch="cau" style="--ch-color:#a78bfa">
-        <a class="article-item" href="art24.html" style="text-decoration:none;">
-          <span class="art-num">Art. 24</span>
-          <div class="art-body"><div class="art-title">Criação, natureza jurídica e funções do CAU/BR e dos CAUs Estaduais/DF</div></div>
-        </a>
-        <a class="article-item" href="art25.html" style="text-decoration:none;">
-          <span class="art-num">Art. 25</span>
-          <div class="art-body"><div class="art-title">Imunidade tributária dos Conselhos (art. 150, VI, a, CF)</div></div>
-        </a>
-        <a class="article-item" href="art26.html" style="text-decoration:none;">
-          <span class="art-num">Art. 26</span>
-          <div class="art-body"><div class="art-title">Composição e eleição do Plenário do CAU/BR</div></div>
-        </a>
-        <a class="article-item" href="art27.html" style="text-decoration:none;">
-          <span class="art-num">Art. 27</span>
-          <div class="art-body"><div class="art-title">Estrutura e funcionamento definidos pelo Regimento Geral do CAU/BR</div></div>
-        </a>
-        <a class="article-item" href="art28.html" style="text-decoration:none;">
-          <span class="art-num">Art. 28</span>
-          <div class="art-body"><div class="art-title">Competências administrativas e normativas do CAU/BR</div></div>
-        </a>
-        <a class="article-item" href="art29.html" style="text-decoration:none;">
-          <span class="art-num">Art. 29</span>
-          <div class="art-body"><div class="art-title">Competências do Presidente do CAU/BR</div></div>
-        </a>
-        <a class="article-item" href="art30.html" style="text-decoration:none;">
-          <span class="art-num">Art. 30</span>
-          <div class="art-body"><div class="art-title">Fontes de recursos financeiros do CAU/BR</div></div>
-        </a>
-        <a class="article-item" href="art31.html" style="text-decoration:none;">
-          <span class="art-num">Art. 31</span>
-          <div class="art-body"><div class="art-title">Instituição de CAUs nos Estados e no DF — inclusive compartilhados</div></div>
-        </a>
-        <a class="article-item" href="art32.html" style="text-decoration:none;">
-          <span class="art-num">Art. 32</span>
-          <div class="art-body"><div class="art-title">Composição do Plenário e eleição do Presidente nos CAUs Estaduais/DF</div></div>
-        </a>
-        <a class="article-item" href="art33.html" style="text-decoration:none;">
-          <span class="art-num">Art. 33</span>
-          <div class="art-body"><div class="art-title">Estrutura e funcionamento definidos pelos Regimentos Internos dos CAUs</div></div>
-        </a>
-        <a class="article-item" href="art34.html" style="text-decoration:none;">
-          <span class="art-num">Art. 34</span>
-          <div class="art-body"><div class="art-title">Competências administrativas, de fiscalização e registro dos CAUs Estaduais/DF</div></div>
-        </a>
-        <a class="article-item" href="art35.html" style="text-decoration:none;">
-          <span class="art-num">Art. 35</span>
-          <div class="art-body"><div class="art-title">Competências dos Presidentes dos CAUs Estaduais/DF</div></div>
-        </a>
-        <a class="article-item" href="art36.html" style="text-decoration:none;">
-          <span class="art-num">Art. 36</span>
-          <div class="art-body"><div class="art-title">Duração e regras de perda de mandato — conselheiros e presidentes</div></div>
-        </a>
-        <a class="article-item" href="art37.html" style="text-decoration:none;">
-          <span class="art-num">Art. 37</span>
-          <div class="art-body"><div class="art-title">Fontes de recursos financeiros dos CAUs Estaduais/DF</div></div>
-        </a>
-        <a class="article-item" href="art38.html" style="text-decoration:none;">
-          <span class="art-num">Art. 38</span>
-          <div class="art-body"><div class="art-title">Prestação de contas anual ao Tribunal de Contas da União — TCU</div></div>
-        </a>
-        <a class="article-item" href="art39.html" style="text-decoration:none;">
-          <span class="art-num">Art. 39</span>
-          <div class="art-body"><div class="art-title">Unificação de procedimentos e normas complementares pelo CAU/BR</div></div>
-        </a>
-        <a class="article-item" href="art40.html" style="text-decoration:none;">
-          <span class="art-num">Art. 40</span>
-          <div class="art-body"><div class="art-title">Gratuidade do exercício das funções de presidente e conselheiro</div></div>
-        </a>
-        <a class="article-item" href="art41.html" style="text-decoration:none;">
-          <span class="art-num">Art. 41</span>
-          <div class="art-body"><div class="art-title">Regime de contratação de empregados — concurso público e CLT</div></div>
-        </a>
+      <div class="article-list" style="--ch-color:#a78bfa">
+        <a class="article-item" href="art24.html" style="text-decoration:none;"><span class="art-num">Art. 24</span><div><div class="art-title">Criação, natureza jurídica e funções do CAU/BR e dos CAUs</div></div></a>
+        <a class="article-item" href="art25.html" style="text-decoration:none;"><span class="art-num">Art. 25</span><div><div class="art-title">Imunidade tributária dos Conselhos — art. 150, VI, a, CF</div></div></a>
+        <a class="article-item" href="art26.html" style="text-decoration:none;"><span class="art-num">Art. 26</span><div><div class="art-title">Composição e eleição do Plenário do CAU/BR</div></div></a>
+        <a class="article-item" href="art27.html" style="text-decoration:none;"><span class="art-num">Art. 27</span><div><div class="art-title">Estrutura e funcionamento definidos pelo Regimento Geral do CAU/BR</div></div></a>
+        <a class="article-item" href="art28.html" style="text-decoration:none;"><span class="art-num">Art. 28</span><div><div class="art-title">Competências administrativas e normativas do CAU/BR</div></div></a>
+        <a class="article-item" href="art29.html" style="text-decoration:none;"><span class="art-num">Art. 29</span><div><div class="art-title">Competências do Presidente do CAU/BR</div></div></a>
+        <a class="article-item" href="art30.html" style="text-decoration:none;"><span class="art-num">Art. 30</span><div><div class="art-title">Fontes de recursos financeiros do CAU/BR</div></div></a>
+        <a class="article-item" href="art31.html" style="text-decoration:none;"><span class="art-num">Art. 31</span><div><div class="art-title">Instituição dos CAUs nos Estados e no DF — inclusive compartilhados</div></div></a>
+        <a class="article-item" href="art32.html" style="text-decoration:none;"><span class="art-num">Art. 32</span><div><div class="art-title">Composição do Plenário e eleição do Presidente nos CAUs Estaduais/DF</div></div></a>
+        <a class="article-item" href="art33.html" style="text-decoration:none;"><span class="art-num">Art. 33</span><div><div class="art-title">Estrutura e funcionamento pelos Regimentos Internos dos CAUs</div></div></a>
+        <a class="article-item" href="art34.html" style="text-decoration:none;"><span class="art-num">Art. 34</span><div><div class="art-title">Competências dos CAUs — fiscalização, registro e administração</div></div></a>
+        <a class="article-item" href="art35.html" style="text-decoration:none;"><span class="art-num">Art. 35</span><div><div class="art-title">Competências dos Presidentes dos CAUs Estaduais/DF</div></div></a>
+        <a class="article-item" href="art36.html" style="text-decoration:none;"><span class="art-num">Art. 36</span><div><div class="art-title">Duração dos mandatos e perda de cargo — conselheiros e presidentes</div></div></a>
+        <a class="article-item" href="art37.html" style="text-decoration:none;"><span class="art-num">Art. 37</span><div><div class="art-title">Fontes de recursos financeiros dos CAUs Estaduais/DF</div></div></a>
+        <a class="article-item" href="art38.html" style="text-decoration:none;"><span class="art-num">Art. 38</span><div><div class="art-title">Prestação de contas anual ao TCU e auditoria independente</div></div></a>
+        <a class="article-item" href="art39.html" style="text-decoration:none;"><span class="art-num">Art. 39</span><div><div class="art-title">Unificação de procedimentos e normas pelo CAU/BR</div></div></a>
+        <a class="article-item" href="art40.html" style="text-decoration:none;"><span class="art-num">Art. 40</span><div><div class="art-title">Gratuidade das funções de presidente e conselheiro</div></div></a>
+        <a class="article-item" href="art41.html" style="text-decoration:none;"><span class="art-num">Art. 41</span><div><div class="art-title">Regime de contratação de empregados — concurso público e CLT</div></div></a>
+        <a class="article-item" href="art42.html" style="text-decoration:none;"><span class="art-num">Art. 42</span><div><div class="art-title">Valor, reajuste e regras de pagamento da anuidade</div></div></a>
+        <a class="article-item" href="art43.html" style="text-decoration:none;"><span class="art-num">Art. 43</span><div><div class="art-title">Isenção de valores de inscrição além da anuidade proporcional</div></div></a>
+        <a class="article-item" href="art44.html" style="text-decoration:none;"><span class="art-num">Art. 44</span><div><div class="art-title">Penalidades pelo não pagamento da anuidade — multa 20% + SELIC</div></div></a>
       </div>
     </div>
 
-    <!-- 5. ANUIDADE & RRT -->
-    <div class="chapter-block" data-ch="anuidade">
+    <!-- ── 9. RRT ── Arts. 45–50 -->
+    <div class="chapter-block" data-ch="rrt">
       <div class="chapter-header" onclick="toggleChapter(this)">
-        <span class="chapter-tag" style="color:#3dd6c8;border-color:rgba(61,214,200,0.35)">💳 Anuidade & RRT</span>
+        <span class="chapter-tag" style="color:#3dd6c8;border-color:rgba(61,214,200,0.35)">📝 RRT</span>
         <span class="chapter-line"></span>
-        <span class="chapter-name">Anuidades, cobrança e responsabilidade técnica</span>
-        <span class="chapter-count">Arts. 42–54</span>
-        <span style="color:var(--muted);font-size:12px;margin-left:8px" class="toggle-icon">▾</span>
+        <span class="chapter-name">Registro de Responsabilidade Técnica — RRT</span>
+        <span class="chapter-arts">Arts. 45–50</span>
+        <span class="toggle-icon">▾</span>
       </div>
-      <div class="article-list" data-ch="anuidade" style="--ch-color:#3dd6c8">
-        <a class="article-item" href="art42.html" style="text-decoration:none;">
-          <span class="art-num">Art. 42</span>
-          <div class="art-body"><div class="art-title">Valor, reajuste e regras de pagamento da anuidade</div></div>
-        </a>
-        <a class="article-item" href="art43.html" style="text-decoration:none;">
-          <span class="art-num">Art. 43</span>
-          <div class="art-body"><div class="art-title">Isenção de valores de inscrição além da anuidade proporcional</div></div>
-        </a>
-        <a class="article-item" href="art44.html" style="text-decoration:none;">
-          <span class="art-num">Art. 44</span>
-          <div class="art-body"><div class="art-title">Penalidades e juros pelo não pagamento da anuidade (multa 20% + SELIC)</div></div>
-        </a>
-        <a class="article-item" href="art45.html" style="text-decoration:none;">
-          <span class="art-num">Art. 45</span>
-          <div class="art-body"><div class="art-title">Obrigatoriedade do Registro de Responsabilidade Técnica — RRT</div></div>
-        </a>
-        <a class="article-item" href="art46.html" style="text-decoration:none;">
-          <span class="art-num">Art. 46</span>
-          <div class="art-body"><div class="art-title">Definição dos responsáveis técnicos e autoria por meio do RRT</div></div>
-        </a>
-        <a class="article-item" href="art47.html" style="text-decoration:none;">
-          <span class="art-num">Art. 47</span>
-          <div class="art-body"><div class="art-title">Procedimento para efetuar o RRT</div></div>
-        </a>
-        <a class="article-item" href="art48.html" style="text-decoration:none;">
-          <span class="art-num">Art. 48</span>
-          <div class="art-body"><div class="art-title">Exigência de recolhimento prévio da taxa para efetivação do RRT</div></div>
-        </a>
-        <a class="article-item" href="art49.html" style="text-decoration:none;">
-          <span class="art-num">Art. 49</span>
-          <div class="art-body"><div class="art-title">Valor e atualização anual da Taxa de RRT</div></div>
-        </a>
-        <a class="article-item" href="art50.html" style="text-decoration:none;">
-          <span class="art-num">Art. 50</span>
-          <div class="art-body"><div class="art-title">Multas e sanções pela falta do RRT (300% da taxa + SELIC)</div></div>
-        </a>
-        <a class="article-item" href="art51.html" style="text-decoration:none;">
-          <span class="art-num">Art. 51</span>
-          <div class="art-body"><div class="art-title">Título executivo extrajudicial para cobrança de multas éticas e de RRT</div></div>
-        </a>
-        <a class="article-item" href="art52.html" style="text-decoration:none;">
-          <span class="art-num">Art. 52</span>
-          <div class="art-body"><div class="art-title">Consequências do atraso na anuidade — suspensão do exercício profissional</div></div>
-        </a>
-        <a class="article-item" href="art53.html" style="text-decoration:none;">
-          <span class="art-num">Art. 53</span>
-          <div class="art-body"><div class="art-title">Possibilidade de desligamento do Conselho mesmo com dívidas pendentes</div></div>
-        </a>
-        <a class="article-item" href="art54.html" style="text-decoration:none;">
-          <span class="art-num">Art. 54</span>
-          <div class="art-body"><div class="art-title">Prazo prescricional de 5 anos para cobrança de multas e anuidades</div></div>
-        </a>
+      <div class="article-list" style="--ch-color:#3dd6c8">
+        <a class="article-item" href="art45.html" style="text-decoration:none;"><span class="art-num">Art. 45</span><div><div class="art-title">Obrigatoriedade do Registro de Responsabilidade Técnica</div></div></a>
+        <a class="article-item" href="art46.html" style="text-decoration:none;"><span class="art-num">Art. 46</span><div><div class="art-title">Definição dos responsáveis técnicos e autoria por meio do RRT</div></div></a>
+        <a class="article-item" href="art47.html" style="text-decoration:none;"><span class="art-num">Art. 47</span><div><div class="art-title">Procedimento para efetuar o RRT</div></div></a>
+        <a class="article-item" href="art48.html" style="text-decoration:none;"><span class="art-num">Art. 48</span><div><div class="art-title">Recolhimento prévio da taxa para efetivação do RRT</div></div></a>
+        <a class="article-item" href="art49.html" style="text-decoration:none;"><span class="art-num">Art. 49</span><div><div class="art-title">Valor e atualização anual da Taxa de RRT</div></div></a>
+        <a class="article-item" href="art50.html" style="text-decoration:none;"><span class="art-num">Art. 50</span><div><div class="art-title">Multas pela falta do RRT — 300% da taxa + SELIC</div></div></a>
       </div>
     </div>
 
-    <!-- 6. TRANSIÇÃO & VIGÊNCIA -->
-    <div class="chapter-block" data-ch="transicao">
+    <!-- ── 10. COBRANÇA ── Arts. 51–54 -->
+    <div class="chapter-block" data-ch="cobranca">
       <div class="chapter-header" onclick="toggleChapter(this)">
-        <span class="chapter-tag" style="color:#e8b84b;border-color:rgba(232,184,75,0.35)">🔄 Transição</span>
+        <span class="chapter-tag" style="color:#e8b84b;border-color:rgba(232,184,75,0.35)">💳 Cobrança</span>
         <span class="chapter-line"></span>
-        <span class="chapter-name">Instalação dos Conselhos, transição e vigência</span>
-        <span class="chapter-count">Arts. 55–68</span>
-        <span style="color:var(--muted);font-size:12px;margin-left:8px" class="toggle-icon">▾</span>
+        <span class="chapter-name">Da cobrança de valores pelos CAUs</span>
+        <span class="chapter-arts">Arts. 51–54</span>
+        <span class="toggle-icon">▾</span>
       </div>
-      <div class="article-list" data-ch="transicao" style="--ch-color:#e8b84b">
-        <<a class="article-item" href="art55.html" style="text-decoration:none;">
-          <span class="art-num">Art. 55</span>
-          <div class="art-body"><div class="art-title">Transição automática de registro dos profissionais do sistema CREA/CONFEA</div></div>
-        </a>
-        <a class="article-item" href="art56.html" style="text-decoration:none;">
-          <span class="art-num">Art. 56</span>
-          <div class="art-body"><div class="art-title">Coordenação do processo de transição e primeira eleição dos Conselhos</div></div>
-        </a>
-        <a class="article-item" href="art57.html" style="text-decoration:none;">
-          <span class="art-num">Art. 57</span>
-          <div class="art-body"><div class="art-title">Destinação de 90% dos recursos dos CREAs para a instalação dos CAUs</div></div>
-        </a>
-        <a class="article-item" href="art58.html" style="text-decoration:none;">
-          <span class="art-num">Art. 58</span>
-          <div class="art-body">
-            <div class="art-title">—</div>
-            <span class="art-badge">Vetado</span>
-          </div>
-        </a>
-        <a class="article-item" href="art59.html" style="text-decoration:none;">
-          <span class="art-num">Art. 59</span>
-          <div class="art-body"><div class="art-title">Possibilidade de convênios de compartilhamento com o sistema CONFEA/CREA</div></div>
-        </a>
-        <a class="article-item" href="art60.html" style="text-decoration:none;">
-          <span class="art-num">Art. 60</span>
-          <div class="art-body"><div class="art-title">Instituição de fundo especial para equilíbrio financeiro entre os CAUs</div></div>
-        </a>
-        <a class="article-item" href="art61.html" style="text-decoration:none;">
-          <span class="art-num">Art. 61</span>
-          <div class="art-body"><div class="art-title">Instituição de colegiados permanentes e Comissão Permanente de Ensino</div></div>
-        </a>
-        <a class="article-item" href="art62.html" style="text-decoration:none;">
-          <span class="art-num">Art. 62</span>
-          <div class="art-body"><div class="art-title">Fiscalização pelo TCU e auditorias anuais independentes</div></div>
-        </a>
-        <a class="article-item" href="art63.html" style="text-decoration:none;">
-          <span class="art-num">Art. 63</span>
-          <div class="art-body"><div class="art-title">Vínculo e permanência na Mútua de assistência aos profissionais</div></div>
-        </a>
-        <a class="article-item" href="art64.html" style="text-decoration:none;">
-          <span class="art-num">Art. 64</span>
-          <div class="art-body"><div class="art-title">Alteração do nome do Conselho Federal — CONFEA</div></div>
-        </a>
-        <a class="article-item" href="art65.html" style="text-decoration:none;">
-          <span class="art-num">Art. 65</span>
-          <div class="art-body"><div class="art-title">Alteração do nome dos Conselhos Regionais — CREAs</div></div>
-        </a>
-        <a class="article-item" href="art66.html" style="text-decoration:none;">
-          <span class="art-num">Art. 66</span>
-          <div class="art-body"><div class="art-title">Substituição da regulação de Leis anteriores referentes aos arquitetos</div></div>
-        </a>
-        <a class="article-item vetado" href="art67.html" style="text-decoration:none;">
-          <span class="art-num">Art. 67</span>
-          <div class="art-body">
-            <div class="art-title">—</div>
-            <span class="art-badge">Vetado</span>
-          </div>
-        </a>
-        <a class="article-item" href="art68.html" style="text-decoration:none;">
-          <span class="art-num">Art. 68</span>
-          <div class="art-body"><div class="art-title">Regras de vigência da Lei — entrada em vigor por etapas</div></div>
-        </a>
+      <div class="article-list" style="--ch-color:#e8b84b">
+        <a class="article-item" href="art51.html" style="text-decoration:none;"><span class="art-num">Art. 51</span><div><div class="art-title">Título executivo extrajudicial para cobrança de multas éticas e de RRT</div></div></a>
+        <a class="article-item" href="art52.html" style="text-decoration:none;"><span class="art-num">Art. 52</span><div><div class="art-title">Suspensão do exercício profissional por atraso na anuidade</div></div></a>
+        <a class="article-item" href="art53.html" style="text-decoration:none;"><span class="art-num">Art. 53</span><div><div class="art-title">Desligamento do Conselho mesmo com dívidas pendentes</div></div></a>
+        <a class="article-item" href="art54.html" style="text-decoration:none;"><span class="art-num">Art. 54</span><div><div class="art-title">Prescrição de 5 anos para cobrança de multas e anuidades</div></div></a>
+      </div>
+    </div>
+
+    <!-- ── 11. INSTALAÇÃO ── Arts. 55–62 -->
+    <div class="chapter-block" data-ch="instalacao">
+      <div class="chapter-header" onclick="toggleChapter(this)">
+        <span class="chapter-tag" style="color:#4e96dc;border-color:rgba(78,150,220,0.35)">🔧 Instalação</span>
+        <span class="chapter-line"></span>
+        <span class="chapter-name">Instalação do CAU/BR e dos CAUs</span>
+        <span class="chapter-arts">Arts. 55–62</span>
+        <span class="toggle-icon">▾</span>
+      </div>
+      <div class="article-list" style="--ch-color:#4e96dc">
+        <a class="article-item" href="art55.html" style="text-decoration:none;"><span class="art-num">Art. 55</span><div><div class="art-title">Transição automática de registro dos profissionais do sistema CREA/CONFEA</div></div></a>
+        <a class="article-item" href="art56.html" style="text-decoration:none;"><span class="art-num">Art. 56</span><div><div class="art-title">Coordenação da transição e primeira eleição dos Conselhos</div></div></a>
+        <a class="article-item" href="art57.html" style="text-decoration:none;"><span class="art-num">Art. 57</span><div><div class="art-title">Destinação de 90% dos recursos dos CREAs para instalação dos CAUs</div></div></a>
+        <a class="article-item vetado" href="art58.html" style="text-decoration:none;"><span class="art-num">Art. 58</span><div><div class="art-title">—</div><span class="art-badge">Vetado</span></div></a>
+        <a class="article-item" href="art59.html" style="text-decoration:none;"><span class="art-num">Art. 59</span><div><div class="art-title">Convênios de compartilhamento com o sistema CONFEA/CREA</div></div></a>
+        <a class="article-item" href="art60.html" style="text-decoration:none;"><span class="art-num">Art. 60</span><div><div class="art-title">Fundo especial para equilíbrio financeiro entre os CAUs</div></div></a>
+        <a class="article-item" href="art61.html" style="text-decoration:none;"><span class="art-num">Art. 61</span><div><div class="art-title">Colegiados permanentes e Comissão Permanente de Ensino</div></div></a>
+        <a class="article-item" href="art62.html" style="text-decoration:none;"><span class="art-num">Art. 62</span><div><div class="art-title">Fiscalização pelo TCU e auditorias anuais independentes</div></div></a>
+      </div>
+    </div>
+
+    <!-- ── 12. MÚTUAS ── Art. 63 -->
+    <div class="chapter-block" data-ch="outros">
+      <div class="chapter-header" onclick="toggleChapter(this)">
+        <span class="chapter-tag" style="color:#a78bfa;border-color:rgba(167,139,250,0.35)">🤝 Mútuas</span>
+        <span class="chapter-line"></span>
+        <span class="chapter-name">Mútuas de assistência dos profissionais vinculados aos CAUs</span>
+        <span class="chapter-arts">Art. 63</span>
+        <span class="toggle-icon">▾</span>
+      </div>
+      <div class="article-list" style="--ch-color:#a78bfa">
+        <a class="article-item" href="art63.html" style="text-decoration:none;"><span class="art-num">Art. 63</span><div><div class="art-title">Vínculo e permanência na Mútua de assistência aos profissionais</div></div></a>
+      </div>
+    </div>
+
+    <!-- ── 13. ADAPTAÇÃO CONFEA/CREAs ── Arts. 64–65 -->
+    <div class="chapter-block" data-ch="outros">
+      <div class="chapter-header" onclick="toggleChapter(this)">
+        <span class="chapter-tag" style="color:#3dd6c8;border-color:rgba(61,214,200,0.35)">🔄 CONFEA/CREAs</span>
+        <span class="chapter-line"></span>
+        <span class="chapter-name">Adaptação do CONFEA e dos CREAs</span>
+        <span class="chapter-arts">Arts. 64–65</span>
+        <span class="toggle-icon">▾</span>
+      </div>
+      <div class="article-list" style="--ch-color:#3dd6c8">
+        <a class="article-item" href="art64.html" style="text-decoration:none;"><span class="art-num">Art. 64</span><div><div class="art-title">Alteração do nome do Conselho Federal de Engenharia — CONFEA</div></div></a>
+        <a class="article-item" href="art65.html" style="text-decoration:none;"><span class="art-num">Art. 65</span><div><div class="art-title">Alteração do nome dos Conselhos Regionais — CREAs</div></div></a>
+      </div>
+    </div>
+
+    <!-- ── 14. ADAPTAÇÃO DAS LEIS 5.194/1966 E 6.496/1977 ── Arts. 66–67 -->
+    <div class="chapter-block" data-ch="outros">
+      <div class="chapter-header" onclick="toggleChapter(this)">
+        <span class="chapter-tag" style="color:#5a6a7d;border-color:rgba(90,106,125,0.4)">📋 Leis anteriores</span>
+        <span class="chapter-line"></span>
+        <span class="chapter-name">Adaptação das Leis nº 5.194/1966 e 6.496/1977</span>
+        <span class="chapter-arts">Arts. 66–67</span>
+        <span class="toggle-icon">▾</span>
+      </div>
+      <div class="article-list" style="--ch-color:#5a6a7d">
+        <a class="article-item" href="art66.html" style="text-decoration:none;"><span class="art-num">Art. 66</span><div><div class="art-title">Substituição da regulação anterior referente aos arquitetos e urbanistas</div></div></a>
+        <a class="article-item vetado" href="art67.html" style="text-decoration:none;"><span class="art-num">Art. 67</span><div><div class="art-title">—</div><span class="art-badge">Vetado</span></div></a>
+      </div>
+    </div>
+
+    <!-- ── 15. VIGÊNCIA ── Art. 68 -->
+    <div class="chapter-block" data-ch="outros">
+      <div class="chapter-header" onclick="toggleChapter(this)">
+        <span class="chapter-tag" style="color:#e8b84b;border-color:rgba(232,184,75,0.35)">📅 Vigência</span>
+        <span class="chapter-line"></span>
+        <span class="chapter-name">Vigência</span>
+        <span class="chapter-arts">Art. 68</span>
+        <span class="toggle-icon">▾</span>
+      </div>
+      <div class="article-list" style="--ch-color:#e8b84b">
+        <a class="article-item" href="art68.html" style="text-decoration:none;"><span class="art-num">Art. 68</span><div><div class="art-title">Regras de vigência da Lei — entrada em vigor por etapas</div></div></a>
       </div>
     </div>
 
@@ -943,62 +474,43 @@
   <!-- FOOTER -->
   <div class="page-footer">
     <div class="footer-left">
-      <strong>Brasília, 31 de dezembro de 2010; 189o da Independência e 122o da República.</strong><br>
-      LUIZ INÁCIO LULA DA SILVA<br>
-      Luiz Paulo Teles Ferreira Barreto<br>
-      Fernando Haddad<br>
-      Carlos Lupi<br>
-      Paulo Bernardo Silva<br>
-      <br>
-      Este texto não substitui o publicado no DOU de 31.12.2010 - Edição extra
+      <strong>Brasília, 31 de dezembro de 2010; 189º da Independência e 122º da República.</strong><br>
+      LUIZ INÁCIO LULA DA SILVA · Luiz Paulo Teles Ferreira Barreto · Fernando Haddad · Carlos Lupi · Paulo Bernardo Silva<br><br>
+      Este texto não substitui o publicado no DOU de 31.12.2010 — Edição extra
     </div>
   </div>
-
-  <div style="text-align: center; margin-top: 16px;">
+  <div style="text-align:center;margin-top:16px;">
     <div class="footer-badge">Criado por Aneci Palheta usando Claude.ai</div>
   </div>
-  
-  <div class="art-nav" style="display:flex;justify-content:space-between;align-items:center;margin-top:56px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.06)">
-  <span></span>
-  <span style="font-family:'DM Mono',monospace;font-size:10px;color:#5a6a7d;letter-spacing:0.1em">Lei nº 12.378/2010</span>
-  <a href="art2.html" style="font-family:'DM Mono',monospace;font-size:11px;color:#5a6a7d;text-decoration:none;border:1px solid rgba(255,255,255,0.06);border-radius:3px;padding:8px 14px">Art. 2º →</a>
-</div>
 
 </div><!-- /container -->
 
 <script>
-  // ── CHAPTER TOGGLE ──
+  // ── TOGGLE ──
   function toggleChapter(header) {
     const list = header.nextElementSibling;
     const icon = header.querySelector('.toggle-icon');
-    if (list.style.maxHeight === '0px' || list.style.maxHeight === '') {
-      list.style.maxHeight = list.scrollHeight + 'px';
-      icon.style.transform = 'rotate(0deg)';
-    } else {
-      list.style.maxHeight = '0px';
-      icon.style.transform = 'rotate(-90deg)';
-    }
+    const collapsed = list.style.maxHeight === '0px' || list.style.maxHeight === '';
+    list.style.maxHeight = collapsed ? list.scrollHeight + 'px' : '0px';
+    icon.style.transform  = collapsed ? 'rotate(0deg)' : 'rotate(-90deg)';
   }
+ 
+  const chBtns  = document.querySelectorAll('.ch-btn');
+  const allBlocks = document.querySelectorAll('.chapter-block');
 
-  // ── CHAPTER FILTER ──
-  const chBtns = document.querySelectorAll('.ch-btn');
   chBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       chBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       const ch = btn.dataset.ch;
-      const blocks = document.querySelectorAll('.chapter-block');
-      blocks.forEach(block => {
-        if (ch === 'all' || block.dataset.ch === ch) {
-          block.style.display = '';
-          // expand
+      allBlocks.forEach(block => {
+        const match = ch === 'all' || block.dataset.ch === ch;
+        block.style.display = match ? '' : 'none';
+        if (match) {
           const list = block.querySelector('.article-list');
           list.style.maxHeight = list.scrollHeight + 'px';
-        } else {
-          block.style.display = 'none';
         }
       });
-      // clear search
       document.getElementById('searchInput').value = '';
       updateCount(document.querySelectorAll('.article-item:not([style*="display: none"])').length);
     });
@@ -1008,7 +520,6 @@
   const searchInput = document.getElementById('searchInput');
   const countEl = document.getElementById('searchCount');
   const allItems = document.querySelectorAll('.article-item');
-  const allBlocks = document.querySelectorAll('.chapter-block');
 
   function updateCount(n) {
     countEl.textContent = searchInput.value ? n + ' resultado' + (n !== 1 ? 's' : '') : '';
@@ -1016,52 +527,27 @@
 
   searchInput.addEventListener('input', () => {
     const q = searchInput.value.toLowerCase().trim();
-
-    // reset chapter filter
     chBtns.forEach(b => b.classList.remove('active'));
     document.querySelector('[data-ch="all"]').classList.add('active');
     allBlocks.forEach(b => b.style.display = '');
 
     let visible = 0;
     allItems.forEach(item => {
-      const text = item.textContent.toLowerCase();
-      const match = !q || text.includes(q);
+      const match = !q || item.textContent.toLowerCase().includes(q);
       item.style.display = match ? '' : 'none';
       if (match) visible++;
     });
-
-    // expand all lists
-    document.querySelectorAll('.article-list').forEach(list => {
-      list.style.maxHeight = list.scrollHeight + 'px';
-    });
-
-    // hide chapters with 0 results
+    document.querySelectorAll('.article-list').forEach(l => l.style.maxHeight = l.scrollHeight + 'px');
     allBlocks.forEach(block => {
-      const visibleInBlock = Array.from(block.querySelectorAll('.article-item'))
-        .some(i => i.style.display !== 'none');
-      block.style.display = visibleInBlock ? '' : 'none';
+      const any = Array.from(block.querySelectorAll('.article-item')).some(i => i.style.display !== 'none');
+      block.style.display = any ? '' : 'none';
     });
-
     updateCount(visible);
   });
 
-  // ── OPEN ART ──
-  function openArt(n) {
-    if (n === 2) {
-      window.location.href = 'art2-law.html';
-    }
-  }
-
-  // ── STAGGER OPEN on load ──
+  // ── INIT — expand all ──
   document.querySelectorAll('.article-list').forEach(list => {
     list.style.maxHeight = list.scrollHeight + 'px';
-  });
-
-  // ── CARD hover micro-color ──
-  allItems.forEach(item => {
-    item.addEventListener('mouseenter', () => {
-      item.style.borderLeftColor = '';
-    });
   });
 </script>
 </body>

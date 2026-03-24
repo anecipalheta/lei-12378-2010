@@ -299,47 +299,7 @@
   border-color:var(--par-color,var(--blue));
 }
 
-  /* ── NOTE ── */
-  .footnote {
-    border:1px solid var(--border2);
-    border-radius:4px;
-    background:rgba(78,150,220,0.03);
-    padding:18px 22px;
-    display:flex; gap:14px; align-items:flex-start;
-    animation:fadeUp 0.6s 0.3s ease both;
-  }
 
-  .footnote p {
-  font-family:'DM Mono',monospace; font-size:13px;
-  color:var(--muted); line-height:1.75;
-}
-
-  .footnote strong { color:var(--gold); font-weight:500; }
-
-  /* ── NAV BOTTOM ── */
-  .art-nav {
-    display:flex; justify-content:space-between; align-items:center;
-    margin-top:56px; padding-top:24px;
-    border-top:1px solid var(--border2);
-    animation:fadeUp 0.5s 0.3s ease both;
-  }
-
-  .nav-btn {
-  display:inline-flex; align-items:center; gap:8px;
-  font-family:'DM Mono',monospace; font-size:13px;
-  color:var(--muted); text-decoration:none;
-  border:1px solid var(--border2); border-radius:3px;
-  padding:8px 14px; transition:all 0.2s;
-}
-
-  .nav-btn:hover { border-color:var(--gold); color:var(--gold); }
-  .nav-btn.prev::before { content:'←'; }
-  .nav-btn.next::after  { content:'→'; }
-
-  .nav-center {
-  font-family:'DM Mono',monospace; font-size:12px;
-  color:var(--muted); letter-spacing:0.1em;
-}
 
   @keyframes fadeUp {
     from { opacity:0; transform:translateY(16px); }
@@ -433,22 +393,7 @@
     </div>
   </div>
   
-  <!-- FOOTNOTE -->
-  <div class="footnote">
-    <span style="font-size:18px;flex-shrink:0;margin-top:2px">⚖️</span>
-    <p>
-      <strong>Nota legal:</strong> Esta representação é uma simplificação visual da Lei nº 12.378/2010,
-      produzida com base nos princípios de <strong>Visual Law</strong> e <strong>Legal Design</strong>.
-      Não substitui o texto oficial publicado no DOU de 31.12.2010 nem orientação jurídica especializada.      
-    </p>
-  </div>
 
-  <!-- BOTTOM NAV -->
-  <div class="art-nav">
-    <a class="nav-btn prev" href="art2.html">Art. 2º</a>
-    <span class="nav-center">Art. 3º · Lei 12.378/2010</span>
-    <a class="nav-btn next" href="art4.html">Art. 4º</a>
-  </div>
 
 </div>
 </body>
